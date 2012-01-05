@@ -1,0 +1,9 @@
+#expire_user_date_on_dd,
+#expire_user_date_on_hrs,
+#expire_user_date_on_min {
+	width:30px;
+}
+#expire_user_date_in_num,
+#expire_user_date_on_yyyy {
+	width:40px;
+}
