@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Expire Users
-Plugin URI: http://www.benhuson.co.uk/
+Plugin URI: https://github.com/benhuson/expire-users
 Description: Set expiry dates for user logins.
 Version: 0.1
 Author: Ben Huson
