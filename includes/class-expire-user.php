@@ -67,14 +67,14 @@ class Expire_User {
 		$time = '';
 		if ( $this->expire_timestamp ) {
 			if ( $this->expire_timestamp > time() ) {
-				$format = __( 'Expires: <b>%1$s @ %2$s</b>' );
+				$format = __( 'Expires:', 'expire-users' ) . ' <strong>%1$s @ %2$s</strong>';
 			} else {
-				$format = __( 'Expired: <b>%1$s @ %2$s</b>' );
+				$format = __( 'Expired:', 'expire-users' ) . ' <strong>%1$s @ %2$s</strong>';
 			}
 			$date = date( 'M d, Y', $this->expire_timestamp );
 			$time = date( 'H:i', $this->expire_timestamp );
 		} else {
-			$format = __( 'Expire: <b>never</b>' );
+			$format = __( 'Expire:', 'expire-users' ) . ' <strong>' . __( 'never', 'expire-users' ) . '</strong>';
 		}
 		return sprintf( $format, $date, $time );
 	}

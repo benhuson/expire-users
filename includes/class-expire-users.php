@@ -20,7 +20,7 @@ class Expire_Users {
 		if ( $user ) {
 			$expired = get_user_meta( $user->ID, '_expire_user_expired', true );
 			if ( $expired == 'Y' ) {
-				$user = new WP_Error( 'expire_users_expired', __('<strong>ERROR</strong>: Your user details have expired.' ) );
+				$user = new WP_Error( 'expire_users_expired', __( '<strong>ERROR</strong>: Your user details have expired.', 'expire-users' ) );
 				remove_action( 'authenticate', 'wp_authenticate_username_password', 20 );
 			}
 		}
@@ -31,7 +31,7 @@ class Expire_Users {
 		if ( absint( $user_ID ) > 0 ) {
 			$expired = get_user_meta( $user_ID, '_expire_user_expired', true );
 			if ( $expired == 'Y' ) {
-				$allow = new WP_Error( 'expire_users_expired_password_reset', __('<strong>ERROR</strong>: Your user details have expired so you are no longer able to reset your password.' ) );
+				$allow = new WP_Error( 'expire_users_expired_password_reset', __( '<strong>ERROR</strong>: Your user details have expired so you are no longer able to reset your password.', 'expire-users' ) );
 			}
 		}
 		return $allow;

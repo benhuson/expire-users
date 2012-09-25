@@ -17,6 +17,8 @@ require_once( dirname( __FILE__ ) . '/includes/class-expire-users-settings.php' 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
 
+load_plugin_textdomain( 'expire-users', false, basename( dirname( __FILE__ ) ) . '/languages' );
+
 global $expire_users;
 $expire_users = new Expire_Users();
 
