@@ -183,10 +183,12 @@ class Expire_User_Admin {
 	}
 	
 	function admin_enqueue_scripts() {
-	
 		wp_register_script( 'expire-users-admin-user', plugins_url( 'js/admin-user.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0' );
 		wp_enqueue_script( 'expire-users-admin-user' );
-        
+        wp_localize_script( 'expire-users-admin-user', 'expire_users_admin_user_i18n', array(
+        	'cancel' => __( 'Cancel', 'expire-users' ),
+        	'edit'   => __( 'Edit', 'expire-users' )
+        ) );
 	}
 	
 }
