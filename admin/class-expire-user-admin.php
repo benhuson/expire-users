@@ -106,27 +106,27 @@ class Expire_User_Admin {
 					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_in" value="in">
 					In <input type="text" id="expire_user_date_in_num" name="expire_user_date_in_num" value="<?php echo $days_n; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
 					<select name="expire_user_date_in_block" id="expire_user_date_in_block">
-						<option value="days"<?php if ( $date_in_block == 'days' ) echo ' selected="selected"'; ?>>days</option>
-						<option value="weeks"<?php if ( $date_in_block == 'weeks' ) echo ' selected="selected"'; ?>>weeks</option>
-						<option value="months"<?php if ( $date_in_block == 'months' ) echo ' selected="selected"'; ?>>months</option>
-						<option value="years"<?php if ( $date_in_block == 'years' ) echo ' selected="selected"'; ?>>years</option>
+						<option value="days" <?php selected( $date_in_block, 'days' ); ?>>days</option>
+						<option value="weeks" <?php selected( $date_in_block, 'weeks' ); ?>>weeks</option>
+						<option value="months" <?php selected( $date_in_block, 'months' ); ?>>months</option>
+						<option value="years" <?php selected( $date_in_block, 'years' ); ?>>years</option>
 					</select>
 				</label><br>
 				<label for="expire_user_date_type_date">
 					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_date" value="on"<?php echo $radio_date; ?>>
 					On <select id="expire_user_date_on_mm" name="expire_user_date_on_mm" tabindex="4">
-						<option value="01"<?php if ( $month_n == '01' ) echo ' selected="selected"'; ?>>Jan</option>
-						<option value="02"<?php if ( $month_n == '02' ) echo ' selected="selected"'; ?>>Feb</option>
-						<option value="03"<?php if ( $month_n == '03' ) echo ' selected="selected"'; ?>>Mar</option>
-						<option value="04"<?php if ( $month_n == '04' ) echo ' selected="selected"'; ?>>Apr</option>
-						<option value="05"<?php if ( $month_n == '05' ) echo ' selected="selected"'; ?>>May</option>
-						<option value="06"<?php if ( $month_n == '06' ) echo ' selected="selected"'; ?>>Jun</option>
-						<option value="07"<?php if ( $month_n == '07' ) echo ' selected="selected"'; ?>>Jul</option>
-						<option value="08"<?php if ( $month_n == '08' ) echo ' selected="selected"'; ?>>Aug</option>
-						<option value="09"<?php if ( $month_n == '09' ) echo ' selected="selected"'; ?>>Sep</option>
-						<option value="10"<?php if ( $month_n == '10' ) echo ' selected="selected"'; ?>>Oct</option>
-						<option value="11"<?php if ( $month_n == '11' ) echo ' selected="selected"'; ?>>Nov</option>
-						<option value="12"<?php if ( $month_n == '12' ) echo ' selected="selected"'; ?>>Dec</option>
+						<option value="01" <?php selected( $month_n, '01' ); ?>>Jan</option>
+						<option value="02" <?php selected( $month_n, '02' ); ?>>Feb</option>
+						<option value="03" <?php selected( $month_n, '03' ); ?>>Mar</option>
+						<option value="04" <?php selected( $month_n, '04' ); ?>>Apr</option>
+						<option value="05" <?php selected( $month_n, '05' ); ?>>May</option>
+						<option value="06" <?php selected( $month_n, '06' ); ?>>Jun</option>
+						<option value="07" <?php selected( $month_n, '07' ); ?>>Jul</option>
+						<option value="08" <?php selected( $month_n, '08' ); ?>>Aug</option>
+						<option value="09" <?php selected( $month_n, '09' ); ?>>Sep</option>
+						<option value="10" <?php selected( $month_n, '10' ); ?>>Oct</option>
+						<option value="11" <?php selected( $month_n, '11' ); ?>>Nov</option>
+						<option value="12" <?php selected( $month_n, '12' ); ?>>Dec</option>
 					</select>
 					<input type="text" id="expire_user_date_on_dd" name="expire_user_date_on_dd" value="<?php echo date( 'd', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
 					<input type="text" id="expire_user_date_on_yyyy" name="expire_user_date_on_yyyy" value="<?php echo date( 'Y', $expire_timestamp ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">
@@ -142,13 +142,8 @@ class Expire_User_Admin {
 		<td>
 			<select name="expire_user_role" id="expire_user_role">
 				<?php
-				// @todo Selected Role
-				$selected_role = $expire_user->on_expire_default_to_role;
-				if ( $user_role )
-					echo '<option value="">' . __( "Don't change role" ) . '</option>';
-				else
-					echo '<option value="" selected="selected">' . __( "Don't change role" ) . '</option>';
-				wp_dropdown_roles( $selected_role );
+				echo '<option value="">' . __( "Don't change role" ) . '</option>';
+				wp_dropdown_roles( $expire_user->on_expire_default_to_role );
 				?>
 			</select>
 		</td>
