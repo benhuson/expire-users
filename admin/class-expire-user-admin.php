@@ -66,6 +66,7 @@ class Expire_User_Admin {
 		$radio_never      = '';
 		$radio_date       = '';
 		$days_n           = 7;
+		$date_in_block    = 'days';
 		$expire_timestamp = time() + ( 60 * 60 * 24 * 7 );
 		$month_n          = '';
 		if ( isset( $expire_user->expire_timestamp ) && is_numeric( $expire_user->expire_timestamp ) ) {
@@ -75,6 +76,11 @@ class Expire_User_Admin {
 				$days_n = $days_n2;
 			}
 			$expire_timestamp = $expire_user->expire_timestamp;
+			$days_n = ceil( ( $expire_timestamp - time() ) / 60 / 60 / 24 );
+			if ( $days_n % 7 == 0 ) {
+				$days_n = $days_n / 7;
+				$date_in_block = 'weeks';
+			}
 		} else {
 			$radio_never = ' checked="checked"';
 		}
@@ -100,10 +106,10 @@ class Expire_User_Admin {
 					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_in" value="in">
 					In <input type="text" id="expire_user_date_in_num" name="expire_user_date_in_num" value="<?php echo $days_n; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
 					<select name="expire_user_date_in_block" id="expire_user_date_in_block">
-						<option value="days">days</option>
-						<option value="weeks">weeks</option>
-						<option value="months">months</option>
-						<option value="years">years</option>
+						<option value="days"<?php if ( $date_in_block == 'days' ) echo ' selected="selected"'; ?>>days</option>
+						<option value="weeks"<?php if ( $date_in_block == 'weeks' ) echo ' selected="selected"'; ?>>weeks</option>
+						<option value="months"<?php if ( $date_in_block == 'months' ) echo ' selected="selected"'; ?>>months</option>
+						<option value="years"<?php if ( $date_in_block == 'years' ) echo ' selected="selected"'; ?>>years</option>
 					</select>
 				</label><br>
 				<label for="expire_user_date_type_date">
@@ -120,7 +126,7 @@ class Expire_User_Admin {
 						<option value="09"<?php if ( $month_n == '09' ) echo ' selected="selected"'; ?>>Sep</option>
 						<option value="10"<?php if ( $month_n == '10' ) echo ' selected="selected"'; ?>>Oct</option>
 						<option value="11"<?php if ( $month_n == '11' ) echo ' selected="selected"'; ?>>Nov</option>
-						<option value="12">Dec</option>
+						<option value="12"<?php if ( $month_n == '12' ) echo ' selected="selected"'; ?>>Dec</option>
 					</select>
 					<input type="text" id="expire_user_date_on_dd" name="expire_user_date_on_dd" value="<?php echo date( 'd', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
 					<input type="text" id="expire_user_date_on_yyyy" name="expire_user_date_on_yyyy" value="<?php echo date( 'Y', $expire_timestamp ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">

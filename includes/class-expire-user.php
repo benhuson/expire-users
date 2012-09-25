@@ -30,33 +30,21 @@ class Expire_User {
 	}
 	
 	function set_expire_time_in_future( $amt, $unit = 'days' ) {
-		$time = 0;
 		switch ( $unit ) {
 			case 'days':
-				$time = 60 * 60 * 24 * $amt;
+				$this->expire_timestamp = time() + ( 60 * 60 * 24 * $amt );
 				break;
 			case 'weeks':
-				$time = 60 * 60 * 24 * 7 * $amt;
+				$this->expire_timestamp = time() + ( 60 * 60 * 24 * 7 * $amt );
 				break;
 			case 'months':
 				$date = getdate();
-				$date['mon'] += $amt;
-				if ( $date['mon'] > 12 ) {
-					$date['year'] += floor( $date['mon'] / 12 );
-					$date['mon'] = $date['mon'] % 12;
-					if ( $date['mon'] == 0 ) {
-						$date['mon'] = 12;
-						$date['year'] -= 1;
-					}
-				}
+				$this->expire_timestamp = mktime( $date['hours'], $date['minutes'], $date['seconds'], $date['mon'] + $amt, $date['mday'], $date['year'] );
 				break;
 			case 'years':
 				$date = getdate();
-				$date['year'] += $amt;
+				$this->expire_timestamp = mktime( $date['hours'], $date['minutes'], $date['seconds'], $date['mon'], $date['mday'], $date['year'] + $amt );
 				break;
-		}
-		if ( isset( $date ) ) {
-			$this->expire_timestamp = time() + mktime( 0, 0, 0, $date['mon'], $date['mday'], $date['year'] );
 		}
 	}
 	
