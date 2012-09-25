@@ -70,7 +70,7 @@ class Expire_User_Admin {
 		$expire_timestamp = time() + ( 60 * 60 * 24 * 7 );
 		$month_n          = '';
 		if ( isset( $expire_user->expire_timestamp ) && is_numeric( $expire_user->expire_timestamp ) ) {
-			$radio_date = ' checked="checked"';
+			$radio_date = checked( true, true, false );
 			$days_n2 = floor( ( $expire_user->expire_timestamp - time() ) / 60 / 60 / 24 );
 			if ( $days_n2 > 0 ) {
 				$days_n = $days_n2;
@@ -82,7 +82,7 @@ class Expire_User_Admin {
 				$date_in_block = 'weeks';
 			}
 		} else {
-			$radio_never = ' checked="checked"';
+			$radio_never = checked( true, true, false );
 		}
 		$month_n = date( 'm', $expire_timestamp );
 		?>
@@ -99,7 +99,7 @@ class Expire_User_Admin {
 			<fieldset class="expire-user-date-options hide-if-js">
 				<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 				<label for="expire_user_date_type_never">
-					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_never" value="never"<?php echo $radio_never; ?>>
+					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_never" value="never" <?php echo $radio_never; ?>>
 					<?php _e( 'never', 'expire-users' ); ?>
 				</label><br />
 				<label for="expire_user_date_type_in">
@@ -113,7 +113,7 @@ class Expire_User_Admin {
 					</select>
 				</label><br />
 				<label for="expire_user_date_type_date">
-					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_date" value="on"<?php echo $radio_date; ?>>
+					<input name="expire_user_date_type" type="radio" id="expire_user_date_type_date" value="on" <?php echo $radio_date; ?>>
 					<?php _e( 'On', 'expire-users' ); ?> <select id="expire_user_date_on_mm" name="expire_user_date_on_mm" tabindex="4">
 						<option value="01" <?php selected( $month_n, '01' ); ?>><?php _e( 'Jan', 'expire-users' ); ?></option>
 						<option value="02" <?php selected( $month_n, '02' ); ?>><?php _e( 'Feb', 'expire-users' ); ?></option>
@@ -154,15 +154,15 @@ class Expire_User_Admin {
 			<fieldset>
 				<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
 				<label for="expire_user_reset_password">
-					<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y"<?php echo $expire_user->on_expire_user_reset_password ? ' checked="checked"' : ''; ?>>
+					<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( $expire_user->on_expire_user_reset_password ); ?>>
 					<?php _e( 'generate random password', 'expire-users' ); ?> - <a href="#"><?php _e( 'why?', 'expire-users' ); ?></a>
 				</label><br>
 				<label for="expire_user_email">
-					<input disabled="disabled" name="expire_user_email" type="checkbox" id="expire_user_email" value="Y"<?php echo $expire_user->on_expire_user_email ? ' checked="checked"' : ''; ?>>
+					<input disabled="disabled" name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
 					<?php _e( 'send notification email to user', 'expire-users' ); ?> - <a href="#"><?php _e( 'configure message', 'expire-users' ); ?></a>
 				</label><br>
 				<label for="expire_user_email_admin">
-					<input disabled="disabled" name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y"<?php echo $expire_user->on_expire_user_email_admin ? ' checked="checked"' : ''; ?>>
+					<input disabled="disabled" name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
 					<?php _e( 'send notification email to admin', 'expire-users' ); ?> - <a href="#"><?php _e( 'configure message', 'expire-users' ); ?></a>
 				</label>
 			</fieldset>
