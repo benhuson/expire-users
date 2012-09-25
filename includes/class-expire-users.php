@@ -15,6 +15,9 @@ class Expire_Users {
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
 	}
 	
+	/**
+	 * Authenticate
+	 */
 	function authenticate( $user, $username, $password ) {
 		$user = get_user_by( 'login', $username );
 		if ( $user ) {
@@ -27,6 +30,9 @@ class Expire_Users {
 		return $user;
 	}
 	
+	/**
+	 * Allow Password Reset
+	 */
 	function allow_password_reset( $allow, $user_ID ) {
 		if ( absint( $user_ID ) > 0 ) {
 			$expired = get_user_meta( $user_ID, '_expire_user_expired', true );
@@ -37,6 +43,9 @@ class Expire_Users {
 		return $allow;
 	}
 	
+	/**
+	 * Shake Error Codes
+	 */
 	function shake_error_codes( $shake_codes ){
 		 $shake_codes[] = 'expire_users_expired';
 		 $shake_codes[] = 'expire_users_expired_password_reset';

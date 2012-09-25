@@ -29,6 +29,9 @@ class Expire_User {
 		}
 	}
 	
+	/**
+	 * Set Expire Time In Future
+	 */
 	function set_expire_time_in_future( $amt, $unit = 'days' ) {
 		switch ( $unit ) {
 			case 'days':
@@ -48,21 +51,35 @@ class Expire_User {
 		}
 	}
 	
+	/**
+	 * Set Expire Date
+	 */
 	function set_expire_date( $yyyy, $mm, $dd, $hrs = 0, $min = 0 ) {
 		$this->expire_timestamp = mktime( $hrs, $min, 0, $mm, $dd, $yyyy );
 	}
 	
+	/**
+	 * Set Expire Timestamp
+	 *
+	 * @todo Validate?
+	 */
 	function set_expire_timestamp( $timestamp ) {
-		// @todo Validate?
 		$this->expire_timestamp = $timestamp;
 	}
 	
+	/**
+	 * Remove Expire Date
+	 */
 	function remove_expire_date() {
 		$this->expire_timestamp = null;
 	}
 	
+	/**
+	 * Get Expire Date Display
+	 *
+	 * @todo In up to 14 days, otherwise date
+	 */
 	function get_expire_date_display() {
-		// @todo In up to 14 days, otherwise date
 		$date = '';
 		$time = '';
 		if ( $this->expire_timestamp ) {
@@ -79,18 +96,28 @@ class Expire_User {
 		return sprintf( $format, $date, $time );
 	}
 	
+	/**
+	 * Set Default To Role
+	 *
+	 * @todo Check if valid role...
+	 */
 	function set_default_to_role( $role ) {
-		// @todo Check if valid role...
 		$this->on_expire_default_to_role = $role;
 	}
 	
+	/**
+	 * Maybe Expire
+	 * If expire date is set and in past...
+	 */
 	function maybe_expire() {
-		// If expire date is set and in past...
 		if ( $expire_timestamp && time() > $expire_timestamp ) {
 			$this->expire();
 		}
 	}
 	
+	/**
+	 * Expire
+	 */
 	function expire() {
 		update_user_meta( $this->user_id, '_expire_user_expired', 'Y' );
 		
@@ -117,6 +144,9 @@ class Expire_User {
 		}
 	}
 	
+	/**
+	 * Get User
+	 */
 	function get_user() {
 		//$this->user = ...
 		//$this->expire_timestamp = null;
@@ -125,6 +155,9 @@ class Expire_User {
 		//$this->on_expire_user_email = false;
 	}
 	
+	/**
+	 * Save User
+	 */
 	function save_user() {
 		$expire_user_date = '';
 		if ( $this->expire_timestamp ) {
@@ -155,6 +188,8 @@ class Expire_User {
 	/**
 	 * Set Expire Data
 	 * Processes array of data and saves as class properties ready to be saved.
+	 *
+	 * @param array $data Post data.
 	 */
 	function set_expire_data( $data = null ) {
 		if ( isset( $data['expire_user_date_type'] ) ) {

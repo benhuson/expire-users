@@ -8,7 +8,7 @@ Version: 0.1
 Author: Ben Huson
 Author URI: http://www.benhuson.co.uk/
 Minimum WordPress Version Required: 3.1
-Tested up to: 3.1.2
+Tested up to: 3.4.2
 */
 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
@@ -17,6 +17,7 @@ require_once( dirname( __FILE__ ) . '/includes/class-expire-users-settings.php' 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
 
+// I18n
 load_plugin_textdomain( 'expire-users', false, basename( dirname( __FILE__ ) ) . '/languages' );
 
 global $expire_users;

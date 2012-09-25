@@ -3,7 +3,7 @@ Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire
 Requires at least: 3.1
-Tested up to: 3.1.2
+Tested up to: 3.4.2
 Stable tag: 0.1
 
 Set expiry dates for user logins.
