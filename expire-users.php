@@ -18,7 +18,10 @@ require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
 
 // I18n
-load_plugin_textdomain( 'expire-users', false, basename( dirname( __FILE__ ) ) . '/languages' );
+function expire_users_load_plugin_textdomain() {
+	load_plugin_textdomain( 'expire-users', false, basename( dirname( __FILE__ ) ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'expire_users_load_plugin_textdomain' );
 
 global $expire_users;
 $expire_users = new Expire_Users();
