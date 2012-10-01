@@ -19,12 +19,12 @@ class Expire_Users {
 	 * Authenticate
 	 */
 	function authenticate( $user, $username, $password ) {
-		$user = get_user_by( 'login', $username );
-		if ( $user ) {
-			$expired = get_user_meta( $user->ID, '_expire_user_expired', true );
+		$checkuser = get_user_by( 'login', $username );
+		if ( $checkuser ) {
+			$expired = get_user_meta( $checkuser->ID, '_expire_user_expired', true );
 			if ( $expired == 'Y' ) {
-				$user = new WP_Error( 'expire_users_expired', __( '<strong>ERROR</strong>: Your user details have expired.', 'expire-users' ) );
 				remove_action( 'authenticate', 'wp_authenticate_username_password', 20 );
+				return new WP_Error( 'expire_users_expired', __( '<strong>ERROR</strong>: Your user details have expired.', 'expire-users' ) );
 			}
 		}
 		return $user;
