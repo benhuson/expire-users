@@ -167,7 +167,7 @@ class Expire_User_Admin {
 						<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
 						<label for="expire_user_reset_password">
 							<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( $expire_user->on_expire_user_reset_password ); ?>>
-							<?php _e( 'generate random password', 'expire-users' ); ?> - <a href="#"><?php _e( 'why?', 'expire-users' ); ?></a>
+							<?php _e( 'replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
 						</label><br>
 						<label for="expire_user_email">
 							<input disabled="disabled" name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
