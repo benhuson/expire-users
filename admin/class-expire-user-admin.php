@@ -191,11 +191,11 @@ class Expire_User_Admin {
 							</label><br>
 							<label for="expire_user_email">
 								<input disabled="disabled" name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
-								<?php _e( 'send notification email to user', 'expire-users' ); ?> - <a href="#"><?php _e( 'configure message', 'expire-users' ); ?></a>
+								<?php _e( 'send notification email to user', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
 							</label><br>
 							<label for="expire_user_email_admin">
 								<input disabled="disabled" name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
-								<?php _e( 'send notification email to admin', 'expire-users' ); ?> - <a href="#"><?php _e( 'configure message', 'expire-users' ); ?></a>
+								<?php _e( 'send notification email to admin', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
 							</label>
 						</fieldset>
 					</td>

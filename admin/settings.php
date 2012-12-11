@@ -11,7 +11,7 @@ class Expire_User_Settings {
 	 * Create Options Page Item
 	 */
 	function options_page_item() {
-		add_users_page( __( 'Expire Settings', 'expire-users' ), __( 'Expire Settings', 'expire-users' ), 'manage_options', 'edit_users', array( $this, 'options_page' ) );
+		add_users_page( __( 'Expire Settings', 'expire-users' ), __( 'Expire Settings', 'expire-users' ), 'manage_options', 'expire_users', array( $this, 'options_page' ) );
 	}
 	
 	/**
