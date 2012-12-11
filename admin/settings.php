@@ -86,8 +86,8 @@ class Expire_User_Settings {
 				
 				<?php
 				$expire_settings = $this->get_default_expire_settings();
-				$notification_message = get_option( 'expire_users_notification_message', true );
-				$notification_admin_message = get_option( 'expire_users_notification_admin_message', true );
+				$notification_message = get_option( 'expire_users_notification_message' );
+				$notification_admin_message = get_option( 'expire_users_notification_admin_message' );
 				$expire_timestamp = $expire_settings['expire_timestamp'];
 				$month_n = date( 'm', $expire_settings['expire_timestamp'] );
 				?>
@@ -181,7 +181,7 @@ class Expire_User_Settings {
 				<h3><?php _e( 'Notification Emails', 'expire-users' ); ?></h3>
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />
 					<?php _e( 'You may use the following placeholders in the notification email messages below:', 'expire-users' ); ?></p>
-				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code></p>
+				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
 	 
 				<table class="form-table">
 					<tr valign="top">

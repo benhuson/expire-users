@@ -51,12 +51,12 @@ class Expire_Users {
 	function handle_on_expire_user_email( $expired_user ) {
 		if ( $expired_user->on_expire_user_email ) {
 			$u = new WP_User( $expired_user->user_id );
-			$message = get_option( 'expire_users_notification_message', true );
+			$message = get_option( 'expire_users_notification_message' );
 			if ( empty( $message ) ) {
-				$message = sprintf( __( 'Your access to %s has expired.', 'expire-users' ), get_bloginfo( 'name' ) );
+				$message = __( 'Your access to %%sitename%% has expired.', 'expire-users' );
 			}
 			$message = apply_filters( 'expire_users_email_admin_notification_message', $message, $expired_user );
-			$subject = apply_filters( 'expire_users_email_admin_notification_subject', __( 'Your login details have expired', 'expired-users' ), $expired_user );
+			$subject = apply_filters( 'expire_users_email_admin_notification_subject', __( 'Your login details to %%sitename%% have expired', 'expired-users' ), $expired_user );
 			wp_mail( $u->user_email, $subject, $message );
 		}
 	}
@@ -66,12 +66,12 @@ class Expire_Users {
 	 */
 	function handle_on_expire_user_email_admin( $expired_user ) {
 		if ( $expired_user->on_expire_user_email_admin ) {
-			$message = get_option( 'expire_users_notification_admin_message', true );
+			$message = get_option( 'expire_users_notification_admin_message' );
 			if ( empty( $message ) ) {
-				$message = __( 'Access for %%name%% (%%username%%) has expired on %%expirydate%%', 'expire-users' );
+				$message = __( 'Access to %%sitename%% has expired for %%name%% (%%username%%) on %%expirydate%%', 'expire-users' );
 			}
 			$message = apply_filters( 'expire_users_email_notification_message', $message, $expired_user );
-			$subject = apply_filters( 'expire_users_email_notification_subject', __( 'Login details have expired (%%username%%)', 'expired-users' ), $expired_user );
+			$subject = apply_filters( 'expire_users_email_notification_subject', __( 'Login details to %%sitename%% have expired (%%username%%)', 'expired-users' ), $expired_user );
 			wp_mail( get_bloginfo( 'admin_email' ), $subject, $message );
 		}
 	}
@@ -84,6 +84,7 @@ class Expire_Users {
 		$message = str_replace( '%%name%%', trim( $u->user_nicename . ' ' . $u->last_name ), $message );
 		$message = str_replace( '%%username%%', $u->user_login, $message );
 		$message = str_replace( '%%expirydate%%', date( 'jS F Y @ h:i', $expired_user->expire_timestamp ), $message );
+		$message = str_replace( '%%sitename%%', get_bloginfo( 'name' ), $message );
 		return $message;
 	}
 	
