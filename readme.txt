@@ -37,7 +37,10 @@ None at present.
 
 == Screenshots ==
 
-None at present.
+1. Expire Date column in users admin.
+2. Edit a user's expiry date and expiry actions.
+3. Edit email notification messages.
+3. User login expired error.
 
 == Changelog ==
 
