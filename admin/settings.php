@@ -95,6 +95,7 @@ class Expire_User_Settings {
 				<?php settings_fields( 'expire_users_options_group' ); ?>
 				
 				<h3><?php _e( 'Default Settings for New Users', 'expire-users' ); ?></h3>
+				<p><?php _e( 'These expiry settings are set when a new user registers or is created.', 'expire-users' ); ?></p>
 	 
 				<table class="form-table">
 					<tr valign="top">
