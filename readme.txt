@@ -1,21 +1,35 @@
 === Expire Users ===
 Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
-Tags: users, password, expire
+Tags: users, password, expire, login, roles
 Requires at least: 3.1
-Tested up to: 3.4.2
-Stable tag: 0.3
+Tested up to: 3.5
+Stable tag: 0.4
 License: GPLv2 or later
 
 Set expiry dates for user logins.
 
 == Description ==
 
-> Important security update - please upgrade to version 0.3
-
-Set expiry dates for user logins.
+> Important security update - if you are using version 0.2 or earlier please upgrade
 
 **Currently a beta version.**
+
+This plugin allows you to set expiry dates for user logins. You can set a user to:
+
+* Never expire (default)
+* Expire in X days, weeks, moths or years
+* Expire on a specific date
+
+When a user expires you can:
+
+* Change the role of that user
+* Replace the user's password with a randomly generated one
+* Send an email notification to the user
+* Send an email notification to the site administrator
+* Perform you own actions using an `expire_users_expired` hook
+
+The email notification messages can be configured in the admin settings.
 
 Please post in the [support forum](http://wordpress.org/support/plugin/expire-users) if you find any issues.
             
@@ -44,6 +58,12 @@ None at present.
 
 == Changelog ==
 
+= 0.4 =
+* Enables email notifications to users and administrators.
+* Add a settings page where you can configure email notification messages.
+* Perform you own actions on user expiry using an `expire_users_expired` hook.
+* Only allow users with user editing capabilities (administrators) to edit expiration dates.
+
 = 0.3 =
 
 **Important Security Update!**
@@ -58,6 +78,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 0.4 =
+Option to enable email notifications and perform custom actions on user expiry.
 
 = 0.3 =
 Important security update!
