@@ -142,6 +142,8 @@ class Expire_User {
 		// Send admin notification email?
 		if ( $this->on_expire_user_email_admin ) {
 		}
+		
+		do_action( 'expire_users_expired', $this->user_id );
 	}
 	
 	/**

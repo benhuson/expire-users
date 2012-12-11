@@ -8,8 +8,10 @@
 
 class Expire_User_Admin {
 	
+	var $settings = null;
+	
 	function Expire_User_Admin() {
-		global $css_layouts;
+		$this->settings = new Expire_User_Settings();
 		
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
