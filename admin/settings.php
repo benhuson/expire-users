@@ -94,6 +94,7 @@ class Expire_User_Settings {
 				
 				<?php settings_fields( 'expire_users_options_group' ); ?>
 				
+				<!--
 				<h3><?php _e( 'Default Settings for New Users', 'expire-users' ); ?></h3>
 				<p><?php _e( 'These expiry settings are set when a new user registers or is created.', 'expire-users' ); ?></p>
 	 
@@ -175,6 +176,7 @@ class Expire_User_Settings {
 						</td>
 					</tr>
 				</table>
+				-->
 				
 				<h3><?php _e( 'Notification Emails', 'expire-users' ); ?></h3>
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />
