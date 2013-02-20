@@ -136,27 +136,13 @@ class Expire_User_Admin {
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_in" value="in">
 								<?php _e( 'In', 'expire-users' ); ?> <input type="text" id="expire_user_date_in_num" name="expire_user_date_in_num" value="<?php echo $days_n; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
 								<select name="expire_user_date_in_block" id="expire_user_date_in_block">
-									<option value="days" <?php selected( $date_in_block, 'days' ); ?>><?php _e( 'days', 'expire-users' ); ?></option>
-									<option value="weeks" <?php selected( $date_in_block, 'weeks' ); ?>><?php _e( 'weeks', 'expire-users' ); ?></option>
-									<option value="months" <?php selected( $date_in_block, 'months' ); ?>><?php _e( 'months', 'expire-users' ); ?></option>
-									<option value="years" <?php selected( $date_in_block, 'years' ); ?>><?php _e( 'years', 'expire-users' ); ?></option>
+									<?php echo $this->date_block_menu_options( $date_in_block ); ?>
 								</select>
 							</label><br />
 							<label for="expire_user_date_type_date">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_date" value="on" <?php echo $radio_date; ?>>
 								<?php _e( 'On', 'expire-users' ); ?> <select id="expire_user_date_on_mm" name="expire_user_date_on_mm" tabindex="4">
-									<option value="01" <?php selected( $month_n, '01' ); ?>><?php _e( 'Jan', 'expire-users' ); ?></option>
-									<option value="02" <?php selected( $month_n, '02' ); ?>><?php _e( 'Feb', 'expire-users' ); ?></option>
-									<option value="03" <?php selected( $month_n, '03' ); ?>><?php _e( 'Mar', 'expire-users' ); ?></option>
-									<option value="04" <?php selected( $month_n, '04' ); ?>><?php _e( 'Apr', 'expire-users' ); ?></option>
-									<option value="05" <?php selected( $month_n, '05' ); ?>><?php _e( 'May', 'expire-users' ); ?></option>
-									<option value="06" <?php selected( $month_n, '06' ); ?>><?php _e( 'Jun', 'expire-users' ); ?></option>
-									<option value="07" <?php selected( $month_n, '07' ); ?>><?php _e( 'Jul', 'expire-users' ); ?></option>
-									<option value="08" <?php selected( $month_n, '08' ); ?>><?php _e( 'Aug', 'expire-users' ); ?></option>
-									<option value="09" <?php selected( $month_n, '09' ); ?>><?php _e( 'Sep', 'expire-users' ); ?></option>
-									<option value="10" <?php selected( $month_n, '10' ); ?>><?php _e( 'Oct', 'expire-users' ); ?></option>
-									<option value="11" <?php selected( $month_n, '11' ); ?>><?php _e( 'Nov', 'expire-users' ); ?></option>
-									<option value="12" <?php selected( $month_n, '12' ); ?>><?php _e( 'Dec', 'expire-users' ); ?></option>
+									<?php echo $this->month_menu_options( $month_n ); ?>
 								</select>
 								<input type="text" id="expire_user_date_on_dd" name="expire_user_date_on_dd" value="<?php echo date( 'd', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
 								<input type="text" id="expire_user_date_on_yyyy" name="expire_user_date_on_yyyy" value="<?php echo date( 'Y', $expire_timestamp ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">
@@ -203,6 +189,48 @@ class Expire_User_Admin {
 				<?php } ?>
 		</table>
 		<?php
+	}
+	
+	/**
+	 * Date Block Menu Options
+	 */
+	function date_block_menu_options( $selected = '' ) {
+		$output = '';
+		$blocks = array(
+			'days'   => __( 'days', 'expire-users' ),
+			'weeks'  => __( 'weeks', 'expire-users' ),
+			'months' => __( 'months', 'expire-users' ),
+			'years'  => __( 'years', 'expire-users' )
+		);
+		foreach ( $blocks as $value => $label ) {
+			$output .= '<option value="' . $value . '" ' . selected( $selected, $value, false ) . '>' . $label . '</option>';
+		}
+		return $output;
+	}
+	
+	/**
+	 * Month Menu Options
+	 */
+	function month_menu_options( $selected = '' ) {
+		$output = '';
+		$months = array(
+			'01' => __( 'Jan', 'expire-users' ),
+			'02' => __( 'Feb', 'expire-users' ),
+			'03' => __( 'Mar', 'expire-users' ),
+			'04' => __( 'Apr', 'expire-users' ),
+			'05' => __( 'May', 'expire-users' ),
+			'06' => __( 'Jun', 'expire-users' ),
+			'07' => __( 'Jul', 'expire-users' ),
+			'08' => __( 'Aug', 'expire-users' ),
+			'09' => __( 'Sep', 'expire-users' ),
+			'10' => __( 'Oct', 'expire-users' ),
+			'11' => __( 'Nov', 'expire-users' ),
+			'12' => __( 'Dec', 'expire-users' )
+		);
+		foreach ( $months as $value => $label ) {
+			$output .= '<option value="' . $value . '" ' . selected( $selected, $value, false ) . '>' . $label . '</option>';
+		}
+		return $output;
 	}
 	
 	/**
