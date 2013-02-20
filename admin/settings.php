@@ -51,14 +51,15 @@ class Expire_User_Settings {
 	 */
 	function get_default_expire_settings() {
 		$default_settings = array(
-			'expire_user_role'           => '',
-			'expire_user_reset_password' => 'N',
-			'expire_user_email'          => 'N',
-			'expire_user_email_admin'    => 'N',
-			'expire_user_date_type'      => 'never',
-			'expire_user_date_in_num'    => 10,
-			'expire_user_date_in_block'  => 'days',
-			'expire_timestamp'           => time()
+			'expire_user_role'             => '',
+			'expire_user_reset_password'   => 'N',
+			'expire_user_email'            => 'N',
+			'expire_user_email_admin'      => 'N',
+			'expire_user_date_type'        => 'never',
+			'expire_user_date_in_num'      => 10,
+			'expire_user_date_in_block'    => 'days',
+			'expire_timestamp'             => time(),
+			'auto_expire_registered_users' => 'N'
 		);
 		$settings = wp_parse_args( get_option( 'expire_users_default_expire_settings', $default_settings ), $default_settings );
 		return $settings;
@@ -68,6 +69,7 @@ class Expire_User_Settings {
 	 * Options Page
 	 */
 	function options_page() {
+		global $expire_users;
 		if ( ! isset( $_REQUEST['updated'] ) )
 			$_REQUEST['updated'] = false; 
 		?>
@@ -94,11 +96,15 @@ class Expire_User_Settings {
 				
 				<?php settings_fields( 'expire_users_options_group' ); ?>
 				
-				<!--
-				<h3><?php _e( 'Default Settings for New Users', 'expire-users' ); ?></h3>
-				<p><?php _e( 'These expiry settings are set when a new user registers or is created.', 'expire-users' ); ?></p>
+				<h3><?php _e( 'Registered User Expiry Settings', 'expire-users' ); ?></h3>
+				<p>
+					<label for="expire_user_auto_expire_registered_users">
+						<input name="expire_users_default_expire_settings[auto_expire_registered_users]" type="checkbox" id="expire_user_auto_expire_registered_users" value="Y" <?php checked( 'Y', $expire_settings['auto_expire_registered_users'] ); ?>>
+						<?php _e( 'Automatically set expiry date for new users who register via the registration form.', 'expire-users' ); ?>
+					</label>
+				</p>
 	 
-				<table class="form-table">
+				<table class="form-table expire_user_auto_expire_registered_users_toggle">
 					<tr valign="top">
 						<th scope="row"><label for="expire_user_date_type_never"><?php _e( 'Expiry Date', 'expire-users' ); ?></label></th>
 						<td>
@@ -112,27 +118,13 @@ class Expire_User_Settings {
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_in" value="in" <?php checked( 'in', $expire_settings['expire_user_date_type'] ); ?>>
 									<?php _ex( 'In', 'expire date type', 'expire-users' ); ?> <input type="text" id="expire_user_date_in_num" name="expire_users_default_expire_settings[expire_user_date_in_num]" value="<?php echo $expire_settings['expire_user_date_in_num']; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
 									<select name="expire_users_default_expire_settings[expire_user_date_in_block]" id="expire_user_date_in_block">
-										<option value="days" <?php selected( 'days', $expire_settings['expire_user_date_in_block'] ); ?>><?php _e( 'days', 'expire-users' ); ?></option>
-										<option value="weeks" <?php selected( 'weeks', $expire_settings['expire_user_date_in_block'] ); ?>><?php _e( 'weeks', 'expire-users' ); ?></option>
-										<option value="months" <?php selected( 'months', $expire_settings['expire_user_date_in_block'] ); ?>><?php _e( 'months', 'expire-users' ); ?></option>
-										<option value="years" <?php selected( 'years', $expire_settings['expire_user_date_in_block'] ); ?>><?php _e( 'years', 'expire-users' ); ?></option>
+										<?php echo $expire_users->admin->date_block_menu_options( $expire_settings['expire_user_date_in_block'] ); ?>
 									</select>
 								</label><br>
 								<label for="expire_user_date_type_date">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_date" value="on" <?php checked( 'on', $expire_settings['expire_user_date_type'] ); ?>>
 									<?php _e( 'On', 'expire date type', 'expire-users' ); ?> <select id="expire_users_default_expire_settings_expire_timestamp_mm" name="expire_users_default_expire_settings[expire_timestamp][mm]" tabindex="4">
-										<option value="01" <?php selected( $month_n, '01' ); ?>><?php _e( 'Jan', 'expire-users' ); ?></option>
-										<option value="02" <?php selected( $month_n, '02' ); ?>><?php _e( 'Feb', 'expire-users' ); ?></option>
-										<option value="03" <?php selected( $month_n, '03' ); ?>><?php _e( 'Mar', 'expire-users' ); ?></option>
-										<option value="04" <?php selected( $month_n, '04' ); ?>><?php _e( 'Apr', 'expire-users' ); ?></option>
-										<option value="05" <?php selected( $month_n, '05' ); ?>><?php _e( 'May', 'expire-users' ); ?></option>
-										<option value="06" <?php selected( $month_n, '06' ); ?>><?php _e( 'Jun', 'expire-users' ); ?></option>
-										<option value="07" <?php selected( $month_n, '07' ); ?>><?php _e( 'Jul', 'expire-users' ); ?></option>
-										<option value="08" <?php selected( $month_n, '08' ); ?>><?php _e( 'Aug', 'expire-users' ); ?></option>
-										<option value="09" <?php selected( $month_n, '09' ); ?>><?php _e( 'Sep', 'expire-users' ); ?></option>
-										<option value="10" <?php selected( $month_n, '10' ); ?>><?php _e( 'Oct', 'expire-users' ); ?></option>
-										<option value="11" <?php selected( $month_n, '11' ); ?>><?php _e( 'Nov', 'expire-users' ); ?></option>
-										<option value="12" <?php selected( $month_n, '12' ); ?>><?php _e( 'Dec', 'expire-users' ); ?></option>
+										<?php echo $expire_users->admin->month_menu_options( $month_n ); ?>
 									</select>
 									<input type="text" id="expire_users_default_expire_settings_expire_timestamp_dd" name="expire_users_default_expire_settings[expire_timestamp][dd]" value="<?php echo date( 'd', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
 									<input type="text" id="expire_users_default_expire_settings_expire_timestamp_yyyy" name="expire_users_default_expire_settings[expire_timestamp][yyyy]" value="<?php echo date( 'Y', $expire_timestamp ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">
@@ -176,7 +168,6 @@ class Expire_User_Settings {
 						</td>
 					</tr>
 				</table>
-				-->
 				
 				<h3><?php _e( 'Notification Emails', 'expire-users' ); ?></h3>
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />

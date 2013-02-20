@@ -13,6 +13,8 @@ class Expire_Users {
 		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
+		add_action( 'register_form', array( $this, 'register_form' ) );
+		add_action( 'user_register', array( $this, 'user_register' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_default_to_role' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_reset_password' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_email' ) );
@@ -23,6 +25,41 @@ class Expire_Users {
 		add_filter( 'expire_users_email_admin_notification_subject', array( $this, 'email_notification_filter' ), 20, 2 );
 		add_filter( 'option_expire_users_notification_message', array( $this, 'default_expire_users_notification_message' ) );
 		add_filter( 'option_expire_users_notification_admin_message', array( $this, 'default_expire_users_notification_admin_message' ) );
+	}
+	
+	/**
+	 * Register Form
+	 * Adds a hidden field to the register form to flag that a new user should use
+	 * the auto-expire settings.
+	 */
+	function register_form() {
+		echo '<input type="hidden" name="expire_users" value="auto" />';
+	}
+	
+	/**
+	 * User Register
+	 * Runs on user registration.
+	 */
+	function user_register( $user_id ) {
+		if ( isset( $_POST['expire_users'] ) && 'auto' == $_POST['expire_users'] ) {
+			
+			$expire_settings = $this->admin->settings->get_default_expire_settings();
+			
+			$expire_data = array(
+				'expire_user_date_type'         => $expire_settings['expire_user_date_type'],
+				'expire_user_date_in_num'       => $expire_settings['expire_user_date_in_num'],
+				'expire_user_date_in_block'     => $expire_settings['expire_user_date_in_block'],
+				'expire_user_date_on_timestamp' => $expire_settings['expire_timestamp'],
+				'expire_user_role'              => $expire_settings['expire_user_role'],
+				'expire_user_reset_password'    => $expire_settings['expire_user_reset_password'],
+				'expire_user_email'             => $expire_settings['expire_user_email'],
+				'expire_user_email_admin'       => $expire_settings['expire_user_email_admin']
+			);
+			
+			$user = new Expire_User( $user_id );
+			$user->set_expire_data( $expire_data );
+			$user->save_user();
+		}
 	}
 	
 	/**

@@ -182,13 +182,17 @@ class Expire_User {
 					break;
 				// On a specific date
 				case 'on':
-					$this->set_expire_date(
-						absint( $data['expire_user_date_on_yyyy'] ),
-						absint( $data['expire_user_date_on_mm'] ),
-						absint( $data['expire_user_date_on_dd'] ),
-						absint( $data['expire_user_date_on_hrs'] ),
-						absint( $data['expire_user_date_on_min'] )
-					);
+					if ( isset( $data['expire_user_date_on_timestamp'] ) ) {
+						$this->set_expire_timestamp( absint( $data['expire_user_date_on_timestamp'] ) );
+					} else {
+						$this->set_expire_date(
+							absint( $data['expire_user_date_on_yyyy'] ),
+							absint( $data['expire_user_date_on_mm'] ),
+							absint( $data['expire_user_date_on_dd'] ),
+							absint( $data['expire_user_date_on_hrs'] ),
+							absint( $data['expire_user_date_on_min'] )
+						);
+					}
 					break;
 				// Never
 				default:
