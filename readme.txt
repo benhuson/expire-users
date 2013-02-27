@@ -2,9 +2,9 @@
 Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
-Requires at least: 3.1
-Tested up to: 3.5
-Stable tag: 0.4
+Requires at least: 3.2
+Tested up to: 3.5.1
+Stable tag: 0.5
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -28,6 +28,8 @@ When a user expires you can:
 * Send an email notification to the user
 * Send an email notification to the site administrator
 * Perform you own actions using an `expire_users_expired` hook
+
+You can automatically assign expiry details to users who sign up via the register form.
 
 The email notification messages can be configured in the admin settings.
 
@@ -58,6 +60,9 @@ None at present.
 
 == Changelog ==
 
+= 0.5 =
+* Added option to automatically set expiry details for users who register via the register form.
+
 = 0.4 =
 * Enables email notifications to users and administrators.
 * Add a settings page where you can configure email notification messages.
@@ -78,6 +83,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 0.5 =
+* Assign expiry details to users when they register via the register form.
 
 = 0.4 =
 Option to enable email notifications and perform custom actions on user expiry.
