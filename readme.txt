@@ -3,8 +3,8 @@ Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
 Requires at least: 3.2
-Tested up to: 3.5.1
-Stable tag: 0.5
+Tested up to: 3.5.2
+Stable tag: 0.6
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -27,14 +27,14 @@ When a user expires you can:
 * Replace the user's password with a randomly generated one
 * Send an email notification to the user
 * Send an email notification to the site administrator
-* Perform you own actions using an `expire_users_expired` hook
+* Perform you own actions using an [`expire_users_expired`](https://github.com/benhuson/expire-users/wiki/expire_users_expired) hook
 
 You can automatically assign expiry details to users who sign up via the register form.
 
 The email notification messages can be configured in the admin settings.
 
-Please post in the [support forum](http://wordpress.org/support/plugin/expire-users) if you find any issues.
-            
+Please post in the [support forum](http://wordpress.org/support/plugin/expire-users) if you have any questions, or refer to the [documentation](https://github.com/benhuson/expire-users/wiki), [report bugs](https://github.com/benhuson/expire-users/issues) and [submit translations](https://github.com/benhuson/expire-users/issues) at the plugin's [GitHub page](https://github.com/benhuson/expire-users/).
+
 == Installation ==
 
 To install and configure this plugin...
@@ -60,6 +60,9 @@ None at present.
 
 == Changelog ==
 
+= 0.6 =
+* Added support for translations. Submissions welcome.
+
 = 0.5 =
 * Added option to automatically set expiry details for users who register via the register form.
 
@@ -83,6 +86,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 0.6 =
+* Added support for translations.
 
 = 0.5 =
 * Assign expiry details to users when they register via the register form.

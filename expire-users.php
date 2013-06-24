@@ -4,11 +4,11 @@
 Plugin Name: Expire Users
 Plugin URI: http://wordpress.org/extend/plugins/expire-users/
 Description: Set expiry dates for user logins.
-Version: 0.5
+Version: 0.6
 Author: Ben Huson
 Author URI: http://www.benhuson.co.uk/
 Minimum WordPress Version Required: 3.2
-Tested up to: 3.5.1
+Tested up to: 3.5.2
 */
 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
