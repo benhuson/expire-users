@@ -125,14 +125,14 @@ class Expire_Users {
 	
 	function default_expire_users_notification_message( $value ) {
 		if ( empty( $value ) ) {
-			$value = 'Your access to %%sitename%% has expired.';
+			$value = __( 'Your access to %%sitename%% has expired.', 'expire-users' );
 		}
 		return $value;
 	}
 	
 	function default_expire_users_notification_admin_message( $value ) {
 		if ( empty( $value ) ) {
-			$value = 'Access to %%sitename%% has expired for %%name%% (%%username%%) on %%expirydate%%';
+			$value = __( 'Access to %%sitename%% has expired for %%name%% (%%username%%) on %%expirydate%%', 'expire-users' );
 		}
 		return $value;
 	}
