@@ -5,8 +5,6 @@ add_filter( 'plugin_action_links_expire-users/expire-users.php', array( 'Expire_
 
 class Expire_User_Admin_Plugin {
 
-	var $plugin_basename = 'expire-users/expire-users.php';
-
 	/**
 	 * Plugin Row Meta
 	 *
