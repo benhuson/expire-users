@@ -73,29 +73,33 @@ class Expire_User {
 	function remove_expire_date() {
 		$this->expire_timestamp = null;
 	}
-	
+
 	/**
 	 * Get Expire Date Display
 	 *
 	 * @todo In up to 14 days, otherwise date
 	 */
-	function get_expire_date_display() {
+	function get_expire_date_display( $args = null ) {
+		$args = wp_parse_args( $args, array(
+			'date_format'    => _x( 'M d, Y @ H:i', 'display date format', 'expire-users' ),
+			'expires_format' => __( 'Expires: <strong>%s</strong>', 'expire-users' ),
+			'expired_format' => __( 'Expired: <strong>%s</strong>', 'expire-users' ),
+			'never_expire'   => __( 'Expire: <strong>never</strong>', 'expire-users' ),
+		) );
 		$date = '';
-		$time = '';
 		if ( $this->expire_timestamp ) {
 			if ( $this->expire_timestamp > time() ) {
-				$format = __( 'Expires:', 'expire-users' ) . ' <strong>%1$s @ %2$s</strong>';
+				$format = $args['expires_format'];
 			} else {
-				$format = __( 'Expired:', 'expire-users' ) . ' <strong>%1$s @ %2$s</strong>';
+				$format = $args['expired_format'];
 			}
-			$date = date( 'M d, Y', $this->expire_timestamp );
-			$time = date( 'H:i', $this->expire_timestamp );
+			$date = date( $args['date_format'], $this->expire_timestamp );
 		} else {
-			$format = __( 'Expire:', 'expire-users' ) . ' <strong>' . __( 'never', 'expire-users' ) . '</strong>';
+			$format = $args['never_expire'];
 		}
-		return sprintf( $format, $date, $time );
+		return sprintf( $format, $date );
 	}
-	
+
 	/**
 	 * Set Default To Role
 	 *
