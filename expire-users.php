@@ -33,5 +33,3 @@ function expire_users_deactivate() {
 	wp_clear_scheduled_hook( 'expire_user_cron' );
 }
 register_deactivation_hook( __FILE__, 'expire_users_deactivate' );
-
-?>

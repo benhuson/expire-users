@@ -195,5 +195,3 @@ class Expire_User_Settings {
 	}
 	
 }
-
-?>

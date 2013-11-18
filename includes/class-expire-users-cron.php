@@ -46,5 +46,3 @@ class Expire_Users_Cron {
 	}
 	
 }
-
-?>

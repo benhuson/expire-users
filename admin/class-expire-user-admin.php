@@ -258,5 +258,3 @@ class Expire_User_Admin {
 	}
 	
 }
-
-?>
