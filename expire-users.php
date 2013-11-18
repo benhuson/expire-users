@@ -15,6 +15,7 @@ require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-user.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-settings.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
+require_once( dirname( __FILE__ ) . '/admin/plugin.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
 
