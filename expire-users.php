@@ -18,6 +18,7 @@ require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
 require_once( dirname( __FILE__ ) . '/admin/plugin.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
+require_once( dirname( __FILE__ ) . '/admin/help.php' );
 
 // I18n
 function expire_users_load_plugin_textdomain() {
