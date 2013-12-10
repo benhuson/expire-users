@@ -12,6 +12,7 @@ class Expire_User {
 	var $on_expire_user_reset_password = false;
 	var $on_expire_user_email = false;
 	var $on_expire_user_email_admin = false;
+	var $on_expire_user_remove_expiry = false;
 	
 	function Expire_User( $user_id = null ) {
 		if ( $user_id ) {
@@ -26,6 +27,8 @@ class Expire_User {
 				$this->on_expire_user_email = $expire_user_settings['email'];
 			if ( isset( $expire_user_settings['email_admin'] ) )
 				$this->on_expire_user_email_admin = $expire_user_settings['email_admin'];
+			if ( isset( $expire_user_settings['remove_expiry'] ) )
+				$this->on_expire_user_remove_expiry = $expire_user_settings['remove_expiry'];
 		}
 	}
 	
@@ -150,7 +153,8 @@ class Expire_User {
 			'default_to_role' => $this->on_expire_default_to_role,
 			'reset_password'  => $this->true_or_false( $this->on_expire_user_reset_password ),
 			'email'           => $this->true_or_false( $this->on_expire_user_email ),
-			'email_admin'     => $this->true_or_false( $this->on_expire_user_email_admin )
+			'email_admin'     => $this->true_or_false( $this->on_expire_user_email_admin ),
+			'remove_expiry'   => $this->true_or_false( $this->on_expire_user_remove_expiry )
 		);
 		$expire_user_expired = is_numeric( $expire_user_date ) ? 'N' : 'Y';
 		
@@ -208,6 +212,7 @@ class Expire_User {
 		$this->on_expire_user_reset_password = isset( $data['expire_user_reset_password'] ) && $data['expire_user_reset_password'] == 'Y';
 		$this->on_expire_user_email          = isset( $data['expire_user_email'] ) && $data['expire_user_email'] == 'Y';
 		$this->on_expire_user_email_admin    = isset( $data['expire_user_email_admin'] ) && $data['expire_user_email_admin'] == 'Y';
+		$this->on_expire_user_remove_expiry  = isset( $data['expire_user_remove_expiry'] ) && $data['expire_user_remove_expiry'] == 'Y';
 	}
 	
 	/**

@@ -182,6 +182,10 @@ class Expire_User_Admin {
 							<label for="expire_user_email_admin">
 								<input name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
 								<?php _e( 'send notification email to admin', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
+							</label><br>
+							<label for="expire_user_remove_expiry">
+								<input name="expire_user_remove_expiry" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( $expire_user->on_expire_user_remove_expiry ); ?>>
+								<?php _e( 'remove expiry details and allow user to continue to login', 'expire-users' ); ?>
 							</label>
 						</fieldset>
 					</td>

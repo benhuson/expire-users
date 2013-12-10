@@ -55,6 +55,7 @@ class Expire_User_Settings {
 			'expire_user_reset_password'   => 'N',
 			'expire_user_email'            => 'N',
 			'expire_user_email_admin'      => 'N',
+			'expire_user_remove_expiry'    => 'N',
 			'expire_user_date_type'        => 'never',
 			'expire_user_date_in_num'      => 10,
 			'expire_user_date_in_block'    => 'days',
@@ -163,6 +164,10 @@ class Expire_User_Settings {
 								<label for="expire_user_email_admin">
 									<input name="expire_users_default_expire_settings[expire_user_email_admin]" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( 'Y', $expire_settings['expire_user_email_admin'] ); ?>>
 									<?php _e( 'send notification email to admin', 'expire-users' ); ?>
+								</label><br>
+								<label for="expire_user_remove_expiry">
+									<input name="expire_users_default_expire_settings[expire_user_remove_expiry]" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( 'Y', $expire_settings['expire_user_remove_expiry'] ); ?>>
+									<?php _e( 'remove expiry details and allow user to continue to login', 'expire-users' ); ?>
 								</label>
 							</fieldset>
 						</td>

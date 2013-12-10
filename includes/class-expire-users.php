@@ -19,6 +19,7 @@ class Expire_Users {
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_reset_password' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_email' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_email_admin' ) );
+		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_user_remove_expiry' ) );
 		add_filter( 'expire_users_email_notification_message', array( $this, 'email_notification_filter' ), 20, 2 );
 		add_filter( 'expire_users_email_admin_notification_message', array( $this, 'email_notification_filter' ), 20, 2 );
 		add_filter( 'expire_users_email_notification_subject', array( $this, 'email_notification_filter' ), 20, 2 );
@@ -53,7 +54,8 @@ class Expire_Users {
 				'expire_user_role'              => $expire_settings['expire_user_role'],
 				'expire_user_reset_password'    => $expire_settings['expire_user_reset_password'],
 				'expire_user_email'             => $expire_settings['expire_user_email'],
-				'expire_user_email_admin'       => $expire_settings['expire_user_email_admin']
+				'expire_user_email_admin'       => $expire_settings['expire_user_email_admin'],
+				'expire_user_remove_expiry'       => $expire_settings['expire_user_remove_expiry']
 			);
 			
 			$user = new Expire_User( $user_id );
@@ -108,6 +110,16 @@ class Expire_Users {
 			if ( ! empty( $subject ) && ! empty( $message ) ) {
 				wp_mail( get_bloginfo( 'admin_email' ), $subject, $message );
 			}
+		}
+	}
+	
+	/**
+	 * Remove expiry details and continue to allow login when user expires?
+	 */
+	function handle_on_expire_user_remove_expiry( $expired_user ) {
+		if ( $expired_user->on_expire_user_remove_expiry ) {
+			$expired_user->remove_expire_date();
+			$expired_user->save_user();
 		}
 	}
 	
