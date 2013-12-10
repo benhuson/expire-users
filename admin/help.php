@@ -10,6 +10,7 @@ class Expire_User_Admin_Help {
 	 */
 	function admin_menu() {
 		add_action( 'load-users_page_expire_users', array( 'Expire_User_Admin_Help', 'add_help_tabs' ), 20 );
+		add_action( 'load-user-edit.php', array( 'Expire_User_Admin_Help', 'add_help_tabs' ), 20 );
 	}
 
 	/**
@@ -26,30 +27,72 @@ class Expire_User_Admin_Help {
 	 * Help Tabs
 	 */
 	function help_tabs( $current_screen ) {
+		if ( 'user-edit' == $current_screen->id ) {
 
-		// Expiry Settings
-		$current_screen->add_help_tab( array(
-			'id'      => 'EXPIRE_USERS_SETTINGS',
-			'title'   => __( 'Expiry Settings', 'expire-users' ),
-			'content' => __( '<p>Activate and configure default expiry settings for users who register via the registration form.</p>', 'expire-users' )
-				. __( '<p><strong>Expiry Date</strong><br />Set a user to nevr expire, expire after a period of time or on a specific date.</p>', 'expire-users' )
-				. __( '<p><strong>Default to Role</strong><br />When a user expires, you can assign them a different role.</p>', 'expire-users' )
-				. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )
-				. '<ul>'
-				. __( '<li>replace user\'s password with a randomly generated one.</li>', 'expire-users' )
-				. __( '<li>send notification email to user.</li>', 'expire-users' )
-				. __( '<li>send notification email to admin.</li>', 'expire-users' )
-				. '</ul>'
-		) );
+			// Expiry Settings
+			$current_screen->add_help_tab( array(
+				'id'      => 'EXPIRE_USERS_USER',
+				'title'   => __( 'User Expiry Information', 'expire-users' ),
+				'content' => __( '<p>Activate and configure default expiry settings for users who register via the registration form.</p>', 'expire-users' )
+					. __( '<p><strong>Expiry Date</strong><br />Set a user to nevr expire, expire after a period of time or on a specific date.</p>', 'expire-users' )
+					. __( '<p><strong>Default to Role</strong><br />When a user expires, you can assign them a different role.</p>', 'expire-users' )
+					. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )
+					. '<ul>'
+					. __( '<li>replace user\'s password with a randomly generated one.</li>', 'expire-users' )
+					. __( '<li>send notification email to user.</li>', 'expire-users' )
+					. __( '<li>send notification email to admin.</li>', 'expire-users' )
+					. __( '<li>remove expiry details and allow user to continue to login.</li>', 'expire-users' )
+					. '</ul>'
+			) );
 
-		// Expiry Settings
-		$current_screen->add_help_tab( array(
-			'id'      => 'EXPIRE_USERS_NOTIFICATIONS',
-			'title'   => __( 'Notification Emails', 'expire-users' ),
-			'content' => __( '<p><strong>User Notification Email</strong><br />This email is sent to a user when their login details expire.</p>', 'expire-users' )
-				. __( '<p><strong>Admin Notification Email</strong><br />This email is sent to administrators when a user expires.</p>', 'expire-users' )
-		) );
+			// Add Help Sidebar
+			Expire_User_Admin_Help::help_sidebar( $current_screen );
 
+		} elseif ( 'users_page_expire_users' == $current_screen->id ) {
+
+			// Expiry Settings
+			$current_screen->add_help_tab( array(
+				'id'      => 'EXPIRE_USERS_SETTINGS',
+				'title'   => __( 'Expiry Settings', 'expire-users' ),
+				'content' => __( '<p>Activate and configure default expiry settings for users who register via the registration form.</p>', 'expire-users' )
+					. __( '<p><strong>Expiry Date</strong><br />Set a user to nevr expire, expire after a period of time or on a specific date.</p>', 'expire-users' )
+					. __( '<p><strong>Default to Role</strong><br />When a user expires, you can assign them a different role.</p>', 'expire-users' )
+					. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )
+					. '<ul>'
+					. __( '<li>replace user\'s password with a randomly generated one.</li>', 'expire-users' )
+					. __( '<li>send notification email to user.</li>', 'expire-users' )
+					. __( '<li>send notification email to admin.</li>', 'expire-users' )
+					. __( '<li>remove expiry details and allow user to continue to login.</li>', 'expire-users' )
+					. '</ul>'
+			) );
+
+			// Expiry Settings
+			$current_screen->add_help_tab( array(
+				'id'      => 'EXPIRE_USERS_NOTIFICATIONS',
+				'title'   => __( 'Notification Emails', 'expire-users' ),
+				'content' => __( '<p><strong>User Notification Email</strong><br />This email is sent to a user when their login details expire.</p>', 'expire-users' )
+					. __( '<p><strong>Admin Notification Email</strong><br />This email is sent to administrators when a user expires.</p>', 'expire-users' )
+			) );
+
+			// Add Help Sidebar
+			Expire_User_Admin_Help::help_sidebar( $current_screen );
+
+		}
+	}
+
+	/**
+	 * Help Sidebar
+	 */
+	function help_sidebar( $current_screen ) {
+		$current_screen->set_help_sidebar(
+			'<p><strong>' . __( 'Expire Users Plugin', 'expire-users' ) . '</strong></p>
+			<ul>
+				<li><a href="https://github.com/benhuson/expire-users/wiki">' . __( 'Documentation', 'expire-users' ) . '</a></li>
+				<li><a href="http://wordpress.org/support/plugin/expire-users">' . __( 'Support Forum', 'expire-users' ) . '</a></li>
+				<li><a href="https://github.com/benhuson/expire-users">' . __( 'Contribute at Github', 'expire-users' ) . '</a></li>
+				<li><a href="https://github.com/benhuson/expire-users/issues">' . __( 'Submit an Issue', 'expire-users' ) . '</a></li>
+			</ul>'
+		);
 	}
 
 }
