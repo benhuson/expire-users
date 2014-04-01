@@ -94,16 +94,16 @@ class Expire_User_Admin {
 		$radio_date       = '';
 		$days_n           = 7;
 		$date_in_block    = 'days';
-		$expire_timestamp = time() + ( 60 * 60 * 24 * 7 );
+		$expire_timestamp = current_time( 'timestamp' ) + ( 60 * 60 * 24 * 7 );
 		$month_n          = '';
 		if ( isset( $expire_user->expire_timestamp ) && is_numeric( $expire_user->expire_timestamp ) ) {
 			$radio_date = checked( true, true, false );
-			$days_n2 = floor( ( $expire_user->expire_timestamp - time() ) / 60 / 60 / 24 );
+			$days_n2 = floor( ( $expire_user->expire_timestamp - current_time( 'timestamp' ) ) / 60 / 60 / 24 );
 			if ( $days_n2 > 0 ) {
 				$days_n = $days_n2;
 			}
 			$expire_timestamp = $expire_user->expire_timestamp;
-			$days_n = ceil( ( $expire_timestamp - time() ) / 60 / 60 / 24 );
+			$days_n = ceil( ( $expire_timestamp - current_time( 'timestamp' ) ) / 60 / 60 / 24 );
 			if ( $days_n % 7 == 0 ) {
 				$days_n = $days_n / 7;
 				$date_in_block = 'weeks';

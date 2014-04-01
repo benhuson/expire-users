@@ -59,7 +59,7 @@ class Expire_User_Settings {
 			'expire_user_date_type'        => 'never',
 			'expire_user_date_in_num'      => 10,
 			'expire_user_date_in_block'    => 'days',
-			'expire_timestamp'             => time(),
+			'expire_timestamp'             => current_time( 'timestamp' ),
 			'auto_expire_registered_users' => 'N'
 		);
 		$settings = wp_parse_args( get_option( 'expire_users_default_expire_settings', $default_settings ), $default_settings );

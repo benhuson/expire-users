@@ -15,7 +15,7 @@ class Expire_Users_Cron {
 	 */
 	function schedule_cron() {
 		if ( ! wp_next_scheduled( 'expire_user_cron' ) ) {
-			wp_schedule_event( time(), 'hourly', 'expire_user_cron' ); // hourly, daily or twicedaily
+			wp_schedule_event( current_time( 'timestamp' ), 'hourly', 'expire_user_cron' ); // hourly, daily or twicedaily
 		}
 	}
 	
@@ -36,7 +36,7 @@ class Expire_Users_Cron {
 			foreach ( $maybe_expire_users->results as $expired_user ) {
 				//if ( $expired_user->ID != $current_user->ID ) {
 					$expire_date = get_user_meta( $expired_user->ID, '_expire_user_date', true );
-					if ( $expire_date < time() ) {
+					if ( $expire_date < current_time( 'timestamp' ) ) {
 						$this_expire_user = new Expire_User( $expired_user->ID );
 						$this_expire_user->expire();
 					}

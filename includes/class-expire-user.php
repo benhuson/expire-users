@@ -38,10 +38,10 @@ class Expire_User {
 	function set_expire_time_in_future( $amt, $unit = 'days' ) {
 		switch ( $unit ) {
 			case 'days':
-				$this->expire_timestamp = time() + ( 60 * 60 * 24 * $amt );
+				$this->expire_timestamp = current_time( 'timestamp' ) + ( 60 * 60 * 24 * $amt );
 				break;
 			case 'weeks':
-				$this->expire_timestamp = time() + ( 60 * 60 * 24 * 7 * $amt );
+				$this->expire_timestamp = current_time( 'timestamp' ) + ( 60 * 60 * 24 * 7 * $amt );
 				break;
 			case 'months':
 				$date = getdate();
@@ -91,7 +91,7 @@ class Expire_User {
 		) );
 		$date = '';
 		if ( $this->expire_timestamp ) {
-			if ( $this->expire_timestamp > time() ) {
+			if ( $this->expire_timestamp > current_time( 'timestamp' ) ) {
 				$format = $args['expires_format'];
 			} else {
 				$format = $args['expired_format'];
@@ -117,7 +117,7 @@ class Expire_User {
 	 * If expire date is set and in past...
 	 */
 	function maybe_expire() {
-		if ( $this->expire_timestamp && time() > $this->expire_timestamp ) {
+		if ( $this->expire_timestamp && current_time( 'timestamp' ) > $this->expire_timestamp ) {
 			$this->expire();
 		}
 	}
@@ -162,7 +162,7 @@ class Expire_User {
 		update_user_meta( $this->user_id, '_expire_user_date', $expire_user_date );
 		update_user_meta( $this->user_id, '_expire_user_settings', $expire_user_settings );
 		if ( is_numeric( $expire_user_date ) ) {
-			if ( $expire_user_date < time() ) {
+			if ( $expire_user_date < current_time( 'timestamp' ) ) {
 				update_user_meta( $this->user_id, '_expire_user_expired', 'Y' );
 			} else {
 				update_user_meta( $this->user_id, '_expire_user_expired', 'N' );
