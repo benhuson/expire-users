@@ -128,13 +128,33 @@ class Expire_Users {
 	 */
 	function email_notification_filter( $message, $expired_user ) {
 		$u = new WP_User( $expired_user->user_id );
-		$message = str_replace( '%%name%%', trim( $u->user_nicename . ' ' . $u->last_name ), $message );
+		$message = str_replace( '%%name%%', $this->get_user_display_name( $u ), $message );
 		$message = str_replace( '%%username%%', $u->user_login, $message );
 		$message = str_replace( '%%expirydate%%', date( 'jS F Y @ h:i', $expired_user->expire_timestamp ), $message );
 		$message = str_replace( '%%sitename%%', get_bloginfo( 'name' ), $message );
 		return $message;
 	}
-	
+
+	/**
+	 * Get User Display Name
+	 *
+	 * Tries to retrieve user's real name, otherwise their display name.
+	 * Defaults to username if neither exist.
+	 *
+	 * @since  0.7
+	 *
+	 * @param   object  $user  WP_User object.
+	 * @return  string         Display name.
+	 */
+	function get_user_display_name( $user ) {
+		if ( ! empty( $user->first_name ) ) {
+			return trim( $user->first_name . ' ' . $user->last_name );
+		} elseif ( ! empty( $user->user_nicename ) ) {
+			return $user->user_nicename;
+		}
+		return $user->user_login;
+	}
+
 	function default_expire_users_notification_message( $value ) {
 		if ( empty( $value ) ) {
 			$value = __( 'Your access to %%sitename%% has expired.', 'expire-users' );
