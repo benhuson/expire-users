@@ -2,9 +2,9 @@
 Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
-Requires at least: 3.2
-Tested up to: 3.5.2
-Stable tag: 0.6
+Requires at least: 3.4
+Tested up to: 3.8.1
+Stable tag: 0.7
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -60,6 +60,14 @@ None at present.
 
 == Changelog ==
 
+= 0.7 =
+* Fix expiry dates to work with site's timezone.
+* Use date formats from WordPress settings.
+* Use user's real name in notification emails if available.
+* Ensure custom roles are listed in drop down menu.
+* Add option to remove user expiry details and continue to allow user to login when they expire.
+* Add admin help.
+
 = 0.6 =
 * Added support for translations. Submissions welcome.
 
@@ -86,6 +94,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 0.7 =
+* Fix expiry dates to work with site's timezone.
 
 = 0.6 =
 * Added support for translations.
