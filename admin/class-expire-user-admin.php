@@ -48,9 +48,9 @@ class Expire_User_Admin {
 			$expire_date = get_user_meta( $user_id, '_expire_user_date', true );
 			$expired = get_user_meta( $user_id, '_expire_user_expired', true );
 			if ( $expired ) {
-				$value = date( 'M d, Y @ H:i', $expire_date );
+				$value = date( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expire_date );
 				if ( $expired == 'Y' ) {
-					$value = date( 'M d, Y', $expire_date );
+					$value = date( get_option( 'date_format' ), $expire_date );
 					$value = '<strong>' . $value . '</strong> <em>' . __( '(expired)', 'expire-users' ) . '</em>';
 				}
 			}
