@@ -140,11 +140,7 @@ class Expire_User_Settings {
 						<td>
 							<select name="expire_users_default_expire_settings[expire_user_role]" id="expire_user_role">
 								<option value="" <?php selected( '', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Don\'t change role', 'expire-users' ); ?></option>
-								<option value="editor" <?php selected( 'editor', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Editor', 'expire-users' ); ?></option>
-								<option value="administrator" <?php selected( 'administrator', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Administrator', 'expire-users' ); ?></option>
-								<option value="author" <?php selected( 'author', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Author', 'expire-users' ); ?></option>
-								<option value="contributor" <?php selected( 'contributor', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Contributor', 'expire-users' ); ?></option>
-								<option value="subscriber" <?php selected( 'subscriber', $expire_settings['expire_user_role'] ); ?>><?php _e( 'Subscriber', 'expire-users' ); ?></option>
+								<?php wp_dropdown_roles( $expire_settings['expire_user_role'] ); ?>
 							</select>
 						</td>
 					</tr>
