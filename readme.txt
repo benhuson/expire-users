@@ -4,7 +4,7 @@ Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
 Requires at least: 3.4
 Tested up to: 3.9
-Stable tag: 0.7
+Stable tag: 0.8
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -27,6 +27,7 @@ When a user expires you can:
 * Replace the user's password with a randomly generated one
 * Send an email notification to the user
 * Send an email notification to the site administrator
+* Remove expiry details and allow user to continue to login
 * Perform you own actions using an [`expire_users_expired`](https://github.com/benhuson/expire-users/wiki/expire_users_expired) hook
 
 You can automatically assign expiry details to users who sign up via the register form.
@@ -59,6 +60,11 @@ None at present.
 3. User login expired error.
 
 == Changelog ==
+
+= 0.8 =
+* Added [expire_users_current_user_expire_date] shortcode.
+* Force check if user expired on login.
+* Fix static method warnings.
 
 = 0.7 =
 * Fix expiry dates to work with site's timezone.
@@ -94,6 +100,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 0.8 =
+* Added [expire_users_current_user_expire_date] shortcode and force check if user expired on login.
 
 = 0.7 =
 * Fix expiry dates to work with site's timezone.
