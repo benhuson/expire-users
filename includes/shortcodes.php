@@ -15,7 +15,7 @@ class Expire_Users_Shortcodes {
 	 * - expired_format
 	 * - never_expire
 	 */
-	function current_user_expire_date( $atts, $content = '' ) {
+	static function current_user_expire_date( $atts, $content = '' ) {
 		if ( is_user_logged_in() ) {
 			$u = new Expire_User( get_current_user_id() );
 			$atts = shortcode_atts( array(

@@ -16,7 +16,7 @@ class Expire_User_Admin_Plugin {
 	 * @param   string  $status       Plugin status.
 	 * @return  array                 Plugin meta array.
 	 */
-	function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
+	static function plugin_row_meta( $plugin_meta, $plugin_file, $plugin_data, $status ) {
 		if ( 'expire-users/expire-users.php' == $plugin_file ) {
 			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'https://github.com/benhuson/expire-users', 'password-protected' ), __( 'GitHub', 'expire-users' ) );
 			$plugin_meta[] = sprintf( '<a href="%s">%s</a>', __( 'https://github.com/benhuson/expire-users/wiki', 'password-protected' ), __( 'Documentation', 'expire-users' ) );
@@ -32,7 +32,7 @@ class Expire_User_Admin_Plugin {
 	 * @param   array  $actions  Plugin action links array.
 	 * @return  array            Plugin action links array.
 	 */
-	function plugin_action_links( $actions ) {
+	static function plugin_action_links( $actions ) {
 		$actions[] = sprintf( '<a href="%s">%s</a>', admin_url( 'users.php?page=expire_users' ), __( 'Settings', 'expire-users' ) );
 		return $actions;
 	}

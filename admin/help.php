@@ -8,7 +8,7 @@ class Expire_User_Admin_Help {
 	/**
 	 * Admin Menu
 	 */
-	function admin_menu() {
+	static function admin_menu() {
 		add_action( 'load-users_page_expire_users', array( 'Expire_User_Admin_Help', 'add_help_tabs' ), 20 );
 		add_action( 'load-user-edit.php', array( 'Expire_User_Admin_Help', 'add_help_tabs' ), 20 );
 	}
@@ -16,7 +16,7 @@ class Expire_User_Admin_Help {
 	/**
 	 * Add Help Tabs
 	 */
-	function add_help_tabs() {
+	static function add_help_tabs() {
 		global $wp_version;
 		if ( version_compare( $wp_version, '3.3', '<' ) ) {
 			return;
@@ -27,7 +27,7 @@ class Expire_User_Admin_Help {
 	/**
 	 * Help Tabs
 	 */
-	function help_tabs( $current_screen ) {
+	static function help_tabs( $current_screen ) {
 		if ( 'user-edit' == $current_screen->id ) {
 
 			// Expiry Settings
@@ -84,7 +84,7 @@ class Expire_User_Admin_Help {
 	/**
 	 * Help Sidebar
 	 */
-	function help_sidebar( $current_screen ) {
+	static function help_sidebar( $current_screen ) {
 		$current_screen->set_help_sidebar(
 			'<p><strong>' . __( 'Expire Users Plugin', 'expire-users' ) . '</strong></p>
 			<ul>
