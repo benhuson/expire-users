@@ -120,11 +120,15 @@ class Expire_User {
 	/**
 	 * Maybe Expire
 	 * If expire date is set and in past...
+	 *
+	 * @return  bool
 	 */
 	function maybe_expire() {
 		if ( $this->expire_timestamp && current_time( 'timestamp' ) > $this->expire_timestamp ) {
 			$this->expire();
+			return true;
 		}
+		return false;
 	}
 	
 	/**
