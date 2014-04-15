@@ -73,8 +73,9 @@ class Expire_User_Admin {
 	 * Save Extra User Profile Fields
 	 */
 	function save_extra_user_profile_fields( $user_id ) {
-		if ( ! current_user_can( 'edit_user', $user_id ) )
+		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return false;
+		}
 		
 		$user = new Expire_User( $user_id );
 		$user->set_expire_data( $_POST );

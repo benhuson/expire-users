@@ -18,8 +18,9 @@ class Expire_User_Admin_Help {
 	 */
 	function add_help_tabs() {
 		global $wp_version;
-		if ( version_compare( $wp_version, '3.3', '<' ) )
+		if ( version_compare( $wp_version, '3.3', '<' ) ) {
 			return;
+		}
 		do_action( 'expire_users_help_tabs', get_current_screen() );
 	}
 

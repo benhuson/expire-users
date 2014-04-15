@@ -71,8 +71,9 @@ class Expire_User_Settings {
 	 */
 	function options_page() {
 		global $expire_users;
-		if ( ! isset( $_REQUEST['updated'] ) )
-			$_REQUEST['updated'] = false; 
+		if ( ! isset( $_REQUEST['updated'] ) ) {
+			$_REQUEST['updated'] = false;
+		}
 		?>
 	 
 		<div class="wrap">

@@ -19,16 +19,21 @@ class Expire_User {
 			$this->user_id = absint( $user_id );
 			$this->expire_timestamp = get_user_meta( $this->user_id, '_expire_user_date', true );
 			$expire_user_settings = get_user_meta( $this->user_id, '_expire_user_settings', true );
-			if ( isset( $expire_user_settings['default_to_role'] ) )
+			if ( isset( $expire_user_settings['default_to_role'] ) ) {
 				$this->on_expire_default_to_role = $expire_user_settings['default_to_role'];
-			if ( isset( $expire_user_settings['reset_password'] ) )
+			}
+			if ( isset( $expire_user_settings['reset_password'] ) ) {
 				$this->on_expire_user_reset_password = $expire_user_settings['reset_password'];
-			if ( isset( $expire_user_settings['email'] ) )
+			}
+			if ( isset( $expire_user_settings['email'] ) ) {
 				$this->on_expire_user_email = $expire_user_settings['email'];
-			if ( isset( $expire_user_settings['email_admin'] ) )
+			}
+			if ( isset( $expire_user_settings['email_admin'] ) ) {
 				$this->on_expire_user_email_admin = $expire_user_settings['email_admin'];
-			if ( isset( $expire_user_settings['remove_expiry'] ) )
+			}
+			if ( isset( $expire_user_settings['remove_expiry'] ) ) {
 				$this->on_expire_user_remove_expiry = $expire_user_settings['remove_expiry'];
+			}
 		}
 	}
 	
