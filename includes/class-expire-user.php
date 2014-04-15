@@ -1,11 +1,11 @@
 <?php
 
 class Expire_User {
-	
+
 	// User
 	var $user_id = null;
 	var $user = null;
-	
+
 	// Settings
 	var $expire_timestamp = null;
 	var $on_expire_default_to_role = false;
@@ -13,7 +13,7 @@ class Expire_User {
 	var $on_expire_user_email = false;
 	var $on_expire_user_email_admin = false;
 	var $on_expire_user_remove_expiry = false;
-	
+
 	function Expire_User( $user_id = null ) {
 		if ( $user_id ) {
 			$this->user_id = absint( $user_id );
@@ -36,7 +36,7 @@ class Expire_User {
 			}
 		}
 	}
-	
+
 	/**
 	 * Set Expire Time In Future
 	 */
@@ -58,14 +58,14 @@ class Expire_User {
 				break;
 		}
 	}
-	
+
 	/**
 	 * Set Expire Date
 	 */
 	function set_expire_date( $yyyy, $mm, $dd, $hrs = 0, $min = 0 ) {
 		$this->expire_timestamp = mktime( $hrs, $min, 0, $mm, $dd, $yyyy );
 	}
-	
+
 	/**
 	 * Set Expire Timestamp
 	 *
@@ -74,7 +74,7 @@ class Expire_User {
 	function set_expire_timestamp( $timestamp ) {
 		$this->expire_timestamp = $timestamp;
 	}
-	
+
 	/**
 	 * Remove Expire Date
 	 */
@@ -116,7 +116,7 @@ class Expire_User {
 	function set_default_to_role( $role ) {
 		$this->on_expire_default_to_role = $role;
 	}
-	
+
 	/**
 	 * Maybe Expire
 	 * If expire date is set and in past...
@@ -130,7 +130,7 @@ class Expire_User {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Expire
 	 */
@@ -138,7 +138,7 @@ class Expire_User {
 		update_user_meta( $this->user_id, '_expire_user_expired', 'Y' );
 		do_action( 'expire_users_expired', $this );
 	}
-	
+
 	/**
 	 * Get User
 	 */
@@ -149,7 +149,7 @@ class Expire_User {
 		//$this->on_expire_user_reset_password = false;
 		//$this->on_expire_user_email = false;
 	}
-	
+
 	/**
 	 * Save User
 	 */
@@ -166,7 +166,7 @@ class Expire_User {
 			'remove_expiry'   => $this->true_or_false( $this->on_expire_user_remove_expiry )
 		);
 		$expire_user_expired = is_numeric( $expire_user_date ) ? 'N' : 'Y';
-		
+
 		// Update User
 		update_user_meta( $this->user_id, '_expire_user_date', $expire_user_date );
 		update_user_meta( $this->user_id, '_expire_user_settings', $expire_user_settings );
@@ -180,7 +180,7 @@ class Expire_User {
 			delete_user_meta( $this->user_id, '_expire_user_expired' );
 		}
 	}
-	
+
 	/**
 	 * Set Expire Data
 	 * Processes array of data and saves as class properties ready to be saved.
@@ -223,7 +223,7 @@ class Expire_User {
 		$this->on_expire_user_email_admin    = isset( $data['expire_user_email_admin'] ) && $data['expire_user_email_admin'] == 'Y';
 		$this->on_expire_user_remove_expiry  = isset( $data['expire_user_remove_expiry'] ) && $data['expire_user_remove_expiry'] == 'Y';
 	}
-	
+
 	/**
 	 * True / False
 	 * Used for saving true/false settings.
@@ -237,5 +237,5 @@ class Expire_User {
 		}
 		return false;
 	}
-	
+
 }

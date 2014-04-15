@@ -1,6 +1,6 @@
 
 jQuery(document).ready(function($) {
-	
+
 	// Auto Expire Registered Users
 	$("input#expire_user_auto_expire_registered_users").change(function(e){
 		if (this.checked) {
@@ -12,7 +12,7 @@ jQuery(document).ready(function($) {
 	if ($("input#expire_user_auto_expire_registered_users:checked").length == 0) {
 		$('.expire_user_auto_expire_registered_users_toggle').hide();
 	}
-	
+
 	// Edit Timestamp Toggle
 	$(".delete-user-edit-timestamp").click(function(e) {
 		$(".expire-user-date-options").toggle();
@@ -22,5 +22,5 @@ jQuery(document).ready(function($) {
 			$(this).text(expire_users_admin_user_i18n.cancel);
 		}
 	});
-	
+
 });

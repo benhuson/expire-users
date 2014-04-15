@@ -1,15 +1,15 @@
 <?php
 
 class Expire_Users_Cron {
-	
+
 	function Expire_Users_Cron() {
 		add_action( 'expire_user_cron', array( $this, 'do_cron' ) );
 		add_action( 'wp', array( $this, 'schedule_cron' ) );
-		
+
 		// @todo Remove - this is just for testing
 		//add_action( 'init', array( $this, 'do_cron' ) );
 	}
-	
+
 	/**
 	 * Schedule cron
 	 */
@@ -18,7 +18,7 @@ class Expire_Users_Cron {
 			wp_schedule_event( current_time( 'timestamp' ), 'hourly', 'expire_user_cron' ); // hourly, daily or twicedaily
 		}
 	}
-	
+
 	/**
 	 * Do the scheduler
 	 *
@@ -44,5 +44,5 @@ class Expire_Users_Cron {
 			}
 		}
 	}
-	
+
 }

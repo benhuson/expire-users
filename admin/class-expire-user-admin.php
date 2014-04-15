@@ -7,29 +7,29 @@
 // @todo Add expired role
 
 class Expire_User_Admin {
-	
+
 	var $settings = null;
-	
+
 	function Expire_User_Admin() {
 		$this->settings = new Expire_User_Settings();
-		
+
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
 		add_action( 'edit_user_profile', array( $this, 'extra_user_profile_fields' ) );
-		
+
 		// Save Fields
 		add_action( 'personal_options_update', array( $this, 'save_extra_user_profile_fields' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'save_extra_user_profile_fields' ) );
-		
+
 		// Scripts and Styles
 		add_action( 'admin_print_styles', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		
+
 		// User Columns
 		add_filter( 'manage_users_columns', array( $this, 'manage_users_columns' ) );
 		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 10, 3 );
 	}
-	
+
 	/**
 	 * Manage Users Columns
 	 */
@@ -37,7 +37,7 @@ class Expire_User_Admin {
 		$columns['expire_user'] = __( 'Expire Date', 'expire-users' );
 		return $columns;
 	}
-	
+
 	/**
 	 * Manage Users Custom Column
 	 */
@@ -57,7 +57,7 @@ class Expire_User_Admin {
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Check Capabilities
 	 */
@@ -68,7 +68,7 @@ class Expire_User_Admin {
 		}
 		return false;
 	}
-	
+
 	/**
 	 * Save Extra User Profile Fields
 	 */
@@ -76,20 +76,20 @@ class Expire_User_Admin {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return false;
 		}
-		
+
 		$user = new Expire_User( $user_id );
 		$user->set_expire_data( $_POST );
 		$user->save_user();
 	}
-	
+
 	/**
 	 * Extra User Profile Fields
 	 */
 	function extra_user_profile_fields( $user ) {
 		$can_edit_profile_expiry = $this->current_expire_user_can( 'expire_users_edit' );
-		
+
 		$expire_user = new Expire_User( $user->ID );
-		
+
 		// Expire Date Field Values
 		$radio_never      = '';
 		$radio_date       = '';
@@ -125,7 +125,7 @@ class Expire_User_Admin {
 							<a href="#delete_user_edit_timestamp" class="delete-user-edit-timestamp hide-if-no-js" tabindex='4'><?php _e( 'Edit', 'expire-users' ) ?></a>
 						<?php } ?>
 					</div>
-					
+
 					<?php if ( $can_edit_profile_expiry ) { ?>
 						<fieldset class="expire-user-date-options hide-if-js">
 							<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
@@ -152,7 +152,7 @@ class Expire_User_Admin {
 							</label>
 						</fieldset>
 					<?php } ?>
-					
+
 				</td>
 			</tr>
 			<?php if ( $can_edit_profile_expiry ) { ?>
@@ -195,7 +195,7 @@ class Expire_User_Admin {
 		</table>
 		<?php
 	}
-	
+
 	/**
 	 * Date Block Menu Options
 	 */
@@ -212,7 +212,7 @@ class Expire_User_Admin {
 		}
 		return $output;
 	}
-	
+
 	/**
 	 * Month Menu Options
 	 */
@@ -237,29 +237,29 @@ class Expire_User_Admin {
 		}
 		return $output;
 	}
-	
+
 	/**
 	 * Admin Print Styles
 	 */
 	function admin_print_styles() {
 		$stylesheet_url = plugins_url( 'css/admin.css', dirname( __FILE__ ) );
-        $stylesheet_file = WP_PLUGIN_DIR . '/expire-users/css/admin.css';
-        if ( file_exists( $stylesheet_file ) ) {
-            wp_register_style( 'css-layouts-admin', $stylesheet_url );
-            wp_enqueue_style( 'css-layouts-admin' );
-        }
+		$stylesheet_file = WP_PLUGIN_DIR . '/expire-users/css/admin.css';
+		if ( file_exists( $stylesheet_file ) ) {
+			wp_register_style( 'css-layouts-admin', $stylesheet_url );
+			wp_enqueue_style( 'css-layouts-admin' );
+		}
 	}
-	
+
 	/**
 	 * Admin Enqueue Scripts
 	 */
 	function admin_enqueue_scripts() {
 		wp_register_script( 'expire-users-admin-user', plugins_url( 'js/admin-user.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0' );
 		wp_enqueue_script( 'expire-users-admin-user' );
-        wp_localize_script( 'expire-users-admin-user', 'expire_users_admin_user_i18n', array(
-        	'cancel' => __( 'Cancel', 'expire-users' ),
-        	'edit'   => __( 'Edit', 'expire-users' )
-        ) );
+		wp_localize_script( 'expire-users-admin-user', 'expire_users_admin_user_i18n', array(
+			'cancel' => __( 'Cancel', 'expire-users' ),
+			'edit'   => __( 'Edit', 'expire-users' )
+		) );
 	}
-	
+
 }

@@ -1,28 +1,28 @@
 <?php
 
 class Expire_User_Settings {
-	
+
 	function Expire_User_Settings() {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'options_page_item' ) );
 	}
-	
+
 	/**
 	 * Create Options Page Item
 	 */
 	function options_page_item() {
 		add_users_page( __( 'Expire Settings', 'expire-users' ), __( 'Expire Settings', 'expire-users' ), 'manage_options', 'expire_users', array( $this, 'options_page' ) );
 	}
-	
+
 	/**
 	 * Register Settings
 	 */
 	function register_settings() {
-    	register_setting( 'expire_users_options_group', 'expire_users_default_expire_settings', array( $this, 'validate_expire_settings' ) );
-    	register_setting( 'expire_users_options_group', 'expire_users_notification_message', array( $this, 'validate_email_message' ) );
-    	register_setting( 'expire_users_options_group', 'expire_users_notification_admin_message', array( $this, 'validate_email_message' ) );
+		register_setting( 'expire_users_options_group', 'expire_users_default_expire_settings', array( $this, 'validate_expire_settings' ) );
+		register_setting( 'expire_users_options_group', 'expire_users_notification_message', array( $this, 'validate_email_message' ) );
+		register_setting( 'expire_users_options_group', 'expire_users_notification_admin_message', array( $this, 'validate_email_message' ) );
 	}
-	
+
 	/**
 	 * Validate Expire Settings
 	 */
@@ -37,7 +37,7 @@ class Expire_User_Settings {
 		$input['expire_timestamp'] = mktime( $defaults['hrs'], $defaults['min'], 0, $defaults['mm'], $defaults['dd'], $defaults['yyyy'] );
 		return $input;
 	}
-	
+
 	/**
 	 * Validate Email Message
 	 * Strips out HTML and scripts.
@@ -45,7 +45,7 @@ class Expire_User_Settings {
 	function validate_email_message( $input ) {
 		return wp_kses( $input, array() );
 	}
-	
+
 	/**
 	 * Get Default Expire Settings
 	 */
@@ -65,7 +65,7 @@ class Expire_User_Settings {
 		$settings = wp_parse_args( get_option( 'expire_users_default_expire_settings', $default_settings ), $default_settings );
 		return $settings;
 	}
-	
+
 	/**
 	 * Options Page
 	 */
@@ -75,19 +75,19 @@ class Expire_User_Settings {
 			$_REQUEST['updated'] = false;
 		}
 		?>
-	 
+
 		<div class="wrap">
 			<?php
 			screen_icon();
 			echo '<h2>' . __( 'Expire Users Settings', 'expire-users' ) . '</h2>';
 			?>
-			
+
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
 				<div><p><strong><?php _e( 'Options saved' ); ?></strong></p></div>
 			<?php endif; ?>
-			
+
 			<form method="post" action="options.php">
-				
+
 				<?php
 				$expire_settings = $this->get_default_expire_settings();
 				$notification_message = get_option( 'expire_users_notification_message' );
@@ -95,9 +95,9 @@ class Expire_User_Settings {
 				$expire_timestamp = $expire_settings['expire_timestamp'];
 				$month_n = date( 'm', $expire_settings['expire_timestamp'] );
 				?>
-				
+
 				<?php settings_fields( 'expire_users_options_group' ); ?>
-				
+
 				<h3><?php _e( 'Registered User Expiry Settings', 'expire-users' ); ?></h3>
 				<p>
 					<label for="expire_user_auto_expire_registered_users">
@@ -105,7 +105,7 @@ class Expire_User_Settings {
 						<?php _e( 'Automatically set expiry date for new users who register via the registration form.', 'expire-users' ); ?>
 					</label>
 				</p>
-	 
+
 				<table class="form-table expire_user_auto_expire_registered_users_toggle">
 					<tr valign="top">
 						<th scope="row"><label for="expire_user_date_type_never"><?php _e( 'Expiry Date', 'expire-users' ); ?></label></th>
@@ -170,12 +170,12 @@ class Expire_User_Settings {
 						</td>
 					</tr>
 				</table>
-				
+
 				<h3><?php _e( 'Notification Emails', 'expire-users' ); ?></h3>
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />
 					<?php _e( 'You may use the following placeholders in the notification email messages below:', 'expire-users' ); ?></p>
 				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
-	 
+
 				<table class="form-table">
 					<tr valign="top">
 						<th scope="row"><label for="expire_users_notification_message"><?php _e( 'User Notification Email', 'expire-users' ); ?></label></th>
@@ -186,14 +186,14 @@ class Expire_User_Settings {
 						<td><p><textarea id="expire_users_notification_admin_message" name="expire_users_notification_admin_message" rows="5" cols="50" class="large-text code"><?php echo $notification_admin_message; ?></textarea></p></td>
 					</tr>
 				</table>
-			 
+
 				<p class="submit"><input type="submit" value="<?php _e( 'Save Options' ); ?>" class="button-primary" /></p>
-			 
+
 			</form>
-	 
+
 		</div>
-	 
+
 		<?php
 	}
-	
+
 }

@@ -1,12 +1,12 @@
 <?php
 
 class Expire_Users {
-	
+
 	var $admin;
 	var $cron;
 	var $settings;
 	var $user;
-	
+
 	function Expire_Users() {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
@@ -27,7 +27,7 @@ class Expire_Users {
 		add_filter( 'option_expire_users_notification_message', array( $this, 'default_expire_users_notification_message' ) );
 		add_filter( 'option_expire_users_notification_admin_message', array( $this, 'default_expire_users_notification_admin_message' ) );
 	}
-	
+
 	/**
 	 * Register Form
 	 * Adds a hidden field to the register form to flag that a new user should use
@@ -36,16 +36,16 @@ class Expire_Users {
 	function register_form() {
 		echo '<input type="hidden" name="expire_users" value="auto" />';
 	}
-	
+
 	/**
 	 * User Register
 	 * Runs on user registration.
 	 */
 	function user_register( $user_id ) {
 		if ( isset( $_POST['expire_users'] ) && 'auto' == $_POST['expire_users'] ) {
-			
+
 			$expire_settings = $this->admin->settings->get_default_expire_settings();
-			
+
 			$expire_data = array(
 				'expire_user_date_type'         => $expire_settings['expire_user_date_type'],
 				'expire_user_date_in_num'       => $expire_settings['expire_user_date_in_num'],
@@ -55,15 +55,15 @@ class Expire_Users {
 				'expire_user_reset_password'    => $expire_settings['expire_user_reset_password'],
 				'expire_user_email'             => $expire_settings['expire_user_email'],
 				'expire_user_email_admin'       => $expire_settings['expire_user_email_admin'],
-				'expire_user_remove_expiry'       => $expire_settings['expire_user_remove_expiry']
+				'expire_user_remove_expiry'     => $expire_settings['expire_user_remove_expiry']
 			);
-			
+
 			$user = new Expire_User( $user_id );
 			$user->set_expire_data( $expire_data );
 			$user->save_user();
 		}
 	}
-	
+
 	/**
 	 * Change role when user expires?
 	 */
@@ -75,7 +75,7 @@ class Expire_Users {
 			}
 		}
 	}
-	
+
 	/**
 	 * Generate random password when user expires?
 	 */
@@ -85,7 +85,7 @@ class Expire_Users {
 			wp_set_password( $password, $expired_user->user_id );
 		}
 	}
-	
+
 	/**
 	 * Send notification email when user expires?
 	 */
@@ -99,7 +99,7 @@ class Expire_Users {
 			}
 		}
 	}
-	
+
 	/**
 	 * Send admin notification email when user expires?
 	 */
@@ -112,7 +112,7 @@ class Expire_Users {
 			}
 		}
 	}
-	
+
 	/**
 	 * Remove expiry details and continue to allow login when user expires?
 	 */
@@ -122,7 +122,7 @@ class Expire_Users {
 			$expired_user->save_user();
 		}
 	}
-	
+
 	/**
 	 * Email notification filter
 	 */
@@ -161,14 +161,14 @@ class Expire_Users {
 		}
 		return $value;
 	}
-	
+
 	function default_expire_users_notification_admin_message( $value ) {
 		if ( empty( $value ) ) {
 			$value = __( 'Access to %%sitename%% has expired for %%name%% (%%username%%) on %%expirydate%%', 'expire-users' );
 		}
 		return $value;
 	}
-	
+
 	/**
 	 * Authenticate
 	 */
@@ -187,7 +187,7 @@ class Expire_Users {
 		}
 		return $user;
 	}
-	
+
 	/**
 	 * Allow Password Reset
 	 */
@@ -200,7 +200,7 @@ class Expire_Users {
 		}
 		return $allow;
 	}
-	
+
 	/**
 	 * Shake Error Codes
 	 */
@@ -209,5 +209,5 @@ class Expire_Users {
 		 $shake_codes[] = 'expire_users_expired_password_reset';
 		 return $shake_codes;
 	}
-		
+
 }
