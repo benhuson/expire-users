@@ -3,7 +3,7 @@ Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
 Requires at least: 3.4
-Tested up to: 3.8.1
+Tested up to: 3.9
 Stable tag: 0.7
 License: GPLv2 or later
 

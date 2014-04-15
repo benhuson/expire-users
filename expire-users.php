@@ -8,7 +8,7 @@ Version: 0.7
 Author: Ben Huson
 Author URI: http://www.benhuson.co.uk/
 Minimum WordPress Version Required: 3.4
-Tested up to: 3.8.1
+Tested up to: 3.9
 */
 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
