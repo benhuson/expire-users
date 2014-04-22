@@ -16,8 +16,9 @@ class Expire_User_Notifications_Admin {
 		}
 
 		echo '<style type="text/css">';
-		echo '.wp-list-table .column-message { width: 75%; }';
-		echo '.wp-list-table tfoot { display: none; }';
+		echo '.wp-list-table.expire-users-notifications-table tfoot { display: none; }';
+		echo '.wp-list-table.expire-users-notifications-table .column-notification label { font-weight: bold; }';
+		echo '.wp-list-table.expire-users-notifications-table .column-message { width: 75%; }';
 		echo '</style>';
 	}
 
