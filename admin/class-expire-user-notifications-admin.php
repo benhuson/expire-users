@@ -44,11 +44,13 @@ class Expire_User_Notifications_Admin {
 			array(
 				'name'         => 'expire_users_notification_message',
 				'notification' => __( 'User Notification Email', 'expire-users' ),
+				'description'  => __( 'This email is sent to a user when their login details expire.', 'expire-users' ),
 				'message'      => get_option( 'expire_users_notification_message' )
 			),
 			array(
 				'name'         => 'expire_users_notification_admin_message', 
 				'notification' => __( 'Admin Notification Email', 'expire-users' ),
+				'description'  => __( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ),
 				'message'      => get_option( 'expire_users_notification_admin_message' )
 			)
 		);
@@ -99,7 +101,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	function column_default( $item, $column_name ) {
 		switch ( $column_name ) { 
 			case 'notification':
-				return sprintf( '<label for="%s">%s</label>', esc_attr( $item[ 'name' ] ), $item[ $column_name ] );
+				return sprintf( '<label for="%s">%s</label>', esc_attr( $item[ 'name' ] ), $item[ $column_name ] ) . '<br /><span class="description">' . $item[ 'description' ] . '</span>';
 			case 'message':
 				return sprintf( '<textarea id="%s" name="%1$s" rows="5" cols="50" class="large-text">%2$s</textarea>', esc_attr( $item[ 'name' ] ), $item[ $column_name ] );
 			default:

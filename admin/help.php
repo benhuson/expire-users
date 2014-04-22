@@ -71,8 +71,8 @@ class Expire_User_Admin_Help {
 			$current_screen->add_help_tab( array(
 				'id'      => 'EXPIRE_USERS_NOTIFICATIONS',
 				'title'   => __( 'Notification Emails', 'expire-users' ),
-				'content' => __( '<p><strong>User Notification Email</strong><br />This email is sent to a user when their login details expire.</p>', 'expire-users' )
-					. __( '<p><strong>Admin Notification Email</strong><br />This email is sent to administrators when a user expires.</p>', 'expire-users' )
+				'content' => '<p><strong>' . __( 'User Notification Email', 'expire-users' ) . '</strong><br />' . __( 'This email is sent to a user when their login details expire.', 'expire-users' ) . '</p>'
+					. '<p><strong>' . __( 'Admin Notification Email', 'expire-users' ) . '</strong><br />' . __( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) . '</p>'
 			) );
 
 			// Add Help Sidebar
