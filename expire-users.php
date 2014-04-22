@@ -20,6 +20,7 @@ require_once( dirname( __FILE__ ) . '/includes/shortcodes.php' );
 require_once( dirname( __FILE__ ) . '/admin/plugin.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings.php' );
 require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
+require_once( dirname( __FILE__ ) . '/admin/class-expire-user-notifications-admin.php' );
 require_once( dirname( __FILE__ ) . '/admin/help.php' );
 
 // I18n

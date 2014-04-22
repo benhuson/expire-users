@@ -175,17 +175,7 @@ class Expire_User_Settings {
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />
 					<?php _e( 'You may use the following placeholders in the notification email messages below:', 'expire-users' ); ?></p>
 				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
-
-				<table class="form-table">
-					<tr valign="top">
-						<th scope="row"><label for="expire_users_notification_message"><?php _e( 'User Notification Email', 'expire-users' ); ?></label></th>
-						<td><p><textarea id="expire_users_notification_message" name="expire_users_notification_message" rows="5" cols="50" class="large-text code"><?php echo $notification_message; ?></textarea></p></td>
-					</tr>
-					<tr valign="top">
-						<th scope="row"><label for="expire_users_notification_admin_message"><?php _e( 'Admin Notification Email', 'expire-users' ); ?></label></th>
-						<td><p><textarea id="expire_users_notification_admin_message" name="expire_users_notification_admin_message" rows="5" cols="50" class="large-text code"><?php echo $notification_admin_message; ?></textarea></p></td>
-					</tr>
-				</table>
+				<?php Expire_User_Notifications_Admin::admin_table(); ?>
 
 				<p class="submit"><input type="submit" value="<?php _e( 'Save Options' ); ?>" class="button-primary" /></p>
 
