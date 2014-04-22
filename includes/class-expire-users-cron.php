@@ -21,26 +21,27 @@ class Expire_Users_Cron {
 
 	/**
 	 * Do the scheduler
-	 *
-	 * @todo Is there a more efficient way to query non-expired users
-	 * @todo Kick current user if expired
 	 */
 	function do_cron() {
-		//$current_user = wp_get_current_user();
 		$maybe_expire_users = new WP_User_Query( array(
-			'meta_key'     => '_expire_user_expired',
-			'meta_value'   => 'N',
-			'meta_compare' => '='
+			'meta_query' => array(
+				array(
+					'key'     => '_expire_user_expired',
+					'value'   => 'N',
+					'compare' => '='
+				),
+				array(
+					'key'     => '_expire_user_date',
+					'value'   => current_time( 'timestamp' ),
+					'compare' => '<',
+					'type'    => 'numeric'
+				)
+			)
 		) );
 		if ( $maybe_expire_users->results > 0 ) {
 			foreach ( $maybe_expire_users->results as $expired_user ) {
-				//if ( $expired_user->ID != $current_user->ID ) {
-					$expire_date = get_user_meta( $expired_user->ID, '_expire_user_date', true );
-					if ( $expire_date < current_time( 'timestamp' ) ) {
-						$this_expire_user = new Expire_User( $expired_user->ID );
-						$this_expire_user->expire();
-					}
-				//}
+				$this_expire_user = new Expire_User( $expired_user->ID );
+				$this_expire_user->expire();
 			}
 		}
 	}

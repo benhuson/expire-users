@@ -7,7 +7,7 @@ Description: Set expiry dates for user logins.
 Version: 0.8
 Author: Ben Huson
 Author URI: http://www.benhuson.co.uk/
-Minimum WordPress Version Required: 3.4
+Minimum WordPress Version Required: 3.5
 Tested up to: 3.9
 */
 
