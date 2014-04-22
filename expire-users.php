@@ -13,6 +13,7 @@ Tested up to: 3.9
 
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-user.php' );
+require_once( dirname( __FILE__ ) . '/includes/class-expire-users-query.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-settings.php' );
 require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
 require_once( dirname( __FILE__ ) . '/includes/shortcodes.php' );

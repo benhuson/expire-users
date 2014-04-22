@@ -23,20 +23,10 @@ class Expire_Users_Cron {
 	 * Do the scheduler
 	 */
 	function do_cron() {
-		$maybe_expire_users = new WP_User_Query( array(
-			'meta_query' => array(
-				array(
-					'key'     => '_expire_user_expired',
-					'value'   => 'N',
-					'compare' => '='
-				),
-				array(
-					'key'     => '_expire_user_date',
-					'value'   => current_time( 'timestamp' ),
-					'compare' => '<',
-					'type'    => 'numeric'
-				)
-			)
+		$maybe_expire_users = Expire_Users_Query::query( array(
+			'expired'              => false,
+			'expired_date'         => current_time( 'timestamp' ),
+			'expired_date_compare' => '<'
 		) );
 		if ( $maybe_expire_users->results > 0 ) {
 			foreach ( $maybe_expire_users->results as $expired_user ) {
