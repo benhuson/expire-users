@@ -11,16 +11,16 @@ Minimum WordPress Version Required: 3.5
 Tested up to: 3.9
 */
 
-require_once( dirname( __FILE__ ) . '/includes/class-expire-users.php' );
-require_once( dirname( __FILE__ ) . '/includes/class-expire-user.php' );
-require_once( dirname( __FILE__ ) . '/includes/class-expire-users-query.php' );
-require_once( dirname( __FILE__ ) . '/includes/class-expire-users-settings.php' );
-require_once( dirname( __FILE__ ) . '/includes/class-expire-users-cron.php' );
+require_once( dirname( __FILE__ ) . '/includes/expire-users.php' );
+require_once( dirname( __FILE__ ) . '/includes/expire-user.php' );
+require_once( dirname( __FILE__ ) . '/includes/query.php' );
+require_once( dirname( __FILE__ ) . '/includes/settings.php' );
+require_once( dirname( __FILE__ ) . '/includes/cron.php' );
 require_once( dirname( __FILE__ ) . '/includes/shortcodes.php' );
 require_once( dirname( __FILE__ ) . '/admin/plugin.php' );
 require_once( dirname( __FILE__ ) . '/admin/settings.php' );
-require_once( dirname( __FILE__ ) . '/admin/class-expire-user-admin.php' );
-require_once( dirname( __FILE__ ) . '/admin/class-expire-user-notifications-admin.php' );
+require_once( dirname( __FILE__ ) . '/admin/expire-user.php' );
+require_once( dirname( __FILE__ ) . '/admin/notifications.php' );
 require_once( dirname( __FILE__ ) . '/admin/help.php' );
 
 // I18n
