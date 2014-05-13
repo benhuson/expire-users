@@ -40,10 +40,9 @@ class Expire_User_Admin_Help {
 					. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )
 					. '<ul>'
 					. __( '<li>replace user\'s password with a randomly generated one.</li>', 'expire-users' )
-					. __( '<li>send notification email to user.</li>', 'expire-users' )
-					. __( '<li>send notification email to admin.</li>', 'expire-users' )
 					. __( '<li>remove expiry details and allow user to continue to login.</li>', 'expire-users' )
 					. '</ul>'
+					. sprintf( __( '<p><strong>Notification Emails</strong><br />These emails are sent if you have checked the checkboxes on a user\'s profile. Notification messages are configured on the <a href="%s">Expire Users settings</a> page.</p>', 'expire-users' ), admin_url( 'users.php?page=expire_users' ) )
 			) );
 
 			// Add Help Sidebar
@@ -61,18 +60,10 @@ class Expire_User_Admin_Help {
 					. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )
 					. '<ul>'
 					. __( '<li>replace user\'s password with a randomly generated one.</li>', 'expire-users' )
-					. __( '<li>send notification email to user.</li>', 'expire-users' )
-					. __( '<li>send notification email to admin.</li>', 'expire-users' )
 					. __( '<li>remove expiry details and allow user to continue to login.</li>', 'expire-users' )
 					. '</ul>'
-			) );
-
-			// Expiry Settings
-			$current_screen->add_help_tab( array(
-				'id'      => 'EXPIRE_USERS_NOTIFICATIONS',
-				'title'   => __( 'Notification Emails', 'expire-users' ),
-				'content' => '<p><strong>' . __( 'User Notification Email', 'expire-users' ) . '</strong><br />' . __( 'This email is sent to a user when their login details expire.', 'expire-users' ) . '</p>'
-					. '<p><strong>' . __( 'Admin Notification Email', 'expire-users' ) . '</strong><br />' . __( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) . '</p>'
+					. __( '<p><strong>Notification Emails</strong><br />These emails are sent if you have checked the checkboxes on a user\'s profile.</p>', 'expire-users' )
+					
 			) );
 
 			// Add Help Sidebar
