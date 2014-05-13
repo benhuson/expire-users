@@ -176,14 +176,6 @@ class Expire_User_Admin {
 								<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( $expire_user->on_expire_user_reset_password ); ?>>
 								<?php _e( 'Replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
 							</label><br>
-							<label for="expire_user_email">
-								<input name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
-								<?php _e( 'Send notification email to user', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
-							</label><br>
-							<label for="expire_user_email_admin">
-								<input name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
-								<?php _e( 'Send notification email to admin', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
-							</label><br>
 							<label for="expire_user_remove_expiry">
 								<input name="expire_user_remove_expiry" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( $expire_user->on_expire_user_remove_expiry ); ?>>
 								<?php _e( 'Remove expiry details and allow user to continue to login', 'expire-users' ); ?>
@@ -191,7 +183,24 @@ class Expire_User_Admin {
 						</fieldset>
 					</td>
 				</tr>
-				<?php } ?>
+				<tr>
+					<th><label><?php _e( 'Email Notifications', 'expire-users' ); ?></label></th>
+					<td>
+						<fieldset>
+							<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
+							<label for="expire_user_email" title="<?php esc_attr_e( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) ?>">
+								<input name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
+								<?php _e( 'User Expired Notification', 'expire-users' ); ?>
+							</label><br>
+							<label for="expire_user_email_admin" title="<?php esc_attr_e( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) ?>">
+								<input name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
+								<?php _e( 'User Expired Admin Notification ', 'expire-users' ); ?>
+							</label>
+							<p><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a></p>
+						</fieldset>
+					</td>
+				</tr>
+			<?php } ?>
 		</table>
 		<?php
 	}
