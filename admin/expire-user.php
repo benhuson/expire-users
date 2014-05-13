@@ -168,7 +168,7 @@ class Expire_User_Admin {
 					</td>
 				</tr>
 				<tr>
-					<th><label for="postalcode"><?php _e( 'Expire Actions', 'expire-users' ); ?></label></th>
+					<th><label><?php _e( 'Expire Actions', 'expire-users' ); ?></label></th>
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
