@@ -188,15 +188,27 @@ class Expire_User_Admin {
 					<td>
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
-							<label for="expire_user_email" title="<?php esc_attr_e( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) ?>">
-								<input name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
-								<?php _e( 'User Expired Notification', 'expire-users' ); ?>
-							</label><br>
-							<label for="expire_user_email_admin" title="<?php esc_attr_e( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ) ?>">
-								<input name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
-								<?php _e( 'User Expired Admin Notification ', 'expire-users' ); ?>
-							</label>
-							<p><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a></p>
+							<?php
+							$notifications = Expire_User_Notifications_Admin::get_notifications();
+							foreach ( $notifications as $notification ) {
+								$checked = '';
+								$name = $notification['name'];
+								if ( 'expire_users_notification_message' == $name ) {
+									$name = 'expire_user_email';
+									$checked = checked( 1, $expire_user->on_expire_user_email, false );
+								} elseif ( 'expire_users_notification_admin_message' == $name ) {
+									$name = 'expire_user_email_admin';
+									$checked = checked( 1, $expire_user->on_expire_user_email_admin, false );
+								}
+								?>
+								<label for="<?php echo esc_attr( $name ); ?>" title="<?php echo esc_attr( $notification['description'] ); ?>">
+									<input name="<?php echo esc_attr( $name ); ?>" type="checkbox" id="<?php echo esc_attr( $name ); ?>" value="Y"<?php echo $checked; ?> />
+									<?php echo esc_html( $notification['notification'] ); ?>
+								</label><br />
+								<?php
+							}
+							?>
+							<br /><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a>
 						</fieldset>
 					</td>
 				</tr>
