@@ -116,7 +116,10 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 * @param  object  $which  Instance of Expire_User_Notifications_Table.
 	 */
 	function display_tablenav( $which ) {
-		// Nothing to display
+		$tablenav = apply_filters( 'expire_users_notifications_table_tablenav', '', $which );
+		if ( ! empty( $tablenav ) ) {
+			printf( '<div class="tablenav %s">%s</div>', $which, $tablenav );
+		}
 	}
 
 	/**
