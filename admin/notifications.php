@@ -1,26 +1,6 @@
 <?php
 
-add_action( 'admin_head', array( 'Expire_User_Notifications_Admin', 'admin_head' ) );
-
 class Expire_User_Notifications_Admin {
-
-	/**
-	 * Admin Head
-	 *
-	 * Adds settings page styles.
-	 */
-	public static function admin_head() {
-		$page = ( isset($_GET['page'] ) ) ? esc_attr( $_GET['page'] ) : false;
-		if ( 'expire_users' != $page ) {
-			return;
-		}
-
-		echo '<style type="text/css">';
-		echo '.wp-list-table.expire-users-notifications-table tfoot { display: none; }';
-		echo '.wp-list-table.expire-users-notifications-table .column-notification label { font-weight: bold; }';
-		echo '.wp-list-table.expire-users-notifications-table .column-message { width: 75%; }';
-		echo '</style>';
-	}
 
 	/**
 	 * Admin Table

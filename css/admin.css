@@ -4,7 +4,25 @@
 #expire_user_date_on_min {
 	width: 30px;
 }
+
 #expire_user_date_in_num,
 #expire_user_date_on_yyyy {
 	width: 40px;
 }
+
+
+/**
+ * Expire Notifications Table
+ */
+
+.wp-list-table.expire-users-notifications-table tfoot {
+	display: none;
+}
+
+.wp-list-table.expire-users-notifications-table .column-notification {
+	width: 25%;
+}
+
+	.wp-list-table.expire-users-notifications-table .column-notification label {
+		font-weight: bold;
+	}
