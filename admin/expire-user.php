@@ -131,7 +131,7 @@ class Expire_User_Admin {
 							<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 							<label for="expire_user_date_type_never">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_never" value="never" <?php echo $radio_never; ?>>
-								<?php _e( 'never', 'expire-users' ); ?>
+								<?php _e( 'Never', 'expire-users' ); ?>
 							</label><br />
 							<label for="expire_user_date_type_in">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_in" value="in">
@@ -174,19 +174,19 @@ class Expire_User_Admin {
 							<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
 							<label for="expire_user_reset_password">
 								<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( $expire_user->on_expire_user_reset_password ); ?>>
-								<?php _e( 'replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
+								<?php _e( 'Replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
 							</label><br>
 							<label for="expire_user_email">
 								<input name="expire_user_email" type="checkbox" id="expire_user_email" value="Y" <?php checked( $expire_user->on_expire_user_email ); ?>>
-								<?php _e( 'send notification email to user', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
+								<?php _e( 'Send notification email to user', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
 							</label><br>
 							<label for="expire_user_email_admin">
 								<input name="expire_user_email_admin" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( $expire_user->on_expire_user_email_admin ); ?>>
-								<?php _e( 'send notification email to admin', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
+								<?php _e( 'Send notification email to admin', 'expire-users' ); ?> - <a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'configure message', 'expire-users' ); ?></a>
 							</label><br>
 							<label for="expire_user_remove_expiry">
 								<input name="expire_user_remove_expiry" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( $expire_user->on_expire_user_remove_expiry ); ?>>
-								<?php _e( 'remove expiry details and allow user to continue to login', 'expire-users' ); ?>
+								<?php _e( 'Remove expiry details and allow user to continue to login', 'expire-users' ); ?>
 							</label>
 						</fieldset>
 					</td>

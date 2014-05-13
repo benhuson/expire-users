@@ -114,7 +114,7 @@ class Expire_User_Settings {
 								<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 								<label for="expire_user_date_type_never">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_never" value="never" <?php checked( 'never', $expire_settings['expire_user_date_type'] ); ?>>
-									<?php _e( 'never', 'expire date type', 'expire-users' ); ?>
+									<?php _e( 'Never', 'expire date type', 'expire-users' ); ?>
 								</label><br>
 								<label for="expire_user_date_type_in">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_in" value="in" <?php checked( 'in', $expire_settings['expire_user_date_type'] ); ?>>
@@ -152,11 +152,11 @@ class Expire_User_Settings {
 								<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
 								<label for="expire_user_reset_password">
 									<input name="expire_users_default_expire_settings[expire_user_reset_password]" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( 'Y', $expire_settings['expire_user_reset_password'] ); ?>>
-									<?php _e( 'replace user\'s password with a randomly generated one', 'expire-users' ); ?>
+									<?php _e( 'Replace user\'s password with a randomly generated one', 'expire-users' ); ?>
 								</label><br>
 								<label for="expire_user_remove_expiry">
 									<input name="expire_users_default_expire_settings[expire_user_remove_expiry]" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( 'Y', $expire_settings['expire_user_remove_expiry'] ); ?>>
-									<?php _e( 'remove expiry details and allow user to continue to login', 'expire-users' ); ?>
+									<?php _e( 'Remove expiry details and allow user to continue to login', 'expire-users' ); ?>
 								</label>
 							</fieldset>
 						</td>
