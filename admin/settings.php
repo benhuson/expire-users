@@ -154,14 +154,6 @@ class Expire_User_Settings {
 									<input name="expire_users_default_expire_settings[expire_user_reset_password]" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( 'Y', $expire_settings['expire_user_reset_password'] ); ?>>
 									<?php _e( 'replace user\'s password with a randomly generated one', 'expire-users' ); ?>
 								</label><br>
-								<label for="expire_user_email">
-									<input name="expire_users_default_expire_settings[expire_user_email]" type="checkbox" id="expire_user_email" value="Y" <?php checked( 'Y', $expire_settings['expire_user_email'] ); ?>>
-									<?php _e( 'send notification email to user', 'expire-users' ); ?>
-								</label><br>
-								<label for="expire_user_email_admin">
-									<input name="expire_users_default_expire_settings[expire_user_email_admin]" type="checkbox" id="expire_user_email_admin" value="Y" <?php checked( 'Y', $expire_settings['expire_user_email_admin'] ); ?>>
-									<?php _e( 'send notification email to admin', 'expire-users' ); ?>
-								</label><br>
 								<label for="expire_user_remove_expiry">
 									<input name="expire_users_default_expire_settings[expire_user_remove_expiry]" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( 'Y', $expire_settings['expire_user_remove_expiry'] ); ?>>
 									<?php _e( 'remove expiry details and allow user to continue to login', 'expire-users' ); ?>

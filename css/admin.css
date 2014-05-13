@@ -19,6 +19,12 @@
 	display: none;
 }
 
+.wp-list-table.expire-users-notifications-table .column-active {
+	text-align: center;
+	white-space: nowrap;
+	width: 35px;
+}
+
 .wp-list-table.expire-users-notifications-table .column-notification {
 	width: 25%;
 }

@@ -67,10 +67,34 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 */
 	function get_columns() {
 		$columns = array(
+			'active'       => __( 'Active', 'expire-users' ),
 			'notification' => __( 'Notification', 'expire-users' ),
 			'message'      => __( 'Message', 'expire-users' )
 		);
 		return apply_filters( 'expire_users_notifications_table_columns', $columns );
+	}
+
+	/**
+	 * Column Active
+	 *
+	 * @param   array  $item  Column item.
+	 * @return  array         Item.
+	 */
+	function column_active( $item ) {
+		global $expire_users;
+		$expire_settings = $expire_users->admin->settings->get_default_expire_settings();
+
+		$checked = '';
+		$name = $item['name'];
+		if ( $item['name'] == 'expire_users_notification_message' ) {
+			$checked = checked( 'Y', $expire_settings['expire_user_email'], false );
+			$name = 'expire_user_email';
+		} elseif ( $item['name'] == 'expire_users_notification_admin_message' ) {
+			$checked = checked( 'Y', $expire_settings['expire_user_email_admin'], false );
+			$name = 'expire_user_email_admin';
+		}
+
+		return sprintf( '<input type="checkbox" id="%s" name="expire_users_default_expire_settings[%1$s]" value="Y"%s />', esc_attr( $name ), $checked );
 	}
 
 	/**
