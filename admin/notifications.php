@@ -86,10 +86,33 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 * @return  array  Notification columns.
 	 */
 	function get_columns() {
-		return array(
+		$columns = array(
 			'notification' => __( 'Notification', 'expire-users' ),
 			'message'      => __( 'Message', 'expire-users' )
 		);
+		return apply_filters( 'expire_users_notifications_table_columns', $columns );
+	}
+
+	/**
+	 * Column Notification
+	 *
+	 * @param   array  $item  Column item.
+	 * @return  array         Item.
+	 */
+	function column_notification( $item ) {
+		$actions = apply_filters( 'expire_users_notifications_table_row_actions', array(), $item );
+		return sprintf( '<label for="%s">%s</label> <br /><span class="description">%s</span> %s', esc_attr( $item[ 'name' ] ), $item[ 'notification' ], $item[ 'description' ], $this->row_actions( $actions ) );
+	}
+
+	/**
+	 * Column Message
+	 *
+	 * @param   array  $item  Column item.
+	 * @return  array         Item.
+	 */
+	function column_message( $item ) {
+		$message = sprintf( '<textarea id="%s" name="%1$s" rows="5" cols="50" class="large-text">%2$s</textarea>', esc_attr( $item[ 'name' ] ), $item[ 'message' ] );
+		return apply_filters( 'expire_users_notifications_table_message', $message, $item );
 	}
 
 	/**
@@ -100,14 +123,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 * @return  string                Output.
 	 */
 	function column_default( $item, $column_name ) {
-		switch ( $column_name ) { 
-			case 'notification':
-				return sprintf( '<label for="%s">%s</label>', esc_attr( $item[ 'name' ] ), $item[ $column_name ] ) . '<br /><span class="description">' . $item[ 'description' ] . '</span>';
-			case 'message':
-				return sprintf( '<textarea id="%s" name="%1$s" rows="5" cols="50" class="large-text">%2$s</textarea>', esc_attr( $item[ 'name' ] ), $item[ $column_name ] );
-			default:
-				return '';
-		}
+		return $item[ $column_name ];
 	}
 
 	/**
