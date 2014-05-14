@@ -263,11 +263,11 @@ class Expire_User_Admin {
 	 * Admin Print Styles
 	 */
 	function admin_print_styles() {
-		$stylesheet_url = plugins_url( 'css/admin.css', dirname( __FILE__ ) );
-		$stylesheet_file = WP_PLUGIN_DIR . '/expire-users/css/admin.css';
-		if ( file_exists( $stylesheet_file ) ) {
-			wp_register_style( 'css-layouts-admin', $stylesheet_url );
-			wp_enqueue_style( 'css-layouts-admin' );
+		if ( $this->is_admin_screen( array( 'users_page_expire_users', 'user-edit', 'profile', 'users' ) ) ) {
+			if ( file_exists( WP_PLUGIN_DIR . '/expire-users/css/admin.css' ) ) {
+				wp_register_style( 'css-layouts-admin', plugins_url( 'css/admin.css', dirname( __FILE__ ) ) );
+				wp_enqueue_style( 'css-layouts-admin' );
+			}
 		}
 	}
 
