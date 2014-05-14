@@ -276,11 +276,37 @@ class Expire_User_Admin {
 	 */
 	function admin_enqueue_scripts() {
 		wp_register_script( 'expire-users-admin-user', plugins_url( 'js/admin-user.js', dirname( __FILE__ ) ), array( 'jquery' ), '1.0' );
-		wp_enqueue_script( 'expire-users-admin-user' );
 		wp_localize_script( 'expire-users-admin-user', 'expire_users_admin_user_i18n', array(
 			'cancel' => __( 'Cancel', 'expire-users' ),
 			'edit'   => __( 'Edit', 'expire-users' )
 		) );
+
+		// Only load admin user JavaScript on the pages it may be needed
+		if ( $this->is_admin_screen( array( 'users_page_expire_users', 'user-edit', 'profile', 'users' ) ) ) {
+			wp_enqueue_script( 'expire-users-admin-user' );
+		}
+	}
+
+	/**
+	 * Check if a specific admin screen is being displayed.
+	 *
+	 * @param   string|array  $screen_id  Screen ID or array of IDs.
+	 * @return  boolean
+	 */
+	function is_admin_screen( $screen_id ) {
+		if ( is_admin() && function_exists( 'get_current_screen' ) ) {
+			$screen = get_current_screen();
+			if ( is_array( $screen_id ) ) {
+				foreach ( $screen_id as $id ) {
+					if ( $id == $screen->id ) {
+						return true;
+					}
+				}
+			} elseif ( $screen_id == $screen->id ) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 }
