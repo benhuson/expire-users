@@ -67,7 +67,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 */
 	function get_columns() {
 		$columns = array(
-			'active'       => __( 'Active', 'expire-users' ),
+			//'active'       => __( 'Active', 'expire-users' ),
 			'notification' => __( 'Notification', 'expire-users' ),
 			'message'      => __( 'Message', 'expire-users' )
 		);

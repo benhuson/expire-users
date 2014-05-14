@@ -161,6 +161,34 @@ class Expire_User_Settings {
 							</fieldset>
 						</td>
 					</tr>
+					<tr>
+						<th><label><?php _e( 'Email Notifications', 'expire-users' ); ?></label></th>
+						<td>
+							<fieldset>
+								<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
+								<?php
+								$notifications = Expire_User_Notifications_Admin::get_notifications();
+								foreach ( $notifications as $notification ) {
+									$checked = '';
+									$name = $notification['name'];
+									if ( 'expire_users_notification_message' == $name ) {
+										$name = 'expire_user_email';
+										$checked = checked( 'Y', $expire_settings['expire_user_email'], false );
+									} elseif ( 'expire_users_notification_admin_message' == $name ) {
+										$name = 'expire_user_email_admin';
+										$checked = checked( 'Y', $expire_settings['expire_user_email_admin'], false );
+									}
+									?>
+									<label for="<?php echo esc_attr( $name ); ?>" title="<?php echo esc_attr( $notification['description'] ); ?>">
+										<input name="expire_users_default_expire_settings[<?php echo esc_attr( $name ); ?>]" type="checkbox" id="<?php echo esc_attr( $name ); ?>" value="Y"<?php echo $checked; ?> />
+										<?php echo esc_html( $notification['notification'] ); ?>
+									</label><br />
+									<?php
+								}
+								?>
+							</fieldset>
+						</td>
+					</tr>
 				</table>
 
 				<h3><?php _e( 'Notification Emails', 'expire-users' ); ?></h3>
