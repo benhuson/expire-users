@@ -140,6 +140,20 @@ class Expire_User {
 	}
 
 	/**
+	 * Is Expired
+	 *
+	 * @since  0.9
+	 *
+	 * @return  boolean
+	 */
+	function is_expired() {
+		if ( 'Y' == get_user_meta( $this->user_id, '_expire_user_expired', true ) ) {
+			return true;
+		}
+		return false;
+	}
+
+	/**
 	 * Get User
 	 */
 	function get_user() {
