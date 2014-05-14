@@ -91,7 +91,7 @@ class Expire_User {
 		$args = wp_parse_args( $args, array(
 			'date_format'    => _x(  get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), 'display date format', 'expire-users' ),
 			'expires_format' => __( 'Expires: <strong>%s</strong>', 'expire-users' ),
-			'expired_format' => __( 'Expired: <strong>%s</strong>', 'expire-users' ),
+			'expired_format' => __( 'Expired: <strong class="expire-user-expired">%s</strong>', 'expire-users' ),
 			'never_expire'   => __( 'Expire: <strong>Never</strong>', 'expire-users' ),
 		) );
 		$date = '';

@@ -51,7 +51,7 @@ class Expire_User_Admin {
 				$value = date( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expire_date );
 				if ( $expired == 'Y' ) {
 					$value = date( get_option( 'date_format' ), $expire_date );
-					$value = '<strong>' . $value . '</strong> <em>' . __( '(expired)', 'expire-users' ) . '</em>';
+					$value = '<span class="expire-user-expired"><strong>' . $value . '</strong> <em>' . __( '(expired)', 'expire-users' ) . '</em></span>';
 				}
 			}
 		}

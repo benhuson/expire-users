@@ -10,6 +10,9 @@
 	width: 40px;
 }
 
+.expire-user-expired {
+	color: #a00;
+}
 
 /**
  * Expire Notifications Table
