@@ -3,8 +3,8 @@ Contributors: husobj
 Donate link: http://www.benhuson.co.uk/donate/
 Tags: users, password, expire, login, roles
 Requires at least: 3.4
-Tested up to: 3.9
-Stable tag: 0.8
+Tested up to: 3.9.1
+Stable tag: 0.9
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -61,6 +61,14 @@ None at present.
 
 == Changelog ==
 
+= 0.9 =
+* Expired dates are displayed as red in admin.
+* JavaScript and CSS files are only loaded on the required pages in admin.
+* Email notifications checkboxes grouped together under new heading.
+* Improved expired users database query.
+* Added Expire_User->is_expired() method.
+* Added version constants.
+
 = 0.8 =
 * Added [expire_users_current_user_expire_date] shortcode.
 * Force check if user expired on login.
@@ -101,17 +109,20 @@ None at present.
 
 == Upgrade Notice ==
 
+= 0.9 =
+Expired dates are displayed as red and JavaScript/CSS files are only loaded on the required pages in admin.
+
 = 0.8 =
-* Added [expire_users_current_user_expire_date] shortcode and force check if user expired on login.
+Added [expire_users_current_user_expire_date] shortcode and force check if user expired on login.
 
 = 0.7 =
-* Fix expiry dates to work with site's timezone.
+Fix expiry dates to work with site's timezone.
 
 = 0.6 =
-* Added support for translations.
+Added support for translations.
 
 = 0.5 =
-* Assign expiry details to users when they register via the register form.
+Assign expiry details to users when they register via the register form.
 
 = 0.4 =
 Option to enable email notifications and perform custom actions on user expiry.
