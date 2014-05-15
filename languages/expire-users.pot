@@ -352,3 +352,21 @@ msgid ""
 "<strong>ERROR</strong>: Your user details have expired so you are no longer "
 "able to reset your password."
 msgstr ""
+
+#: ../includes/shortcodes.php:22
+msgid "M d, Y"
+msgstr ""
+
+#: ../includes/shortcodes.php:23
+#, php-format
+msgid "Expires %s"
+msgstr ""
+
+#: ../includes/shortcodes.php:24
+#, php-format
+msgid "Expired %s"
+msgstr ""
+
+#: ../includes/shortcodes.php:25
+msgid "Never Expire"
+msgstr ""

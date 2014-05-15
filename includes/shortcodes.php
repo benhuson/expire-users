@@ -19,10 +19,10 @@ class Expire_Users_Shortcodes {
 		if ( is_user_logged_in() ) {
 			$u = new Expire_User( get_current_user_id() );
 			$atts = shortcode_atts( array(
-				'date_format'    => 'M d, Y',
-				'expires_format' => 'Expires %s',
-				'expired_format' => 'Expired %s',
-				'never_expire'   => 'Never Expire',
+				'date_format'    => __( 'M d, Y', 'expire-users' ),
+				'expires_format' => __( 'Expires %s', 'expire-users' ),
+				'expired_format' => __( 'Expired %s', 'expire-users' ),
+				'never_expire'   => __( 'Never Expire', 'expire-users' ),
 			), $atts );
 			return $u->get_expire_date_display( $atts );
 		}
