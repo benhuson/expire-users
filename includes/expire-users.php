@@ -130,7 +130,7 @@ class Expire_Users {
 		$u = new WP_User( $expired_user->user_id );
 		$message = str_replace( '%%name%%', $this->get_user_display_name( $u ), $message );
 		$message = str_replace( '%%username%%', $u->user_login, $message );
-		$message = str_replace( '%%expirydate%%', date( 'jS F Y @ h:i', $expired_user->expire_timestamp ), $message );
+		$message = str_replace( '%%expirydate%%', date_i18n( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expired_user->expire_timestamp ), $message );
 		$message = str_replace( '%%sitename%%', get_bloginfo( 'name' ), $message );
 		return $message;
 	}

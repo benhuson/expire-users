@@ -101,7 +101,7 @@ class Expire_User {
 			} else {
 				$format = $args['expired_format'];
 			}
-			$date = date( $args['date_format'], $this->expire_timestamp );
+			$date = date_i18n( $args['date_format'], $this->expire_timestamp );
 		} else {
 			$format = $args['never_expire'];
 		}
