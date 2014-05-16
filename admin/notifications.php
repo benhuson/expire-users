@@ -1,41 +1,24 @@
 <?php
 
-class Expire_User_Notifications_Admin {
+class Expire_User_Notifications_Admin extends Expire_Users_Notifications {
 
 	/**
-	 * Admin Table
-	 *
-	 * Display a table of expiry notifications.
+	 * Constructor
 	 */
-	public static function admin_table() {
-		$notifications_table = new Expire_User_Notifications_Table( array(
-			'screen' => 'expire-users-notifications-table'
-		) );
-		$notifications_table->prepare_items(); 
-		$notifications_table->display(); 
+	public function __construct() {
 	}
 
 	/**
-	 * Get Notifications
-	 *
-	 * @return  array  Notifications data array.
+	 * Display an admin table of expiry notifications.
 	 */
-	public static function get_notifications() {
-		$notifications = array(
-			array(
-				'name'         => 'expire_users_notification_message',
-				'notification' => __( 'User Expired Notification', 'expire-users' ),
-				'description'  => __( 'This email is sent to a user when their login details expire.', 'expire-users' ),
-				'message'      => get_option( 'expire_users_notification_message' )
-			),
-			array(
-				'name'         => 'expire_users_notification_admin_message', 
-				'notification' => __( 'User Expired Admin Notification', 'expire-users' ),
-				'description'  => __( 'This email is sent to the WordPress admin email address when a user expires.', 'expire-users' ),
-				'message'      => get_option( 'expire_users_notification_admin_message' )
-			)
-		);
-		return apply_filters( 'expire_users_notifications', $notifications );
+	public function admin_table() {
+		global $expire_users;
+
+		$notifications_table = new Expire_User_Notifications_Table( array(
+			'screen' => 'expire-users-notifications-table'
+		) );
+		$notifications_table->prepare_items( $this->get_notifications() );
+		$notifications_table->display();
 	}
 
 }
@@ -52,12 +35,12 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	/**
 	 * Prepare Items
 	 */
-	function prepare_items() {
+	function prepare_items( $notifications = array() ) {
 		$columns = $this->get_columns();
 		$hidden = array();
 		$sortable = array();
 		$this->_column_headers = array( $columns, $hidden, $sortable );
-		$this->items = Expire_User_Notifications_Admin::get_notifications();
+		$this->items = $notifications;
 	}
 
 	/**

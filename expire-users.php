@@ -16,6 +16,7 @@ define( 'EXPIRE_USERS_VERSION', '0.9' );
 define( 'EXPIRE_USERS_DB_VERSION', '1' );
 
 // Includes
+require_once( dirname( __FILE__ ) . '/includes/notifications.php' );
 require_once( dirname( __FILE__ ) . '/includes/expire-users.php' );
 require_once( dirname( __FILE__ ) . '/includes/expire-user.php' );
 require_once( dirname( __FILE__ ) . '/includes/query.php' );

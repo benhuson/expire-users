@@ -71,6 +71,7 @@ class Expire_User_Settings {
 	 */
 	function options_page() {
 		global $expire_users;
+
 		if ( ! isset( $_REQUEST['updated'] ) ) {
 			$_REQUEST['updated'] = false;
 		}
@@ -167,7 +168,7 @@ class Expire_User_Settings {
 							<fieldset>
 								<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
 								<?php
-								$notifications = Expire_User_Notifications_Admin::get_notifications();
+								$notifications = $expire_users->notifications->get_notifications();
 								foreach ( $notifications as $notification ) {
 									$checked = '';
 									$name = $notification['name'];
@@ -195,7 +196,8 @@ class Expire_User_Settings {
 				<p><?php _e( 'These emails are sent if you have checked the checkboxes on a user\'s profile.', 'expire-users' ); ?><br />
 					<?php _e( 'You may use the following placeholders in the notification email messages below:', 'expire-users' ); ?></p>
 				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
-				<?php Expire_User_Notifications_Admin::admin_table(); ?>
+
+				<?php $expire_users->admin->notifications->admin_table(); ?>
 
 				<p class="submit"><input type="submit" value="<?php _e( 'Save Options' ); ?>" class="button-primary" /></p>
 

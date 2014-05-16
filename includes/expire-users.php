@@ -10,6 +10,8 @@ class Expire_Users {
 	function Expire_Users() {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
+		$this->notifications = new Expire_Users_Notifications();
+
 		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );

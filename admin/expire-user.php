@@ -12,6 +12,7 @@ class Expire_User_Admin {
 
 	function Expire_User_Admin() {
 		$this->settings = new Expire_User_Settings();
+		$this->notifications = new Expire_User_Notifications_Admin();
 
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
@@ -86,6 +87,8 @@ class Expire_User_Admin {
 	 * Extra User Profile Fields
 	 */
 	function extra_user_profile_fields( $user ) {
+		global $expire_users;
+
 		$can_edit_profile_expiry = $this->current_expire_user_can( 'expire_users_edit' );
 
 		$expire_user = new Expire_User( $user->ID );
@@ -189,7 +192,7 @@ class Expire_User_Admin {
 						<fieldset>
 							<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
 							<?php
-							$notifications = Expire_User_Notifications_Admin::get_notifications();
+							$notifications = $expire_users->notifications->get_notifications();
 							foreach ( $notifications as $notification ) {
 								$checked = '';
 								$name = $notification['name'];
