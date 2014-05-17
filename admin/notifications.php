@@ -68,11 +68,11 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 		$expire_settings = $expire_users->admin->settings->get_default_expire_settings();
 
 		$checked = '';
-		$name = $item['name'];
-		if ( $item['name'] == 'expire_users_notification_message' ) {
+		$name = $item->get_date( 'name' );
+		if ( $name == 'expire_users_notification_message' ) {
 			$checked = checked( 'Y', $expire_settings['expire_user_email'], false );
 			$name = 'expire_user_email';
-		} elseif ( $item['name'] == 'expire_users_notification_admin_message' ) {
+		} elseif ( $name == 'expire_users_notification_admin_message' ) {
 			$checked = checked( 'Y', $expire_settings['expire_user_email_admin'], false );
 			$name = 'expire_user_email_admin';
 		}
@@ -88,7 +88,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 */
 	function column_notification( $item ) {
 		$actions = apply_filters( 'expire_users_notifications_table_row_actions', array(), $item );
-		return sprintf( '<label for="%s">%s</label> <br /><span class="description">%s</span> %s', esc_attr( $item[ 'name' ] ), $item[ 'notification' ], $item[ 'description' ], $this->row_actions( $actions ) );
+		return sprintf( '<label for="%s">%s</label> <br /><span class="description">%s</span> %s', esc_attr( $item->get_data( 'name' ) ), $item->get_data( 'notification' ), $item->get_data( 'description' ), $this->row_actions( $actions ) );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 * @return  array         Item.
 	 */
 	function column_message( $item ) {
-		$message = sprintf( '<textarea id="%s" name="%1$s" rows="5" cols="50" class="large-text">%2$s</textarea>', esc_attr( $item[ 'name' ] ), $item[ 'message' ] );
+		$message = sprintf( '<textarea id="%s" name="%1$s" rows="5" cols="50" class="large-text">%2$s</textarea>', esc_attr( $item->get_data( 'name' ) ), $item->get_data( 'message' ) );
 		return apply_filters( 'expire_users_notifications_table_message', $message, $item );
 	}
 
@@ -110,7 +110,7 @@ class Expire_User_Notifications_Table extends WP_List_Table {
 	 * @return  string                Output.
 	 */
 	function column_default( $item, $column_name ) {
-		return $item[ $column_name ];
+		return $item->get_data( $column_name );
 	}
 
 	/**

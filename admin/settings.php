@@ -171,7 +171,7 @@ class Expire_User_Settings {
 								$notifications = $expire_users->notifications->get_notifications();
 								foreach ( $notifications as $notification ) {
 									$checked = '';
-									$name = $notification['name'];
+									$name = $notification->get_data( 'name' );
 									if ( 'expire_users_notification_message' == $name ) {
 										$name = 'expire_user_email';
 										$checked = checked( 'Y', $expire_settings['expire_user_email'], false );
@@ -180,9 +180,9 @@ class Expire_User_Settings {
 										$checked = checked( 'Y', $expire_settings['expire_user_email_admin'], false );
 									}
 									?>
-									<label for="<?php echo esc_attr( $name ); ?>" title="<?php echo esc_attr( $notification['description'] ); ?>">
+									<label for="<?php echo esc_attr( $name ); ?>" title="<?php echo esc_attr( $notification->get_data( 'description' ) ); ?>">
 										<input name="expire_users_default_expire_settings[<?php echo esc_attr( $name ); ?>]" type="checkbox" id="<?php echo esc_attr( $name ); ?>" value="Y"<?php echo $checked; ?> />
-										<?php echo esc_html( $notification['notification'] ); ?>
+										<?php echo esc_html( $notification->get_data( 'notification' ) ); ?>
 									</label><br />
 									<?php
 								}
