@@ -63,6 +63,7 @@ None at present.
 
 = 0.9 =
 * Expired dates are displayed as red in admin.
+* Dates are correctly internationalized.
 * JavaScript and CSS files are only loaded on the required pages in admin.
 * Email notifications checkboxes grouped together under new heading.
 * Improved expired users database query.
@@ -110,7 +111,7 @@ None at present.
 == Upgrade Notice ==
 
 = 0.9 =
-Expired dates are displayed as red and JavaScript/CSS files are only loaded on the required pages in admin.
+Expired dates are displayed as red. Dates are internationalized and JavaScript/CSS files are only loaded on the required admin pages.
 
 = 0.8 =
 Added [expire_users_current_user_expire_date] shortcode and force check if user expired on login.
