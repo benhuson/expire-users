@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Expire Users v0.4\n"
+"Project-Id-Version: Expire Users v0.9\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2013-02-28 09:43:57+0000\n"
+"PO-Revision-Date: 2014-05-19 09:37:15+0000\n"
 "Last-Translator: admin <diebaanisvoormij@gmail.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -20,180 +20,149 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes"
 
-#: admin/class-expire-user-admin.php:37
-#: admin/class-expire-user-admin.php:119
+#: admin/expire-user.php:37
+#: admin/expire-user.php:120
 #@ expire-users
 msgid "Expire Date"
-msgstr ""
+msgstr "Verloop datum"
 
-#: admin/class-expire-user-admin.php:54
+#: admin/expire-user.php:54
 #@ expire-users
 msgid "(expired)"
 msgstr "(Verlopen)"
 
-#: admin/class-expire-user-admin.php:116
+#: admin/expire-user.php:117
+#: admin/help.php:36
 #@ expire-users
 msgid "User Expiry Information"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:124
-#: admin/class-expire-user-admin.php:256
+#: admin/expire-user.php:125
+#: admin/expire-user.php:281
 #@ expire-users
 msgid "Edit"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:130
-#: admin/settings.php:109
-#: admin/settings.php:112
+#: admin/expire-user.php:131
+#: admin/settings.php:111
+#: admin/settings.php:114
 #@ expire-users
 msgid "Expiry Date"
-msgstr ""
+msgstr "Verloop datum"
 
-#: admin/class-expire-user-admin.php:133
-#: admin/settings.php:115
-#: includes/class-expire-user.php:94
-#@ expire-users
-#@ expire date type
-msgid "never"
-msgstr ""
-
-#: admin/class-expire-user-admin.php:137
+#: admin/expire-user.php:138
 #@ expire-users
 msgid "In"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:144
-#: admin/settings.php:126
+#: admin/expire-user.php:145
+#: admin/settings.php:128
 #@ expire-users
 #@ expire date type
 msgid "On"
-msgstr ""
+msgstr "Op"
 
-#: admin/class-expire-user-admin.php:159
-#: admin/settings.php:138
+#: admin/expire-user.php:160
+#: admin/settings.php:140
 #@ expire-users
 msgid "On Expire, Default to Role"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:163
-#: admin/settings.php:141
+#: admin/expire-user.php:164
+#: admin/settings.php:143
 #@ expire-users
 msgid "Don't change role"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:170
-#: admin/class-expire-user-admin.php:173
-#: admin/settings.php:151
-#: admin/settings.php:154
+#: admin/expire-user.php:171
+#: admin/expire-user.php:174
+#: admin/settings.php:149
+#: admin/settings.php:152
 #@ expire-users
 msgid "Expire Actions"
 msgstr ""
 
-#: admin/class-expire-user-admin.php:176
-#: admin/settings.php:157
-#@ expire-users
-msgid "replace user's password with a randomly generated one"
-msgstr ""
-
-#: admin/class-expire-user-admin.php:180
-#: admin/settings.php:161
-#@ expire-users
-msgid "send notification email to user"
-msgstr ""
-
-#: admin/class-expire-user-admin.php:180
-#: admin/class-expire-user-admin.php:184
-#@ expire-users
-msgid "configure message"
-msgstr ""
-
-#: admin/class-expire-user-admin.php:184
-#: admin/settings.php:165
-#@ expire-users
-msgid "send notification email to admin"
-msgstr ""
-
-#: admin/class-expire-user-admin.php:200
+#: admin/expire-user.php:226
 #@ expire-users
 msgid "days"
-msgstr ""
+msgstr "dagen"
 
-#: admin/class-expire-user-admin.php:201
+#: admin/expire-user.php:227
 #@ expire-users
 msgid "weeks"
-msgstr ""
+msgstr "weken"
 
-#: admin/class-expire-user-admin.php:202
+#: admin/expire-user.php:228
 #@ expire-users
 msgid "months"
-msgstr ""
+msgstr "maanden"
 
-#: admin/class-expire-user-admin.php:203
+#: admin/expire-user.php:229
 #@ expire-users
 msgid "years"
-msgstr ""
+msgstr "Jaren"
 
-#: admin/class-expire-user-admin.php:217
+#: admin/expire-user.php:243
 #@ expire-users
 msgid "Jan"
-msgstr ""
+msgstr "Januari"
 
-#: admin/class-expire-user-admin.php:218
+#: admin/expire-user.php:244
 #@ expire-users
 msgid "Feb"
-msgstr ""
+msgstr "Februari"
 
-#: admin/class-expire-user-admin.php:219
+#: admin/expire-user.php:245
 #@ expire-users
 msgid "Mar"
-msgstr ""
+msgstr "Maart"
 
-#: admin/class-expire-user-admin.php:220
+#: admin/expire-user.php:246
 #@ expire-users
 msgid "Apr"
-msgstr ""
+msgstr "April"
 
-#: admin/class-expire-user-admin.php:221
+#: admin/expire-user.php:247
 #@ expire-users
 msgid "May"
-msgstr ""
+msgstr "Mei"
 
-#: admin/class-expire-user-admin.php:222
+#: admin/expire-user.php:248
 #@ expire-users
 msgid "Jun"
-msgstr ""
+msgstr "Juni"
 
-#: admin/class-expire-user-admin.php:223
+#: admin/expire-user.php:249
 #@ expire-users
 msgid "Jul"
-msgstr ""
+msgstr "Juli"
 
-#: admin/class-expire-user-admin.php:224
+#: admin/expire-user.php:250
 #@ expire-users
 msgid "Aug"
-msgstr ""
+msgstr "Augustus"
 
-#: admin/class-expire-user-admin.php:225
+#: admin/expire-user.php:251
 #@ expire-users
 msgid "Sep"
-msgstr ""
+msgstr "September"
 
-#: admin/class-expire-user-admin.php:226
+#: admin/expire-user.php:252
 #@ expire-users
 msgid "Oct"
-msgstr ""
+msgstr "Oktober"
 
-#: admin/class-expire-user-admin.php:227
+#: admin/expire-user.php:253
 #@ expire-users
 msgid "Nov"
-msgstr ""
+msgstr "November"
 
-#: admin/class-expire-user-admin.php:228
+#: admin/expire-user.php:254
 #@ expire-users
 msgid "Dec"
-msgstr ""
+msgstr "December"
 
-#: admin/class-expire-user-admin.php:255
+#: admin/expire-user.php:280
 #@ expire-users
 msgid "Cancel"
 msgstr ""
@@ -203,121 +172,287 @@ msgstr ""
 msgid "Expire Settings"
 msgstr ""
 
-#: admin/settings.php:80
+#: admin/settings.php:82
 #@ expire-users
 msgid "Expire Users Settings"
 msgstr ""
 
-#: admin/settings.php:84
+#: admin/settings.php:86
 #@ default
 msgid "Options saved"
 msgstr ""
 
-#: admin/settings.php:99
+#: admin/settings.php:101
 #@ expire-users
 msgid "Registered User Expiry Settings"
 msgstr ""
 
-#: admin/settings.php:103
+#: admin/settings.php:105
 #@ expire-users
 msgid "Automatically set expiry date for new users who register via the registration form."
 msgstr ""
 
-#: admin/settings.php:119
+#: admin/settings.php:121
 #@ expire-users
 msgctxt "expire date type"
 msgid "In"
 msgstr ""
 
-#: admin/settings.php:142
-#@ expire-users
-msgid "Editor"
-msgstr ""
-
-#: admin/settings.php:143
-#@ expire-users
-msgid "Administrator"
-msgstr ""
-
-#: admin/settings.php:144
-#@ expire-users
-msgid "Author"
-msgstr ""
-
-#: admin/settings.php:145
-#@ expire-users
-msgid "Contributor"
-msgstr ""
-
-#: admin/settings.php:146
-#@ expire-users
-msgid "Subscriber"
-msgstr ""
-
-#: admin/settings.php:172
+#: admin/settings.php:194
 #@ expire-users
 msgid "Notification Emails"
 msgstr ""
 
-#: admin/settings.php:173
+#: admin/settings.php:195
 #@ expire-users
 msgid "These emails are sent if you have checked the checkboxes on a user's profile."
 msgstr ""
 
-#: admin/settings.php:174
+#: admin/settings.php:196
 #@ expire-users
 msgid "You may use the following placeholders in the notification email messages below:"
 msgstr ""
 
-#: admin/settings.php:179
-#@ expire-users
-msgid "User Notification Email"
-msgstr ""
-
-#: admin/settings.php:183
-#@ expire-users
-msgid "Admin Notification Email"
-msgstr ""
-
-#: admin/settings.php:188
+#: admin/settings.php:200
 #@ default
 msgid "Save Options"
 msgstr ""
 
-#: includes/class-expire-user.php:87
-#@ expire-users
-msgid "Expires:"
-msgstr ""
-
-#: includes/class-expire-user.php:89
-#@ expire-users
-msgid "Expired:"
-msgstr ""
-
-#: includes/class-expire-user.php:94
-#@ expire-users
-msgid "Expire:"
-msgstr ""
-
-#: includes/class-expire-users.php:94
+#: includes/expire-users.php:96
 #, php-format
 #@ expired-users
 msgid "Your login details to %%sitename%% have expired"
-msgstr ""
+msgstr "Je account gegevens zijn verlopen voor de site: %%sitename%%"
 
-#: includes/class-expire-users.php:107
+#: includes/expire-users.php:109
 #, php-format
 #@ expired-users
 msgid "Login details to %%sitename%% have expired (%%username%%)"
-msgstr ""
+msgstr "Je account gegevens zijn verlopen voor de site: %%sitename%% (%%username%%)"
 
-#: includes/class-expire-users.php:149
+#: includes/expire-users.php:185
 #@ expire-users
 msgid "<strong>ERROR</strong>: Your user details have expired."
 msgstr ""
 
-#: includes/class-expire-users.php:162
+#: includes/expire-users.php:198
 #@ expire-users
 msgid "<strong>ERROR</strong>: Your user details have expired so you are no longer able to reset your password."
 msgstr ""
+
+#: admin/expire-user.php:134
+#: admin/settings.php:117
+#@ expire-users
+#@ expire date type
+msgid "Never"
+msgstr "Nooit"
+
+#: admin/expire-user.php:177
+#: admin/settings.php:155
+#@ expire-users
+msgid "Replace user's password with a randomly generated one"
+msgstr ""
+
+#: admin/expire-user.php:181
+#: admin/settings.php:159
+#@ expire-users
+msgid "Remove expiry details and allow user to continue to login"
+msgstr ""
+
+#: admin/expire-user.php:187
+#: admin/expire-user.php:190
+#: admin/settings.php:165
+#: admin/settings.php:168
+#@ expire-users
+msgid "Email Notifications"
+msgstr ""
+
+#: admin/expire-user.php:211
+#@ expire-users
+msgid "View and configure messages"
+msgstr ""
+
+#: admin/help.php:37
+#: admin/help.php:57
+#@ expire-users
+msgid "<p>Activate and configure default expiry settings for users who register via the registration form.</p>"
+msgstr ""
+
+#: admin/help.php:38
+#: admin/help.php:58
+#@ expire-users
+msgid "<p><strong>Expiry Date</strong><br />Set a user to nevr expire, expire after a period of time or on a specific date.</p>"
+msgstr ""
+
+#: admin/help.php:39
+#: admin/help.php:59
+#@ expire-users
+msgid "<p><strong>Default to Role</strong><br />When a user expires, you can assign them a different role.</p>"
+msgstr ""
+
+#: admin/help.php:40
+#: admin/help.php:60
+#@ expire-users
+msgid "<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>"
+msgstr ""
+
+#: admin/help.php:42
+#: admin/help.php:62
+#@ expire-users
+msgid "<li>replace user's password with a randomly generated one.</li>"
+msgstr ""
+
+#: admin/help.php:43
+#: admin/help.php:63
+#@ expire-users
+msgid "<li>remove expiry details and allow user to continue to login.</li>"
+msgstr ""
+
+#: admin/help.php:45
+#, php-format
+#@ expire-users
+msgid "<p><strong>Notification Emails</strong><br />These emails are sent if you have checked the checkboxes on a user's profile. Notification messages are configured on the <a href=\"%s\">Expire Users settings</a> page.</p>"
+msgstr ""
+
+#: admin/help.php:56
+#@ expire-users
+msgid "Expiry Settings"
+msgstr ""
+
+#: admin/help.php:65
+#@ expire-users
+msgid "<p><strong>Notification Emails</strong><br />These emails are sent if you have checked the checkboxes on a user's profile.</p>"
+msgstr ""
+
+#: admin/help.php:80
+#@ expire-users
+msgid "Expire Users Plugin"
+msgstr ""
+
+#: admin/help.php:82
+#: admin/plugin.php:22
+#@ expire-users
+msgid "Documentation"
+msgstr ""
+
+#: admin/help.php:83
+#@ expire-users
+msgid "Support Forum"
+msgstr ""
+
+#: admin/help.php:84
+#@ expire-users
+msgid "Contribute at Github"
+msgstr ""
+
+#: admin/help.php:85
+#@ expire-users
+msgid "Submit an Issue"
+msgstr ""
+
+#: admin/notifications.php:27
+#@ expire-users
+msgid "User Expired Notification"
+msgstr ""
+
+#: admin/notifications.php:28
+#@ expire-users
+msgid "This email is sent to a user when their login details expire."
+msgstr ""
+
+#: admin/notifications.php:33
+#@ expire-users
+msgid "User Expired Admin Notification"
+msgstr ""
+
+#: admin/notifications.php:34
+#@ expire-users
+msgid "This email is sent to the WordPress admin email address when a user expires."
+msgstr ""
+
+#: admin/notifications.php:71
+#@ expire-users
+msgid "Notification"
+msgstr ""
+
+#: admin/notifications.php:72
+#@ expire-users
+msgid "Message"
+msgstr ""
+
+#: admin/notifications.php:149
+#@ expire-users
+msgid "No notification defined."
+msgstr ""
+
+#: admin/plugin.php:21
+#@ password-protected
+msgid "https://github.com/benhuson/expire-users"
+msgstr ""
+
+#: admin/plugin.php:21
+#@ expire-users
+msgid "GitHub"
+msgstr ""
+
+#: admin/plugin.php:22
+#@ password-protected
+msgid "https://github.com/benhuson/expire-users/wiki"
+msgstr ""
+
+#: admin/plugin.php:36
+#@ expire-users
+msgid "Settings"
+msgstr ""
+
+#: includes/expire-user.php:93
+#, php-format
+#@ expire-users
+msgid "Expires: <strong>%s</strong>"
+msgstr "Verloopt: <strong>%s</strong>"
+
+#: includes/expire-user.php:94
+#, php-format
+#@ expire-users
+msgid "Expired: <strong class=\"expire-user-expired\">%s</strong>"
+msgstr "Verlopen: <strong class=\"expire-user-expired\">%s</strong>"
+
+#: includes/expire-user.php:95
+#@ expire-users
+msgid "Expire: <strong>Never</strong>"
+msgstr "Verloopt: <strong>Nooit</strong>"
+
+#: includes/expire-users.php:160
+#, php-format
+#@ expire-users
+msgid "Your access to %%sitename%% has expired."
+msgstr "De toegang tot de site %%sitename%% is verlopen"
+
+#: includes/expire-users.php:167
+#, php-format
+#@ expire-users
+msgid "Access to %%sitename%% has expired for %%name%% (%%username%%) on %%expirydate%%"
+msgstr ""
+
+#: includes/shortcodes.php:22
+#@ expire-users
+msgid "M d, Y"
+msgstr "d M, Y"
+
+#: includes/shortcodes.php:23
+#, php-format
+#@ expire-users
+msgid "Expires %s"
+msgstr "Verloopt op %s"
+
+#: includes/shortcodes.php:24
+#, php-format
+#@ expire-users
+msgid "Expired %s"
+msgstr "Verloopt op %s"
+
+#: includes/shortcodes.php:25
+#@ expire-users
+msgid "Never Expire"
+msgstr "Verloopt nooit"
 
