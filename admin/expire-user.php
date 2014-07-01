@@ -162,7 +162,7 @@ class Expire_User_Admin {
 						<select name="expire_user_role" id="expire_user_role">
 							<?php
 							echo '<option value="">' . __( "Don't change role", 'expire-users' ) . '</option>';
-							wp_dropdown_roles( $expire_user->on_expire_default_to_role );
+							$this->dropdown_roles( $expire_user->on_expire_default_to_role );
 							?>
 						</select>
 					</td>
@@ -208,7 +208,9 @@ class Expire_User_Admin {
 								<?php
 							}
 							?>
-							<br /><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a>
+							<?php if ( is_admin() ) { ?>
+								<br /><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a>
+							<?php } ?>
 						</fieldset>
 					</td>
 				</tr>
@@ -307,6 +309,32 @@ class Expire_User_Admin {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * Clone of wp_dropdown_roles()
+	 *
+	 * wp_dropdown_roles() is only available in the admin. Some plugins like "Theme My Login"
+	 * allow for editing profile fields on the front end so we need this functionality available
+	 * when not in the admin.
+	 *
+	 * @param string $selected slug for the role that should be already selected
+	 */
+	function dropdown_roles( $selected = false ) {
+		$p = '';
+		$r = '';
+
+		$editable_roles = array_reverse( get_editable_roles() );
+
+		foreach ( $editable_roles as $role => $details ) {
+			$name = translate_user_role( $details['name'] );
+			if ( $selected == $role ) {
+				$p = "<option selected='selected' value='" . esc_attr( $role ) . "'>$name</option>";
+			} else {
+				$r .= "<option value='" . esc_attr( $role ) . "'>$name</option>";
+			}
+		}
+		echo $p . $r;
 	}
 
 }
