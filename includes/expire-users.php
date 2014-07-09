@@ -108,7 +108,7 @@ class Expire_Users {
 			$message = apply_filters( 'expire_users_email_notification_message', get_option( 'expire_users_notification_admin_message' ), $expired_user );
 			$subject = apply_filters( 'expire_users_email_notification_subject', __( 'Login details to %%sitename%% have expired (%%username%%)', 'expired-users' ), $expired_user );
 			if ( ! empty( $subject ) && ! empty( $message ) ) {
-				wp_mail( get_bloginfo( 'admin_email' ), $subject, $message );
+				wp_mail( $this->get_admin_email(), $subject, $message );
 			}
 		}
 	}
@@ -133,6 +133,17 @@ class Expire_Users {
 		$message = str_replace( '%%expirydate%%', date_i18n( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expired_user->expire_timestamp ), $message );
 		$message = str_replace( '%%sitename%%', get_bloginfo( 'name' ), $message );
 		return $message;
+	}
+
+	/**
+	 * Get Admin Email
+	 *
+	 * @since  1.0
+	 *
+	 * @return  string  Email address.
+	 */
+	function get_admin_email() {
+		return apply_filters( 'expire_users_admin_email', get_bloginfo( 'admin_email' ) );
 	}
 
 	/**
