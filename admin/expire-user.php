@@ -16,10 +16,12 @@ class Expire_User_Admin {
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
 		add_action( 'edit_user_profile', array( $this, 'extra_user_profile_fields' ) );
+		add_action( 'user_new_form', array( $this, 'user_new_form' ) );
 
 		// Save Fields
 		add_action( 'personal_options_update', array( $this, 'save_extra_user_profile_fields' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'save_extra_user_profile_fields' ) );
+		add_action( 'user_register', array( $this, 'save_extra_user_profile_fields' ) );
 
 		// Scripts and Styles
 		add_action( 'admin_print_styles', array( $this, 'admin_print_styles' ) );
@@ -83,20 +85,28 @@ class Expire_User_Admin {
 	}
 
 	/**
-	 * Extra User Profile Fields
+	 * Profile Fields
+	 *
+	 * @param  object|null  $user  Instance of WP_User.
 	 */
-	function extra_user_profile_fields( $user ) {
+	public function profile_fields( $user = null ) {
+
 		$can_edit_profile_expiry = $this->current_expire_user_can( 'expire_users_edit' );
 
-		$expire_user = new Expire_User( $user->ID );
-
-		// Expire Date Field Values
+		if ( $user ) {
+			$expire_user = new Expire_User( $user->ID );
+		} else {
+			$expire_user = new Expire_User();
+		}
+		
+		// Default Expire Date Field Values
 		$radio_never      = '';
 		$radio_date       = '';
 		$days_n           = 7;
 		$date_in_block    = 'days';
 		$expire_timestamp = current_time( 'timestamp' ) + WEEK_IN_SECONDS;
 		$month_n          = '';
+
 		if ( isset( $expire_user->expire_timestamp ) && is_numeric( $expire_user->expire_timestamp ) ) {
 			$radio_date = checked( true, true, false );
 			$days_n2 = floor( ( $expire_user->expire_timestamp - current_time( 'timestamp' ) ) / DAY_IN_SECONDS );
@@ -112,22 +122,29 @@ class Expire_User_Admin {
 		} else {
 			$radio_never = checked( true, true, false );
 		}
+
 		$month_n = date( 'm', $expire_timestamp );
+
 		?>
+
 		<h3><?php _e( 'User Expiry Information', 'expire-users' ); ?></h3>
+
 		<table class="form-table">
 			<tr>
 				<th><label for="address"><?php _e( 'Expire Date', 'expire-users' ); ?></label></th>
 				<td>
-					<div class="misc-pub-section curtime misc-pub-section-last" style="padding-left:0px;">
-						<span id="timestamp"><?php echo $expire_user->get_expire_date_display(); ?></span>
-						<?php if ( $can_edit_profile_expiry ) { ?>
-							<a href="#delete_user_edit_timestamp" class="delete-user-edit-timestamp hide-if-no-js" tabindex='4'><?php _e( 'Edit', 'expire-users' ) ?></a>
-						<?php } ?>
-					</div>
+
+					<?php if ( $expire_user->user_id > 0 ) { ?>
+						<div class="misc-pub-section curtime misc-pub-section-last" style="padding-left:0px;">
+							<span id="timestamp"><?php echo $expire_user->get_expire_date_display(); ?></span>
+							<?php if ( $can_edit_profile_expiry ) { ?>
+								<a href="#delete_user_edit_timestamp" class="delete-user-edit-timestamp hide-if-no-js" tabindex='4'><?php _e( 'Edit', 'expire-users' ) ?></a>
+							<?php } ?>
+						</div>
+					<?php } ?>
 
 					<?php if ( $can_edit_profile_expiry ) { ?>
-						<fieldset class="expire-user-date-options hide-if-js">
+						<fieldset class="expire-user-date-options <?php if ( $expire_user->user_id > 0 ) echo 'hide-if-js'; ?>">
 							<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 							<label for="expire_user_date_type_never">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_never" value="never" <?php echo $radio_never; ?>>
@@ -214,7 +231,36 @@ class Expire_User_Admin {
 				</tr>
 			<?php } ?>
 		</table>
+
 		<?php
+	}
+
+	/**
+	 * Extra User Profile Fields
+	 *
+	 * Adds fields to the edit user admin screen.
+	 *
+	 * @param  object  $user  Instance of WP_User.
+	 */
+	public function extra_user_profile_fields( $user ) {
+
+		$this->profile_fields( $user );
+
+	}
+
+	/**
+	 * New User Form
+	 *
+	 * Adds fields to the new user admin screen.
+	 *
+	 * @param  string  $context  Content of the new user form ('add-new-user' or 'add-existing-user').
+	 */
+	public function user_new_form( $context ) {
+
+		if ( 'add-new-user' == $context && $this->current_expire_user_can( 'expire_users_edit' ) ) {
+			$this->profile_fields();
+		}
+
 	}
 
 	/**
