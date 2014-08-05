@@ -29,7 +29,32 @@ class Expire_User_Admin {
 
 		// User Columns
 		add_filter( 'manage_users_columns', array( $this, 'manage_users_columns' ) );
+		add_action( 'manage_users_sortable_columns', array( $this, 'manage_users_sortable_columns' ) );
 		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 10, 3 );
+		add_action( 'pre_get_posts', array( $this, 'sort_manage_users_columns' ) );
+
+	}
+
+	/**
+	 * Sort Manage Users Columns
+	 *
+	 * @todo  Need to reset expire date to 0 if never to prevent unexpected ordering.
+	 * 
+	 * @param  object  $query  Instance of WP_Query.
+	 */
+	function sort_manage_users_columns( $query ) {
+
+		if ( ! is_admin() ) {
+			return;
+		}
+
+		$orderby = $query->get( 'orderby');
+
+		if ( 'expire_users_date' == $orderby ) {
+			$query->set( 'meta_key', '_expire_user_date' );
+			$query->set( 'orderby', 'meta_value_num' );
+		}
+
 	}
 
 	/**
@@ -37,6 +62,14 @@ class Expire_User_Admin {
 	 */
 	function manage_users_columns( $columns ) {
 		$columns['expire_user'] = __( 'Expire Date', 'expire-users' );
+		return $columns;
+	}
+
+	/**
+	 * Manage Users Sortable Columns
+	 */
+	function manage_users_sortable_columns( $columns ) {
+		$columns['expire_user'] = 'expire_users_date';
 		return $columns;
 	}
 
