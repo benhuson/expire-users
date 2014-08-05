@@ -43,10 +43,10 @@ class Expire_User {
 	function set_expire_time_in_future( $amt, $unit = 'days' ) {
 		switch ( $unit ) {
 			case 'days':
-				$this->expire_timestamp = current_time( 'timestamp' ) + ( 60 * 60 * 24 * $amt );
+				$this->expire_timestamp = current_time( 'timestamp' ) + ( DAY_IN_SECONDS * $amt );
 				break;
 			case 'weeks':
-				$this->expire_timestamp = current_time( 'timestamp' ) + ( 60 * 60 * 24 * 7 * $amt );
+				$this->expire_timestamp = current_time( 'timestamp' ) + ( WEEK_IN_SECONDS * $amt );
 				break;
 			case 'months':
 				$date = getdate();
