@@ -93,7 +93,7 @@ class Expire_Users {
 		if ( $expired_user->on_expire_user_email ) {
 			$u = new WP_User( $expired_user->user_id );
 			$message = apply_filters( 'expire_users_email_admin_notification_message', get_option( 'expire_users_notification_message' ), $expired_user );
-			$subject = apply_filters( 'expire_users_email_admin_notification_subject', __( 'Your login details to %%sitename%% have expired', 'expired-users' ), $expired_user );
+			$subject = apply_filters( 'expire_users_email_admin_notification_subject', __( 'Your login details to %%sitename%% have expired', 'expire-users' ), $expired_user );
 			if ( ! empty( $subject ) && ! empty( $message ) ) {
 				wp_mail( $u->user_email, $subject, $message );
 			}
@@ -106,7 +106,7 @@ class Expire_Users {
 	function handle_on_expire_user_email_admin( $expired_user ) {
 		if ( $expired_user->on_expire_user_email_admin ) {
 			$message = apply_filters( 'expire_users_email_notification_message', get_option( 'expire_users_notification_admin_message' ), $expired_user );
-			$subject = apply_filters( 'expire_users_email_notification_subject', __( 'Login details to %%sitename%% have expired (%%username%%)', 'expired-users' ), $expired_user );
+			$subject = apply_filters( 'expire_users_email_notification_subject', __( 'Login details to %%sitename%% have expired (%%username%%)', 'expire-users' ), $expired_user );
 			if ( ! empty( $subject ) && ! empty( $message ) ) {
 				wp_mail( $this->get_admin_email(), $subject, $message );
 			}
