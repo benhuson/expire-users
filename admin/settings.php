@@ -83,7 +83,7 @@ class Expire_User_Settings {
 			?>
 
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
-				<div><p><strong><?php _e( 'Options saved' ); ?></strong></p></div>
+				<div><p><strong><?php _e( 'Options saved', 'expire-users' ); ?></strong></p></div>
 			<?php endif; ?>
 
 			<form method="post" action="options.php">
@@ -197,7 +197,7 @@ class Expire_User_Settings {
 				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
 				<?php Expire_User_Notifications_Admin::admin_table(); ?>
 
-				<p class="submit"><input type="submit" value="<?php _e( 'Save Options' ); ?>" class="button-primary" /></p>
+				<p class="submit"><input type="submit" value="<?php _e( 'Save Options', 'expire-users' ); ?>" class="button-primary" /></p>
 
 			</form>
 
