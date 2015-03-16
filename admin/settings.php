@@ -197,7 +197,7 @@ class Expire_User_Settings {
 				<p><code>%%expirydate%%</code> <code>%%username%%</code> <code>%%name%%</code> <code>%%sitename%%</code></p>
 				<?php Expire_User_Notifications_Admin::admin_table(); ?>
 
-				<p class="submit"><input type="submit" value="<?php _e( 'Save Options', 'expire-users' ); ?>" class="button-primary" /></p>
+				<p class="submit"><input type="submit" value="<?php _e( 'Save Options', 'expire-users' ); ?>" class="button button-primary" /></p>
 
 			</form>
 
