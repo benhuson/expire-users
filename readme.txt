@@ -3,7 +3,7 @@ Contributors: husobj
 Tags: users, password, expire, login, roles
 Requires at least: 3.5
 Tested up to: 4.2
-Stable tag: 0.9
+Stable tag: 1.0
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -60,6 +60,13 @@ None at present.
 
 == Changelog ==
 
+= 1.0 =
+* Add expiry fields to new user admin page.
+* Add 'expire_users_admin_email' filter to allow admin notifications to be sent to a different email address.
+* Add French translation. Props ateruel.
+* Add Italian translation. Props Marco Chiesi.
+* Tested up to WordPress 4.2
+
 = 0.9 =
 * Expired dates are displayed as red in admin.
 * Dates are correctly internationalized.
@@ -108,6 +115,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.0 =
+Added expiry fields to new user admin page and 'expire_users_admin_email' filter.
 
 = 0.9 =
 Expired dates are displayed as red. Dates are internationalized and JavaScript/CSS files are only loaded on the required admin pages.
