@@ -185,45 +185,45 @@ class Expire_User_Admin {
 
 		?>
 
-		<h3><?php _e( 'User Expiry Information', 'expire-users' ); ?></h3>
+		<h3><?php esc_html_e( 'User Expiry Information', 'expire-users' ); ?></h3>
 
 		<table class="form-table">
 			<tr>
-				<th><label for="address"><?php _e( 'Expire Date', 'expire-users' ); ?></label></th>
+				<th><label for="address"><?php esc_html_e( 'Expire Date', 'expire-users' ); ?></label></th>
 				<td>
 
 					<?php if ( $expire_user->user_id > 0 ) { ?>
 						<div class="misc-pub-section curtime misc-pub-section-last" style="padding-left:0px;">
 							<span id="timestamp"><?php echo $expire_user->get_expire_date_display(); ?></span>
 							<?php if ( $can_edit_profile_expiry ) { ?>
-								<a href="#delete_user_edit_timestamp" class="delete-user-edit-timestamp hide-if-no-js" tabindex='4'><?php _e( 'Edit', 'expire-users' ) ?></a>
+								<a href="#delete_user_edit_timestamp" class="delete-user-edit-timestamp hide-if-no-js" tabindex='4'><?php esc_html_e( 'Edit', 'expire-users' ) ?></a>
 							<?php } ?>
 						</div>
 					<?php } ?>
 
 					<?php if ( $can_edit_profile_expiry ) { ?>
 						<fieldset class="expire-user-date-options <?php if ( $expire_user->user_id > 0 ) echo 'hide-if-js'; ?>">
-							<legend class="screen-reader-text"><span><?php _e( 'Expiry Date', 'expire-users' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_html_e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 							<label for="expire_user_date_type_never">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_never" value="never" <?php echo $radio_never; ?>>
-								<?php _e( 'Never', 'expire-users' ); ?>
+								<?php esc_html_e( 'Never', 'expire-users' ); ?>
 							</label><br />
 							<label for="expire_user_date_type_in">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_in" value="in">
-								<?php _e( 'In', 'expire-users' ); ?> <input type="text" id="expire_user_date_in_num" name="expire_user_date_in_num" value="<?php echo $days_n; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
+								<?php esc_html_e( 'In', 'expire-users' ); ?> <input type="text" id="expire_user_date_in_num" name="expire_user_date_in_num" value="<?php echo $days_n; ?>" size="3" maxlength="3" tabindex="4" autocomplete="off">
 								<select name="expire_user_date_in_block" id="expire_user_date_in_block">
 									<?php echo $this->date_block_menu_options( $date_in_block ); ?>
 								</select>
 							</label><br />
 							<label for="expire_user_date_type_date">
 								<input name="expire_user_date_type" type="radio" id="expire_user_date_type_date" value="on" <?php echo $radio_date; ?>>
-								<?php _e( 'On', 'expire-users' ); ?> <select id="expire_user_date_on_mm" name="expire_user_date_on_mm" tabindex="4">
+								<?php esc_html_e( 'On', 'expire-users' ); ?> <select id="expire_user_date_on_mm" name="expire_user_date_on_mm" tabindex="4">
 									<?php echo $this->month_menu_options( $month_n ); ?>
 								</select>
-								<input type="text" id="expire_user_date_on_dd" name="expire_user_date_on_dd" value="<?php echo date( 'd', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
-								<input type="text" id="expire_user_date_on_yyyy" name="expire_user_date_on_yyyy" value="<?php echo date( 'Y', $expire_timestamp ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">
-								@ <input type="text" id="expire_user_date_on_hrs" name="expire_user_date_on_hrs" value="<?php echo date( 'H', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">
-								: <input type="text" id="expire_user_date_on_min" name="expire_user_date_on_min" value="<?php echo date( 'i', $expire_timestamp ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">
+								<input type="text" id="expire_user_date_on_dd" name="expire_user_date_on_dd" value="<?php echo esc_attr( date( 'd', $expire_timestamp ) ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
+								<input type="text" id="expire_user_date_on_yyyy" name="expire_user_date_on_yyyy" value="<?php echo esc_attr( date( 'Y', $expire_timestamp ) ); ?>" size="4" maxlength="4" tabindex="4" autocomplete="off">
+								@ <input type="text" id="expire_user_date_on_hrs" name="expire_user_date_on_hrs" value="<?php echo esc_attr( date( 'H', $expire_timestamp ) ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">
+								: <input type="text" id="expire_user_date_on_min" name="expire_user_date_on_min" value="<?php echo esc_attr( date( 'i', $expire_timestamp ) ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">
 							</label>
 						</fieldset>
 					<?php } ?>
@@ -232,7 +232,7 @@ class Expire_User_Admin {
 			</tr>
 			<?php if ( $can_edit_profile_expiry ) { ?>
 				<tr>
-					<th><label for="role"><?php _e( 'On Expire, Default to Role', 'expire-users' ); ?></label></th>
+					<th><label for="role"><?php esc_attr_e( 'On Expire, Default to Role', 'expire-users' ); ?></label></th>
 					<td>
 						<select name="expire_user_role" id="expire_user_role">
 							<?php
@@ -243,26 +243,26 @@ class Expire_User_Admin {
 					</td>
 				</tr>
 				<tr>
-					<th><label><?php _e( 'Expire Actions', 'expire-users' ); ?></label></th>
+					<th><label><?php esc_attr_e( 'Expire Actions', 'expire-users' ); ?></label></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e( 'Expire Actions', 'expire-users' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_attr_e( 'Expire Actions', 'expire-users' ); ?></span></legend>
 							<label for="expire_user_reset_password">
 								<input name="expire_user_reset_password" type="checkbox" id="expire_user_reset_password" value="Y" <?php checked( $expire_user->on_expire_user_reset_password ); ?>>
-								<?php _e( 'Replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
+								<?php esc_attr_e( 'Replace user\'s password with a randomly generated one', 'expire-users' ); ?></a>
 							</label><br>
 							<label for="expire_user_remove_expiry">
 								<input name="expire_user_remove_expiry" type="checkbox" id="expire_user_remove_expiry" value="Y" <?php checked( $expire_user->on_expire_user_remove_expiry ); ?>>
-								<?php _e( 'Remove expiry details and allow user to continue to login', 'expire-users' ); ?>
+								<?php esc_attr_e( 'Remove expiry details and allow user to continue to login', 'expire-users' ); ?>
 							</label>
 						</fieldset>
 					</td>
 				</tr>
 				<tr>
-					<th><label><?php _e( 'Email Notifications', 'expire-users' ); ?></label></th>
+					<th><label><?php esc_attr_e( 'Email Notifications', 'expire-users' ); ?></label></th>
 					<td>
 						<fieldset>
-							<legend class="screen-reader-text"><span><?php _e( 'Email Notifications', 'expire-users' ); ?></span></legend>
+							<legend class="screen-reader-text"><span><?php esc_attr_e( 'Email Notifications', 'expire-users' ); ?></span></legend>
 							<?php
 							$notifications = Expire_User_Notifications_Admin::get_notifications();
 							foreach ( $notifications as $notification ) {
@@ -283,7 +283,7 @@ class Expire_User_Admin {
 								<?php
 							}
 							?>
-							<br /><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php _e( 'View and configure messages', 'expire-users' ); ?></a>
+							<br /><a href="<?php echo admin_url( 'users.php?page=expire_users' ); ?>"><?php esc_attr_e( 'View and configure messages', 'expire-users' ); ?></a>
 						</fieldset>
 					</td>
 				</tr>
@@ -333,7 +333,7 @@ class Expire_User_Admin {
 			'years'  => __( 'years', 'expire-users' )
 		);
 		foreach ( $blocks as $value => $label ) {
-			$output .= '<option value="' . $value . '" ' . selected( $selected, $value, false ) . '>' . $label . '</option>';
+			$output .= '<option value="' . esc_attr( $value ) . '" ' . selected( $selected, $value, false ) . '>' . esc_html( $label ) . '</option>';
 		}
 		return $output;
 	}
@@ -358,7 +358,7 @@ class Expire_User_Admin {
 			'12' => __( 'Dec', 'expire-users' )
 		);
 		foreach ( $months as $value => $label ) {
-			$output .= '<option value="' . $value . '" ' . selected( $selected, $value, false ) . '>' . $label . '</option>';
+			$output .= '<option value="' . esc_attr( $value ) . '" ' . selected( $selected, $value, false ) . '>' . esc_html( $label ) . '</option>';
 		}
 		return $output;
 	}
