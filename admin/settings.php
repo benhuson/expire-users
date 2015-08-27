@@ -115,7 +115,7 @@ class Expire_User_Settings {
 								<legend class="screen-reader-text"><span><?php esc_html_e( 'Expiry Date', 'expire-users' ); ?></span></legend>
 								<label for="expire_user_date_type_never">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_never" value="never" <?php checked( 'never', $expire_settings['expire_user_date_type'] ); ?>>
-									<?php esc_html_e( 'Never', 'expire date type', 'expire-users' ); ?>
+									<?php echo esc_html_x( 'Never', 'expire date type', 'expire-users' ); ?>
 								</label><br>
 								<label for="expire_user_date_type_in">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_in" value="in" <?php checked( 'in', $expire_settings['expire_user_date_type'] ); ?>>
@@ -126,7 +126,7 @@ class Expire_User_Settings {
 								</label><br>
 								<label for="expire_user_date_type_date">
 									<input name="expire_users_default_expire_settings[expire_user_date_type]" type="radio" id="expire_user_date_type_date" value="on" <?php checked( 'on', $expire_settings['expire_user_date_type'] ); ?>>
-									<?php esc_html_e( 'On', 'expire date type', 'expire-users' ); ?> <select id="expire_users_default_expire_settings_expire_timestamp_mm" name="expire_users_default_expire_settings[expire_timestamp][mm]" tabindex="4">
+									<?php echo esc_html_x( 'On', 'expire date type', 'expire-users' ); ?> <select id="expire_users_default_expire_settings_expire_timestamp_mm" name="expire_users_default_expire_settings[expire_timestamp][mm]" tabindex="4">
 										<?php echo $expire_users->admin->month_menu_options( $month_n ); ?>
 									</select>
 									<input type="text" id="expire_users_default_expire_settings_expire_timestamp_dd" name="expire_users_default_expire_settings[expire_timestamp][dd]" value="<?php echo esc_attr( date( 'd', $expire_timestamp ) ); ?>" size="2" maxlength="2" tabindex="4" autocomplete="off">, 
