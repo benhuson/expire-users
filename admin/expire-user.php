@@ -13,6 +13,9 @@ class Expire_User_Admin {
 	function Expire_User_Admin() {
 		$this->settings = new Expire_User_Settings();
 
+		// Admin Actions
+		add_action( 'admin_init', array( $this, 'expire_user_now' ) );
+
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
 		add_action( 'edit_user_profile', array( $this, 'extra_user_profile_fields' ) );
@@ -30,6 +33,61 @@ class Expire_User_Admin {
 		// User Columns
 		add_filter( 'manage_users_columns', array( $this, 'manage_users_columns' ) );
 		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 10, 3 );
+
+		add_filter( 'user_row_actions', array( $this, 'user_row_actions' ), 10, 2 );
+
+	}
+
+	/**
+	 * Expire User Now
+	 */
+	public function expire_user_now() {
+
+		// Verify nonce
+		if ( isset( $_GET['expire_users_nonce'] ) && wp_verify_nonce( $_GET['expire_users_nonce'], 'expire-user-now' ) ) {
+
+			if ( isset( $_GET['expire-user'] ) ) {
+
+				// Expire user now
+				$user = new Expire_User( absint( $_GET['expire-user'] ) );
+				$user->set_expire_timestamp( current_time( 'timestamp' ) );
+				$user->save_user();
+				$user->expire();
+
+			}
+
+			wp_safe_redirect( remove_query_arg( array( 'expire-user', 'expire_users_nonce' ) ) );
+
+		}
+
+	}
+
+	/**
+	 * User Admin Row Action Links
+	 *
+	 * @param   array    $actions      Action links.
+	 * @param   WP_User  $user_object  User object.
+	 * @return  array                  Action links.
+	 */
+	function user_row_actions( $actions, $user_object ) {
+
+		if ( $this->current_expire_user_can( 'expire_users_edit' ) && $user_object->ID != get_current_user_id() ) {
+
+			$u = new Expire_User( $user_object->ID );
+
+			if ( ! $u->is_expired() ) {
+
+				$url = add_query_arg( 'expire-user', $user_object->ID );
+				$url = wp_nonce_url( $url, 'expire-user-now', 'expire_users_nonce' );
+
+				$actions['expire'] = sprintf( '<a class="submitexpire" href="%s">%s</a>', esc_url( $url ), esc_html__( 'Expire Now', 'expire-users' ) );
+
+			}
+
+		}
+
+		return $actions;
+
 	}
 
 	/**
