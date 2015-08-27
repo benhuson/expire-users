@@ -12,8 +12,6 @@ Set expiry dates for user logins.
 
 > Important security update - if you are using version 0.2 or earlier please upgrade
 
-**Currently a beta version.**
-
 This plugin allows you to set expiry dates for user logins. You can set a user to:
 
 * Never expire (default)
