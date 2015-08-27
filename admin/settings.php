@@ -70,7 +70,7 @@ class Expire_User_Settings {
 	 * Options Page
 	 */
 	function options_page() {
-		global $expire_users;
+		global $expire_users, $wp_version;
 		if ( ! isset( $_REQUEST['updated'] ) ) {
 			$_REQUEST['updated'] = false;
 		}
@@ -79,7 +79,8 @@ class Expire_User_Settings {
 		<div class="wrap">
 			<?php
 			screen_icon();
-			echo '<h2>' . esc_html__( 'Expire Users Settings', 'expire-users' ) . '</h2>';
+			$tag = version_compare( $wp_version, '4.3', '<' ) ? 'h2' : 'h1';
+			echo '<' . $tag . '>' . esc_html__( 'Expire Users Settings', 'expire-users' ) . '</' . $tag . '>';
 			?>
 
 			<?php if ( false !== $_REQUEST['updated'] ) : ?>
