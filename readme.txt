@@ -1,5 +1,6 @@
 === Expire Users ===
 Contributors: husobj
+Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
 Requires at least: 3.5
 Tested up to: 4.2
