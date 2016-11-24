@@ -126,7 +126,10 @@ class Expire_User_Admin {
 		$user = get_userdata( $user_id );
 		$value = '';
 		if ( 'expire_user' == $column_name ) {
+
 			$u = new Expire_User( $user_id );
+			$u->maybe_expire();
+
 			$expire_date = get_user_meta( $user_id, '_expire_user_date', true );
 			if ( $expire_date ) {
 				$value = date_i18n( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expire_date );
