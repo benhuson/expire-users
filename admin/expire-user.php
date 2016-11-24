@@ -15,6 +15,7 @@ class Expire_User_Admin {
 
 		// Admin Actions
 		add_action( 'admin_init', array( $this, 'expire_user_now' ) );
+		add_action( 'current_screen', array( $this, 'maybe_expire_user' ) );
 
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
@@ -57,6 +58,26 @@ class Expire_User_Admin {
 			}
 
 			wp_safe_redirect( remove_query_arg( array( 'expire-user', 'expire_users_nonce' ) ) );
+
+		}
+
+	}
+
+	/**
+	 * Maybe Expire User
+	 */
+	public function maybe_expire_user() {
+
+		if ( function_exists( 'get_current_screen' ) ) {
+
+			$screen = get_current_screen();
+
+			if ( 'user-edit' == $screen->id && isset( $_GET['user_id'] ) ) {
+
+				$user = new Expire_User( absint( $_GET['user_id'] ) );
+				$user->maybe_expire();
+
+			}
 
 		}
 
