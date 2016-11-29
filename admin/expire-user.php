@@ -15,6 +15,7 @@ class Expire_User_Admin {
 
 		// Admin Actions
 		add_action( 'admin_init', array( $this, 'expire_user_now' ) );
+		add_action( 'current_screen', array( $this, 'maybe_expire_user' ) );
 
 		// Profile Fields
 		add_action( 'show_user_profile', array( $this, 'extra_user_profile_fields' ) );
@@ -63,6 +64,26 @@ class Expire_User_Admin {
 	}
 
 	/**
+	 * Maybe Expire User
+	 */
+	public function maybe_expire_user() {
+
+		if ( function_exists( 'get_current_screen' ) ) {
+
+			$screen = get_current_screen();
+
+			if ( 'user-edit' == $screen->id && isset( $_GET['user_id'] ) ) {
+
+				$user = new Expire_User( absint( $_GET['user_id'] ) );
+				$user->maybe_expire();
+
+			}
+
+		}
+
+	}
+
+	/**
 	 * User Admin Row Action Links
 	 *
 	 * @param   array    $actions      Action links.
@@ -105,7 +126,10 @@ class Expire_User_Admin {
 		$user = get_userdata( $user_id );
 		$value = '';
 		if ( 'expire_user' == $column_name ) {
+
 			$u = new Expire_User( $user_id );
+			$u->maybe_expire();
+
 			$expire_date = get_user_meta( $user_id, '_expire_user_date', true );
 			if ( $expire_date ) {
 				$value = date_i18n( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expire_date );
