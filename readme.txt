@@ -3,8 +3,8 @@ Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
 Requires at least: 3.5
-Tested up to: 4.2
-Stable tag: 1.0
+Tested up to: 4.6.1
+Stable tag: 1.0.1
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -58,6 +58,10 @@ None at present.
 3. User login expired error.
 
 == Changelog ==
+
+= 1.0.1 =
+* Check and expire users if needed when displaying in the admin.
+* Check if cron needs setting up when in admin.
 
 = 1.0 =
 * Add expiry fields to new user admin page.
