@@ -196,15 +196,14 @@ class Expire_Users {
 		$checkuser = get_user_by( 'login', $username );
 
 		if ( $checkuser ) {
-			$u = new Expire_User( $checkuser->ID );
-			$expired = $u->is_expired();
-			if ( ! $expired ) {
-				$expired = $u->maybe_expire();
-			}
-			if ( $expired ) {
+
+			$u = $this->authenticate_expired_user( $checkuser );
+
+			if ( is_wp_error( $u ) ) {
 				remove_action( 'authenticate', 'wp_authenticate_username_password', 20 );
-				return new WP_Error( 'expire_users_expired', sprintf( '<strong>%s</strong> %s', __( 'ERROR:' ), __( 'Your user details have expired.', 'expire-users' ) ) );
+				return $u;
 			}
+
 		}
 
 		return $user;
@@ -221,6 +220,18 @@ class Expire_Users {
 	 * @return  WP_User|WP_Error
 	 */
 	public function wp_authenticate_user( $user, $password ) {
+
+		return $this->authenticate_expired_user( $user );
+
+	}
+
+	/**
+	 * Authenticate Expired User
+	 *
+	 * @param   WP_User           $user  User object.
+	 * @return  WP_User|WP_Error         User or error object.
+	 */
+	private function authenticate_expired_user( $user ) {
 
 		$u = new Expire_User( $user->ID );
 		$expired = $u->is_expired();
