@@ -11,6 +11,7 @@ class Expire_Users {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
 		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
+		add_filter( 'wp_authenticate_user', array( $this, 'wp_authenticate_user' ), 10, 2 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
 		add_action( 'register_form', array( $this, 'register_form' ) );
@@ -197,6 +198,30 @@ class Expire_Users {
 			}
 		}
 		return $user;
+	}
+
+	/**
+	 * WP Authenticate User Filter
+	 *
+	 * @param   WP_User|WP_Error  $user      User object, or a error object if validation has already failed.
+	 * @param   string            $password  The user's password (plain text).
+	 * @return  WP_User|WP_Error
+	 */
+	public function wp_authenticate_user( $user, $password ) {
+
+		$u = new Expire_User( $user->ID );
+		$expired = $u->is_expired();
+
+		if ( ! $expired ) {
+			$expired = $u->maybe_expire();
+		}
+
+		if ( $expired ) {
+			return new WP_Error( 'expire_users_expired', sprintf( '<strong>%s</strong> %s', __( 'ERROR:' ), __( 'Your user details have expired.', 'expire-users' ) ) );
+		}
+
+		return $user;
+
 	}
 
 	/**
