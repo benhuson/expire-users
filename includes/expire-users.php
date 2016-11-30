@@ -184,6 +184,8 @@ class Expire_Users {
 	/**
 	 * Authenticate Filter
 	 *
+	 * @internal  Private. Called via the `authenticate` filter.
+	 *
 	 * @param   null|WP_User|WP_Error  $user      Error object if authentication failed, null if not authenticated yet, or user object if user authenticated.
 	 * @param   string                 $username  The user's username.
 	 * @param   string                 $password  The user's password (plain text).
@@ -211,6 +213,8 @@ class Expire_Users {
 
 	/**
 	 * WP Authenticate User Filter
+	 *
+	 * @internal  Private. Called via the `wp_authenticate_user` filter.
 	 *
 	 * @param   WP_User|WP_Error  $user      User object, or a error object if validation has already failed.
 	 * @param   string            $password  The user's password (plain text).
