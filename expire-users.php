@@ -8,7 +8,7 @@ Version: 1.0.1
 Author: Ben Huson
 Author URI: https://github.com/benhuson/expire-users
 Minimum WordPress Version Required: 3.5
-Tested up to: 4.6.1
+Tested up to: 4.7.4
 */
 
 // Version
