@@ -2,7 +2,7 @@
 
 class Expire_Users_Cron {
 
-	function Expire_Users_Cron() {
+	public function __construct() {
 
 		add_action( 'expire_user_cron', array( $this, 'do_cron' ) );
 		add_action( 'wp', array( $this, 'schedule_cron' ) );
