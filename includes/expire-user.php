@@ -14,7 +14,7 @@ class Expire_User {
 	var $on_expire_user_email_admin = false;
 	var $on_expire_user_remove_expiry = false;
 
-	function Expire_User( $user_id = null ) {
+	public function __construct( $user_id = null ) {
 		if ( $user_id ) {
 			$this->user_id = absint( $user_id );
 			$this->expire_timestamp = get_user_meta( $this->user_id, '_expire_user_date', true );

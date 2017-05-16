@@ -8,7 +8,7 @@ class Expire_Users_Settings {
 	var $auto_expire               = 0;
 	var $expiring_soon_time        = 604800; // 1 week
 
-	function Expire_Users_Settings() {
+	public function __construct() {
 	}
 
 	function get_settings() {
