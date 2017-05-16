@@ -10,7 +10,7 @@ class Expire_User_Admin {
 
 	var $settings = null;
 
-	function Expire_User_Admin() {
+	public function __construct() {
 		$this->settings = new Expire_User_Settings();
 
 		// Admin Actions
