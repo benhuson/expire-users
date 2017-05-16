@@ -2,9 +2,11 @@
 
 class Expire_Users_Cron {
 
-	function Expire_Users_Cron() {
+	public function __construct() {
+
 		add_action( 'expire_user_cron', array( $this, 'do_cron' ) );
 		add_action( 'wp', array( $this, 'schedule_cron' ) );
+		add_action( 'current_screen', array( $this, 'schedule_cron' ) );
 
 		// @todo Remove - this is just for testing
 		//add_action( 'init', array( $this, 'do_cron' ) );
@@ -15,7 +17,7 @@ class Expire_Users_Cron {
 	 */
 	function schedule_cron() {
 		if ( ! wp_next_scheduled( 'expire_user_cron' ) ) {
-			wp_schedule_event( current_time( 'timestamp' ), 'hourly', 'expire_user_cron' ); // hourly, daily or twicedaily
+			wp_schedule_event( current_time( 'timestamp' ) + 60, 'hourly', 'expire_user_cron' ); // hourly, daily or twicedaily
 		}
 	}
 
