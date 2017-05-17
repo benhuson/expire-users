@@ -7,7 +7,7 @@ class Expire_Users {
 	var $settings;
 	var $user;
 
-	public function __construct() {
+	function Expire_Users() {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
 		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );

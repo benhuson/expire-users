@@ -2,7 +2,7 @@
 
 class Expire_User_Settings {
 
-	public function __construct() {
+	function Expire_User_Settings() {
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_menu', array( $this, 'options_page_item' ) );
 	}
