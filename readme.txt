@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: users, password, expire, login, roles
 Requires at least: 3.5
 Tested up to: 4.7.4
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -58,6 +58,9 @@ None at present.
 3. User login expired error.
 
 == Changelog ==
+
+= 1.0.2 =
+* Rollback changes causing multiple emails to be sent!
 
 = 1.0.1 =
 * Fix PHP7 class constructor warnings.
@@ -119,6 +122,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.0.2 =
+Rollback changes causing multiple emails to be sent!
 
 = 1.0.1 =
 Fix PHP7 class constructor warnings and beter checking for expire users when displaying them in the admin.
