@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Expire Users 1.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/expire-users\n"
-"POT-Creation-Date: 2017-05-18 00:22+0100\n"
+"POT-Creation-Date: 2017-05-18 00:27+0100\n"
 "PO-Revision-Date: 2014-05-15 10:31-0000\n"
 "Last-Translator: Ben Huson <ben@thewhiteroom.net>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -162,8 +162,8 @@ msgstr ""
 
 #: ../admin/help.php:38 ../admin/help.php:58
 msgid ""
-"<p><strong>Expiry Date</strong><br />Set a user to nevr expire, expire after "
-"a period of time or on a specific date.</p>"
+"<p><strong>Expiry Date</strong><br />Set a user to never expire, expire "
+"after a period of time or on a specific date.</p>"
 msgstr ""
 
 #: ../admin/help.php:39 ../admin/help.php:59
