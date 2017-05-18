@@ -9,6 +9,8 @@ Author: Ben Huson
 Author URI: https://github.com/benhuson/expire-users
 Minimum WordPress Version Required: 3.5
 Tested up to: 4.7.4
+Text Domain: expire-users
+Domain Path: /languages
 */
 
 // Version
