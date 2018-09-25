@@ -3,8 +3,8 @@ Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
 Requires at least: 3.5
-Tested up to: 4.7.4
-Stable tag: 1.0.2
+Tested up to: 4.9.8
+Stable tag: 1.0.3
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -58,6 +58,10 @@ None at present.
 3. User login expired error.
 
 == Changelog ==
+
+= 1.0.3 =
+* If user logged in, check expiration while browsing.
+* Prepare for translation.
 
 = 1.0.2 =
 * Rollback changes causing multiple emails to be sent!
@@ -122,6 +126,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+If user logged in, check expiration while browsing.
 
 = 1.0.2 =
 Rollback changes causing multiple emails to be sent!
