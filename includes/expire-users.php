@@ -13,6 +13,7 @@ class Expire_Users {
 		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
+		add_action( 'init', array( $this, 'logout_expired_logged_in_user' ) );
 		add_action( 'register_form', array( $this, 'register_form' ) );
 		add_action( 'user_register', array( $this, 'user_register' ) );
 		add_action( 'expire_users_expired', array( $this, 'handle_on_expire_default_to_role' ) );
@@ -26,6 +27,28 @@ class Expire_Users {
 		add_filter( 'expire_users_email_admin_notification_subject', array( $this, 'email_notification_filter' ), 20, 2 );
 		add_filter( 'option_expire_users_notification_message', array( $this, 'default_expire_users_notification_message' ) );
 		add_filter( 'option_expire_users_notification_admin_message', array( $this, 'default_expire_users_notification_admin_message' ) );
+	}
+
+	/**
+	 * Logout Expired Logged In User
+	 */
+	public function logout_expired_logged_in_user() {
+
+		if ( is_user_logged_in() ) {
+
+			// Expire user if past expire date
+			$user = new Expire_User( absint( get_current_user_id() ) );
+			$expire = $user->maybe_expire();
+
+			// Note expired date and logout
+			if ( $expire ) {
+				$user->set_expire_timestamp( current_time( 'timestamp' ) );
+				$user->save_user();
+				wp_clear_auth_cookie();
+			}
+
+		}
+
 	}
 
 	/**
