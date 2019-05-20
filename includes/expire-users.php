@@ -10,7 +10,7 @@ class Expire_Users {
 	public function __construct() {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
-		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
+		add_filter( 'authenticate', array( $this, 'authenticate' ), 100, 3 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
 		add_action( 'init', array( $this, 'logout_expired_logged_in_user' ) );
@@ -215,7 +215,6 @@ class Expire_Users {
 				$expired = $u->maybe_expire();
 			}
 			if ( $expired ) {
-				remove_action( 'authenticate', 'wp_authenticate_username_password', 20 );
 				return new WP_Error( 'expire_users_expired', sprintf( '<strong>%s</strong> %s', __( 'ERROR:', 'expire-users' ), __( 'Your user details have expired.', 'expire-users' ) ) );
 			}
 		}
