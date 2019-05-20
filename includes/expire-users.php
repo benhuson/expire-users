@@ -226,7 +226,8 @@ class Expire_Users {
 	 * Allow Password Reset
 	 */
 	function allow_password_reset( $allow, $user_ID ) {
-		if ( absint( $user_ID ) > 0 ) {
+		$checkuser = get_user_by( 'ID', $user_ID );
+		if ( $checkuser ) {
 			$u = new Expire_User( $checkuser->ID );
 			if ( $u->is_expired() ) {
 				$allow = new WP_Error( 'expire_users_expired_password_reset', sprintf( '<strong>%s</strong> %s', __( 'ERROR:', 'expire-users' ), __( 'Your user details have expired so you are no longer able to reset your password.', 'expire-users' ) ) );
