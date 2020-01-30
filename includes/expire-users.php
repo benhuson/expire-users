@@ -42,9 +42,14 @@ class Expire_Users {
 
 			// Note expired date and logout
 			if ( $expire ) {
-				$user->set_expire_timestamp( current_time( 'timestamp' ) );
-				$user->save_user();
-				wp_clear_auth_cookie();
+				if ( $user->on_expire_user_remove_expiry ) {
+					$user->remove_expire_date();
+					$user->save_user();
+				} else {
+					$user->set_expire_timestamp( current_time( 'timestamp' ) );
+					$user->save_user();
+					wp_clear_auth_cookie();
+				}
 			}
 
 		}
