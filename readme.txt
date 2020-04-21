@@ -59,6 +59,9 @@ None at present.
 
 == Changelog ==
 
+= Next Release =
+* Make Expire Date column sortable in admin panel. Props @loreboldo.
+
 = 1.0.4 =
 * On expiry, remove expiry date and continue to allow login if set. Props @loreboldo.
 

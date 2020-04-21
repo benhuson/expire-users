@@ -30,10 +30,10 @@ class Expire_User_Admin {
 		add_action( 'admin_print_styles', array( $this, 'admin_print_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
 
-		// User Column - Addition
+		// User Column
 		add_filter( 'manage_users_columns', array( $this, 'manage_users_columns' ) );
 		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 10, 3 );
-		
+
 		// User Column - Sortable
 		add_filter( 'manage_users_sortable_columns', array( $this, 'manage_users_columns_sortable' ) );
 		add_action( 'pre_get_users', array( $this, 'manage_users_custom_column_sort' ) );
@@ -121,15 +121,18 @@ class Expire_User_Admin {
 		}
 		return $value;
 	}
-	
+
 	/**
-	 * Make Custom Users Column Sortable
+	 * Make Custom Users Admin Column Sortable
 	 */
 	function manage_users_columns_sortable( $columns ) {
 		$columns['expire_user'] = 'expire_user_date';
 		return $columns;
 	}
-	
+
+	/**
+	 * Sort User Query by Expiry Date
+	 */
 	function manage_users_custom_column_sort( $query ) {
 		if ( 'expire_user_date' == $query->get( 'orderby' ) ) {
 			$query->set( 'orderby', 'meta_value' );
