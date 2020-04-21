@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Expire Users 1.0.2\n"
 "Report-Msgid-Bugs-To: http://wordpress.org/tag/expire-users\n"
-"POT-Creation-Date: 2020-04-21 18:46+0100\n"
+"POT-Creation-Date: 2020-04-21 18:54+0100\n"
 "PO-Revision-Date: 2014-05-15 10:31-0000\n"
 "Last-Translator: Ben Huson <ben@thewhiteroom.net>\n"
 "MIME-Version: 1.0\n"
@@ -15,6 +15,7 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e;_n;_x;_nx;_ex;esc_html__;esc_html_e;esc_html_x;"
 "esc_attr__;esc_attr_e;esc_attr_x\n"
 "X-Poedit-Basepath: .\n"
+"Language-Team: \n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../admin/expire-user.php:87
@@ -153,7 +154,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: ../admin/help.php:37 ../admin/help.php:57
+#: ../admin/help.php:37
 msgid ""
 "<p>Activate and configure default expiry settings for users who register via "
 "the registration form.</p>"
@@ -195,6 +196,12 @@ msgstr ""
 
 #: ../admin/help.php:56
 msgid "Expiry Settings"
+msgstr ""
+
+#: ../admin/help.php:57
+msgid ""
+"<p>Activate and configure default expiry settings for users who register via "
+"the main WordPress registration form.</p>"
 msgstr ""
 
 #: ../admin/help.php:65
@@ -286,8 +293,8 @@ msgstr ""
 
 #: ../admin/settings.php:106
 msgid ""
-"Automatically set expiry date for new users who register via the "
-"registration form."
+"Automatically set expiry date for new users who register via the main "
+"WordPress registration form."
 msgstr ""
 
 #: ../admin/settings.php:195

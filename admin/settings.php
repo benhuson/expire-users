@@ -103,7 +103,7 @@ class Expire_User_Settings {
 				<p>
 					<label for="expire_user_auto_expire_registered_users">
 						<input name="expire_users_default_expire_settings[auto_expire_registered_users]" type="checkbox" id="expire_user_auto_expire_registered_users" value="Y" <?php checked( 'Y', $expire_settings['auto_expire_registered_users'] ); ?>>
-						<?php esc_html_e( 'Automatically set expiry date for new users who register via the registration form.', 'expire-users' ); ?>
+						<?php esc_html_e( 'Automatically set expiry date for new users who register via the main WordPress registration form.', 'expire-users' ); ?>
 					</label>
 				</p>
 
