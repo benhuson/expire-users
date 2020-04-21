@@ -10,7 +10,7 @@ class Expire_Users {
 	public function __construct() {
 		$this->cron = new Expire_Users_Cron();
 		$this->admin = new Expire_User_Admin();
-		add_filter( 'authenticate', array( $this, 'authenticate' ), 10, 3 );
+		add_filter( 'authenticate', array( $this, 'authenticate' ), 100, 3 );
 		add_filter( 'allow_password_reset', array( $this, 'allow_password_reset' ), 10, 2 );
 		add_filter( 'shake_error_codes', array( $this, 'shake_error_codes' ) );
 		add_action( 'init', array( $this, 'logout_expired_logged_in_user' ) );
@@ -220,7 +220,6 @@ class Expire_Users {
 				$expired = $u->maybe_expire();
 			}
 			if ( $expired ) {
-				remove_action( 'authenticate', 'wp_authenticate_username_password', 20 );
 				return new WP_Error( 'expire_users_expired', sprintf( '<strong>%s</strong> %s', __( 'ERROR:', 'expire-users' ), __( 'Your user details have expired.', 'expire-users' ) ) );
 			}
 		}
@@ -231,7 +230,8 @@ class Expire_Users {
 	 * Allow Password Reset
 	 */
 	function allow_password_reset( $allow, $user_ID ) {
-		if ( absint( $user_ID ) > 0 ) {
+		$checkuser = get_user_by( 'ID', $user_ID );
+		if ( $checkuser ) {
 			$u = new Expire_User( $checkuser->ID );
 			if ( $u->is_expired() ) {
 				$allow = new WP_Error( 'expire_users_expired_password_reset', sprintf( '<strong>%s</strong> %s', __( 'ERROR:', 'expire-users' ), __( 'Your user details have expired so you are no longer able to reset your password.', 'expire-users' ) ) );
