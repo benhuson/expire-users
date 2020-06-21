@@ -54,7 +54,7 @@ class Expire_User_Admin_Help {
 			$current_screen->add_help_tab( array(
 				'id'      => 'EXPIRE_USERS_SETTINGS',
 				'title'   => __( 'Expiry Settings', 'expire-users' ),
-				'content' => __( '<p>Activate and configure default expiry settings for users who register via the registration form.</p>', 'expire-users' )
+				'content' => __( '<p>Activate and configure default expiry settings for users who register via the main WordPress registration form.</p>', 'expire-users' )
 					. __( '<p><strong>Expiry Date</strong><br />Set a user to never expire, expire after a period of time or on a specific date.</p>', 'expire-users' )
 					. __( '<p><strong>Default to Role</strong><br />When a user expires, you can assign them a different role.</p>', 'expire-users' )
 					. __( '<p><strong>Expire Actions</strong><br />Other actions to trigger when a user expires:</p>', 'expire-users' )

@@ -2,9 +2,9 @@
 Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
-Requires at least: 3.5
-Tested up to: 4.9.8
-Stable tag: 1.0.3
+Requires at least: 4.3
+Tested up to: 5.4
+Stable tag: 1.1
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -58,6 +58,15 @@ None at present.
 3. User login expired error.
 
 == Changelog ==
+
+= 1.1 =
+* Make Expire Date column sortable in admin panel. Props @loreboldo.
+* Fix error when user tries to reset password.
+* Fix issue when expiry check on login happens too early.
+* Fix translation of "ERROR:".
+
+= 1.0.4 =
+* On expiry, remove expiry date and continue to allow login if set. Props @loreboldo.
 
 = 1.0.3 =
 * If user logged in, check expiration while browsing.
@@ -126,6 +135,12 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.1 =
+Sort users by expiry date in admin and fix some login issues.
+
+= 1.0.4 =
+On expiry, remove expiry date and continue to allow login if set.
 
 = 1.0.3 =
 If user logged in, check expiration while browsing.
