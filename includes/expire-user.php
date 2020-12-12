@@ -109,6 +109,50 @@ class Expire_User {
 	}
 
 	/**
+	 * Get Expire Countdown Display
+	 *
+	 * @todo  In up to 14 days, otherwise date
+	 */
+	public function get_expire_countdown_display( $args = null ) {
+
+		$args = wp_parse_args( $args, array(
+			'expires_format' => __( 'Expires in %s', 'expire-users' ),
+			'expired_format' => __( 'Expired %s ago', 'expire-users' ),
+			'expired'        => __( 'Expired', 'expire-users' ),
+			'never_expire'   => __( 'Never Expire', 'expire-users' )
+		) );
+
+		$date = '';
+
+		if ( $this->expire_timestamp ) {
+
+			if ( $this->expire_timestamp == current_time( 'timestamp' ) ) {
+				$format = $args['expired'];
+			} elseif ( $this->expire_timestamp > current_time( 'timestamp' ) ) {
+				$format = $args['expires_format'];
+			} else {
+				$format = $args['expired_format'];
+			}
+
+			$seconds_offset = $this->expire_timestamp - current_time( 'timestamp' );
+
+			if ( $seconds_offset < 0 ) {
+				$date = human_time_diff( absint( $this->expire_timestamp ), current_time( 'timestamp' ) );
+			} else {
+				$date = human_time_diff( $this->expire_timestamp, current_time( 'timestamp' ) );
+			}
+
+			$date = sprintf( '<span data-expire-users-seconds="%s">%s</span>', esc_attr( $seconds_offset ), $date );
+
+		} else {
+			$format = $args['never_expire'];
+		}
+
+		return sprintf( $format, $date );
+
+	}
+
+	/**
 	 * Set Default To Role
 	 *
 	 * @todo Check if valid role...

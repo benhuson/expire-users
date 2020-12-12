@@ -112,6 +112,12 @@ class Expire_User_Admin {
 			$u = new Expire_User( $user_id );
 			$expire_date = get_user_meta( $user_id, '_expire_user_date', true );
 			if ( $expire_date ) {
+
+				// Check if user should have expired - if so, do it now rather than waiting for schedule
+				if ( ! $u->is_expired() ) {
+					$u->maybe_expire();
+				}
+
 				$value = date_i18n( get_option( 'date_format' ) . ' @ ' . get_option( 'time_format' ), $expire_date );
 				if ( $u->is_expired() ) {
 					$value = date_i18n( get_option( 'date_format' ), $expire_date );
