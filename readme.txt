@@ -3,7 +3,7 @@ Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
 Requires at least: 4.3
-Tested up to: 5.4
+Tested up to: 5.6
 Stable tag: 1.1
 License: GPLv2 or later
 
@@ -60,6 +60,7 @@ None at present.
 == Changelog ==
 
 = Unreleased =
+* Tested up to WordPress 5.6
 * Fix `expire_users_email_notification_{string}` and `expire_users_email_admin_notification_{string}` being applied in the inverse contexts. Props [@Chaddles23](https://github.com/Chaddles23/)
 
 = 1.1 =
