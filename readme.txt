@@ -61,6 +61,7 @@ None at present.
 
 = Unreleased =
 * Tested up to WordPress 5.6
+* Added `expire_users_current_user_expire_countdown` shortcode.
 * Fix `expire_users_email_notification_{string}` and `expire_users_email_admin_notification_{string}` being applied in the inverse contexts. Props [@Chaddles23](https://github.com/Chaddles23/)
 
 = 1.1 =
