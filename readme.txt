@@ -59,6 +59,9 @@ None at present.
 
 == Changelog ==
 
+= Unreleased =
+* Fix `expire_users_email_notification_{string}` and `expire_users_email_admin_notification_{string}` being applied in the inverse contexts. Props [@Chaddles23](https://github.com/Chaddles23/)
+
 = 1.1 =
 * Make Expire Date column sortable in admin panel. Props @loreboldo.
 * Fix error when user tries to reset password.
