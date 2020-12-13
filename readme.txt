@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: users, password, expire, login, roles
 Requires at least: 4.3
 Tested up to: 5.6
-Stable tag: 1.1
+Stable tag: 1.2
 License: GPLv2 or later
 
 Set expiry dates for user logins.
@@ -55,11 +55,11 @@ None at present.
 1. Expire Date column in users admin.
 2. Edit a user's expiry date and expiry actions.
 3. Edit email notification messages.
-3. User login expired error.
+4. User login expired error.
 
 == Changelog ==
 
-= Unreleased =
+= 1.2 =
 * Tested up to WordPress 5.6
 * Added `expire_users_current_user_expire_countdown` shortcode.
 * Fix `expire_users_email_notification_{string}` and `expire_users_email_admin_notification_{string}` being applied in the inverse contexts. Props [@Chaddles23](https://github.com/Chaddles23/)
@@ -140,6 +140,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.2 =
+Added `expire_users_current_user_expire_countdown` shortcode.
 
 = 1.1 =
 Sort users by expiry date in admin and fix some login issues.
