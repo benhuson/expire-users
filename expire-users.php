@@ -7,7 +7,10 @@ Description: Set expiry dates for user logins.
 Version: 1.2
 Author: Ben Huson
 Author URI: https://github.com/benhuson/expire-users
-Minimum WordPress Version Required: 4.3
+License: GPLv2
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Requires at least: 5.4
+Requires PHP: 7.4
 Tested up to: 5.6
 Text Domain: expire-users
 Domain Path: /languages
