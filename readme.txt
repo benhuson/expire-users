@@ -2,9 +2,10 @@
 Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
-Requires at least: 4.3
+Requires at least: 5.4
 Tested up to: 5.6
 Stable tag: 1.2
+Requires PHP: 7.4
 License: GPLv2 or later
 
 Set expiry dates for user logins.
