@@ -78,7 +78,6 @@ class Expire_User_Settings {
 
 		<div class="wrap">
 			<?php
-			screen_icon();
 			$tag = version_compare( $wp_version, '4.3', '<' ) ? 'h2' : 'h1';
 			echo '<' . $tag . '>' . esc_html__( 'Expire Users Settings', 'expire-users' ) . '</' . $tag . '>';
 			?>
