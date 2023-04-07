@@ -3,8 +3,8 @@ Contributors: husobj
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=MW3TJNHM283LU
 Tags: users, password, expire, login, roles
 Requires at least: 5.4
-Tested up to: 5.6
-Stable tag: 1.2
+Tested up to: 6.2
+Stable tag: 1.2.1
 Requires PHP: 7.4
 License: GPLv2 or later
 
@@ -59,6 +59,10 @@ None at present.
 4. User login expired error.
 
 == Changelog ==
+
+= 1.2.1 =
+* Tested up to WordPress 6.2
+* Tested up to PHP 8.2
 
 = 1.2 =
 * Tested up to WordPress 5.6
@@ -141,6 +145,9 @@ None at present.
 * First Release. If you spot any bugs or issues please [log them here](https://github.com/benhuson/expire-users/issues).
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+Tested up to WordPress 6.2 and PHP 8.2
 
 = 1.2 =
 Added `expire_users_current_user_expire_countdown` shortcode.
