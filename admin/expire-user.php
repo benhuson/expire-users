@@ -32,7 +32,7 @@ class Expire_User_Admin {
 
 		// User Column
 		add_filter( 'manage_users_columns', array( $this, 'manage_users_columns' ) );
-		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 10, 3 );
+		add_action( 'manage_users_custom_column', array( $this, 'manage_users_custom_column' ), 15, 3 );
 
 		// User Column - Sortable
 		add_filter( 'manage_users_sortable_columns', array( $this, 'manage_users_columns_sortable' ) );
