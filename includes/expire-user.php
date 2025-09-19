@@ -158,7 +158,9 @@ class Expire_User {
 	 * @todo Check if valid role...
 	 */
 	function set_default_to_role( $role ) {
-		$this->on_expire_default_to_role = $role;
+		if ( wp_roles()->is_role( $role ) ) {
+			$this->on_expire_default_to_role = $role;
+		}
 	}
 
 	/**
@@ -275,7 +277,9 @@ class Expire_User {
 					break;
 			}
 		}
-		$this->set_default_to_role( $data['expire_user_role'] );
+		if ( isset( $data['expire_user_role'] ) ) {
+			$this->set_default_to_role( $data['expire_user_role'] );
+		}
 		$this->on_expire_user_reset_password = isset( $data['expire_user_reset_password'] ) && $data['expire_user_reset_password'] == 'Y';
 		$this->on_expire_user_email          = isset( $data['expire_user_email'] ) && $data['expire_user_email'] == 'Y';
 		$this->on_expire_user_email_admin    = isset( $data['expire_user_email_admin'] ) && $data['expire_user_email_admin'] == 'Y';
